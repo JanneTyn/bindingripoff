@@ -4,7 +4,7 @@
 public interface IDamageable
 {
     /// <summary>
-    /// Damage character represented by this interface
+    /// Damage the object represented by this interface
     /// </summary>
     /// <param name="damageAmount">Amount of damage to take</param>
     public void TakeDamage(float damageAmount);

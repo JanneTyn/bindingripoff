@@ -7,25 +7,33 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Player main class
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerInput))]
 public class Player : MonoBehaviour, IDamageable
 {
-    private InputActionsAsset inputActions;
     private Vector2 movementDirection, shootDirection;
-    [SerializeField] private float debugMoveSpeed = 10f;
-    [SerializeField] private float movementSmoothing = .5f;
-    private Vector2 refVelocity = Vector2.zero;
+    private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
+    private PlayerInput playerInput; //literally only to check control scheme, refactor this
+
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float movementSmoothing = .5f;
+    private float shootTimer;
+
+    [SerializeField] private Weapon currentWeapon;
 
     #region Input
+
+    private InputActionsAsset inputActions;
     private void Awake()
     {
         inputActions = new InputActionsAsset();
         inputActions.Enable();
 
         inputActions.Gameplay.Dodge.performed += context => Dash();
-        inputActions.Gameplay.Shoot.performed += context => Shoot();
     }
     private void OnEnable()
     {
@@ -39,44 +47,53 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Shoot()
     {
-        //Shooting goes here
-        
-        //Get current active scheme to determine direction from
+        //fire rate check
+        if(shootTimer >= (1f / currentWeapon.fireRate))
+        {
+            shootTimer = 0f; // reset shot timer
+
+            if(playerInput.currentControlScheme == "Gamepad") //controller aim
+            {   
+                shootDirection = shootDirection.normalized;
+            }
+            else //m&k aim
+            {
+                var shootDir = ((Vector2)Camera.main.ScreenToWorldPoint(shootDirection) - (Vector2)transform.position).normalized;
+                currentWeapon.Shoot(gameObject, shootDir, true);
+            }
+        }
         
     }
 
     private void Dash()
     {
-        //Dash goes here
+        //TODO dash goes here
     }
-
-    
-
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        movementDirection = inputActions.Gameplay.Movement.ReadValue<Vector2>();
+        shootDirection = inputActions.Gameplay.ShootDirection.ReadValue<Vector2>();
+        if (inputActions.Gameplay.Shoot.ReadValue<float>() > 0.5f) Shoot(); //ew, refactor
+        shootTimer += Time.deltaTime; //shot timer tick
+
+        animator.SetFloat("MovementX", movementDirection.x);
+        animator.SetFloat("MovementY", movementDirection.y);
     }
 
     private void FixedUpdate()
     {
-        movementDirection = inputActions.Gameplay.Movement.ReadValue<Vector2>();
-
-        animator.SetFloat("MovementX", movementDirection.x);
-        animator.SetFloat("MovementY", movementDirection.y);
-
-        rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, movementDirection * debugMoveSpeed, ref refVelocity, movementSmoothing);
+        rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, movementDirection * moveSpeed, ref refVelocity, movementSmoothing);
     }
 
     public void TakeDamage(float damageAmount)
     {
-
+        //TODO player damage
     }
 }

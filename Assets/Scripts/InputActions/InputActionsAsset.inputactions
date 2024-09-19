@@ -28,7 +28,7 @@
                     "type": "Value",
                     "id": "bbca2435-8c8a-492c-9387-01785158ffba",
                     "expectedControlType": "Vector2",
-                    "processors": "NormalizeVector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -38,7 +38,7 @@
                     "id": "69e8e6ce-cd09-43cd-b0d2-df3130f16bbf",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.01,pressPoint=0.01)",
                     "initialStateCheck": false
                 }
             ],
