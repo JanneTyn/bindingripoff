@@ -8,6 +8,8 @@ using UnityEngine;
 public class TestEnemy : EnemyBase
 {
     private float timer = 2f;
+    [SerializeField] private Weapon weapon;
+
     private enum TestEnemyStates
     {
         MovingRight,
@@ -28,6 +30,7 @@ public class TestEnemy : EnemyBase
                 //exit clause
                 if (timer <= 0)
                 {
+                    weapon.Shoot(gameObject, Vector2.zero, false);
                     enemyFSM = TestEnemyStates.MovingLeft;
                     timer = 2f;
                 }
@@ -40,6 +43,7 @@ public class TestEnemy : EnemyBase
                 //exit clause
                 if (timer <= 0)
                 {
+                    weapon.Shoot(gameObject, Vector2.zero, false);
                     enemyFSM = TestEnemyStates.MovingRight;
                     timer = 2f;
                 }

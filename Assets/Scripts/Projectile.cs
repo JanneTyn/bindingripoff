@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
 {
     private bool shotByPlayer;
     private float damage;
+    private new Rigidbody2D rigidbody;
+    private Vector2 velocityVector;
+
     /// <summary>
     /// Initialize this projectile
     /// </summary>
@@ -18,17 +21,22 @@ public class Projectile : MonoBehaviour
     /// <param name="maxLifetime"></param>
     public void Initialize(Vector2 direction, float projectileSpeed, float maxLifetime, bool _shotByPlayer, float _damage, GameObject ignore)
     {
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ignore.GetComponent<Collider2D>());
-        GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ignore.GetComponent<Collider2D>()); //ignore collision with character that fired this projectile
+        Physics2D.IgnoreLayerCollision(6, 6); //temporary fix, projectiles ignore collisions with eachother
+        rigidbody = GetComponent<Rigidbody2D>();
+        velocityVector = direction * projectileSpeed;
         shotByPlayer = _shotByPlayer;
         damage = _damage;
         Destroy(gameObject, maxLifetime);
+        
+    }
+    private void Update()
+    {
+        rigidbody.velocity = velocityVector;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO collision checks
-
         if(collision.gameObject.TryGetComponent<IDamageable>(out var damageInterface))
         {
             if(shotByPlayer)

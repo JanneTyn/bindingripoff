@@ -8,5 +8,5 @@ public abstract class Weapon : ScriptableObject
     public float projectileLifetime;
     public GameObject projectilePrefab;
 
-    public abstract void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer);
+    public abstract void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f);
 }

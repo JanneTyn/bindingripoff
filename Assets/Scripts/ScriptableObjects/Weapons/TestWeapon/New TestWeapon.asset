@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 5
   damage: 20
-  projectileSpeed: 800
+  projectileSpeed: 10
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}

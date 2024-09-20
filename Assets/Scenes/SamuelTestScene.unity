@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f456f52a8d5854e409ce2fb27b944880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: cca61ed5efaf2e343bf3abb525716065, type: 2}
 --- !u!61 &130694410
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -426,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: edd8f82bd6020fe4c9577e8be2f3fa1a, type: 3}
   m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -785,10 +787,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: currentWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 673398e495cf1664db43857161716947, type: 2}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: debugMoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: debugProjectileSpeed
       value: 800
@@ -884,6 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f456f52a8d5854e409ce2fb27b944880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: cca61ed5efaf2e343bf3abb525716065, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
