@@ -6,11 +6,13 @@ public class ObjectFollow : MonoBehaviour
     public Transform Follow;
 
     private Camera MainCamera;
+    [SerializeField] Vector3 hpBarOffset = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
     {
         MainCamera = Camera.main;
+        transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class ObjectFollow : MonoBehaviour
             return;
         }
 
-        var screenPos = MainCamera.WorldToScreenPoint(Follow.position);
+        var screenPos = MainCamera.WorldToScreenPoint(Follow.position + hpBarOffset);
 
         transform.position = screenPos;
 
