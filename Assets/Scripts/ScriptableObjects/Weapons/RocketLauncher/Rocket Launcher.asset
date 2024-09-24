@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf8699274a859f45aa60b29a80e7c6a, type: 3}
-  m_Name: New TestWeapon
+  m_Script: {fileID: 11500000, guid: 6d3598c00e38b28408d8445150a69176, type: 3}
+  m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
-  fireRate: 5
-  damage: 20
-  projectileSpeed: 10
-  projectileLifetime: 2
-  projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
+  fireRate: 1
+  damage: 50
+  projectileSpeed: 5
+  projectileLifetime: 5
+  projectilePrefab: {fileID: 7067141648858296619, guid: 8eb166b9c8dc3bb44b254929c4d476fe, type: 3}
+  aoeRadius: 4

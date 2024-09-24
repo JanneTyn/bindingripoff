@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                if(damageInterface is not EnemyBase)
+                if(damageInterface is not Enemy)
                 {
                     damageInterface.TakeDamage(damage);
                 }

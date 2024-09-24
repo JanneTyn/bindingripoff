@@ -8,13 +8,15 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
-public class EnemyBase : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable
 {
+    [SerializeField] protected float movementSpeed;
+
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
     private float currentHealth, maxHealth;
-    protected Vector2 movementVector;
+    protected Vector2 movementVector = Vector2.zero;
 
     public void TakeDamage(float damageAmount)
     {
@@ -31,7 +33,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    private void Start()
+    protected void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
