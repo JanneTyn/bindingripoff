@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemyhph
       objectReference: {fileID: 0}
+    - target: {fileID: 3696153610516750176, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3787850576513470814, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -22,7 +22,7 @@ public class ObjectFollow : MonoBehaviour
         {
             Destroy(this.gameObject);
             return;
-        }
+        } 
 
         var screenPos = MainCamera.WorldToScreenPoint(Follow.position + hpBarOffset);
 
