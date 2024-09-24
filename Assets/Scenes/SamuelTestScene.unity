@@ -787,13 +787,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 1163709553974375063, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: fireRate
+      value: 131.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: maxHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: baseMoveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: currentHealth
@@ -804,8 +816,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 673398e495cf1664db43857161716947, type: 2}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: dodgeVelocity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: debugMoveSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: baseDodgeCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: moveSpeedIncrease
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: debugProjectileSpeed

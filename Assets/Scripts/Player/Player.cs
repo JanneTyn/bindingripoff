@@ -21,15 +21,19 @@ public class Player : MonoBehaviour, IDamageable
     [Range(0, 200)] public float moveSpeedIncrease;
     [Range(0, -30)] public float armor;
     [Range(0, 30)] public float dodge;
+    [Range(0, -50)] public float dodgeCooldownDecrease;
 
     [Space(20)]
     [SerializeField] private float baseMoveSpeed;
+    [SerializeField] private float baseDodgeCooldown;
+    [SerializeField] private float dodgeVelocity;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
 
     private float movementSmoothing = .05f;
-    private float shootTimer;
+    private float shootTimer, dodgeTimer;
+    private bool dodging;
     private Vector2 movementDirection, shootDirection;
     private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
     private new Rigidbody2D rigidbody;
@@ -56,6 +60,34 @@ public class Player : MonoBehaviour, IDamageable
     }
     #endregion
 
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+
+        maxHealth = 100 + maxHealthIncrease;
+        currentHealth = maxHealth;
+    }
+
+    private void Update()
+    {
+        movementDirection = inputActions.Gameplay.Movement.ReadValue<Vector2>();
+        shootDirection = inputActions.Gameplay.ShootDirection.ReadValue<Vector2>();
+        if (inputActions.Gameplay.Shoot.ReadValue<float>() > 0.5f) Shoot(); //ew, refactor
+        shootTimer += Time.deltaTime; //shoot timer tick
+        dodgeTimer += Time.deltaTime; //dodge timer tick
+
+        animator.SetFloat("MovementX", movementDirection.x);
+        animator.SetFloat("MovementY", movementDirection.y);
+    }
+
+    private void FixedUpdate()
+    {
+        if(!dodging)
+            rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, movementDirection * (baseMoveSpeed * PercentageToMultiplier(moveSpeedIncrease)), ref refVelocity, movementSmoothing);
+    }
+
     private void Shoot()
     {
         //fire rate check
@@ -77,39 +109,19 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Dash()
     {
-        //TODO dash goes here
+        //TODO effects
+        if(dodgeTimer >= baseDodgeCooldown * PercentageToMultiplier(dodgeCooldownDecrease) && movementDirection != Vector2.zero)
+        {
+            dodgeTimer = 0f;
+            StartCoroutine(DodgeRoutine());
+        }
     }
 
-    void Start()
-    {
-        rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>();
-
-        maxHealth = 100 + maxHealthIncrease;
-        currentHealth = maxHealth;
-    }
-
-    private void Update()
-    {
-        movementDirection = inputActions.Gameplay.Movement.ReadValue<Vector2>();
-        shootDirection = inputActions.Gameplay.ShootDirection.ReadValue<Vector2>();
-        if (inputActions.Gameplay.Shoot.ReadValue<float>() > 0.5f) Shoot(); //ew, refactor
-        shootTimer += Time.deltaTime; //shot timer tick
-
-        animator.SetFloat("MovementX", movementDirection.x);
-        animator.SetFloat("MovementY", movementDirection.y);
-    }
-
-    private void FixedUpdate()
-    {
-        rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, movementDirection * (baseMoveSpeed * PercentageToMultiplier(moveSpeedIncrease)), ref refVelocity, movementSmoothing);
-    }
+    
 
     public void TakeDamage(float damageAmount)
     {
         //TODO death effects etc.
-        
         
         if(Random.Range(0, 100) < dodge) //dodge success
         {
@@ -134,8 +146,17 @@ public class Player : MonoBehaviour, IDamageable
     /// </summary>
     /// <param name="percentage"></param>
     /// <returns></returns>
-    private float PercentageToMultiplier(float percentage)
+    private float PercentageToMultiplier(float percentage) => (percentage / 100f) + 1f;
+
+    /// <summary>
+    /// Coroutine for dodging, WIP
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator DodgeRoutine()
     {
-        return (percentage / 100f) + 1f;
+        rigidbody.velocity = movementDirection * dodgeVelocity;
+        dodging = true;
+        yield return new WaitForSeconds(0.1f);
+        dodging = false;
     }
 }

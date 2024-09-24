@@ -28,7 +28,6 @@ public class Projectile : MonoBehaviour
         shotByPlayer = _shotByPlayer;
         damage = _damage;
         Destroy(gameObject, maxLifetime);
-        
     }
     private void Update()
     {
