@@ -12,9 +12,10 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PlayerInput))]
 public class Player : MonoBehaviour, IDamageable
 {
+    #region Test upgrades
     // testing stats for now
     /// TODO get stats from leveling component or whatever
-    [Header("Testing stats")]
+    [Header("Testing upgrades")]
     public float maxHealthIncrease;
     [Range(0, 200)] public float fireRate;
     [Range(0, 200)] public float damageIncrease;
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour, IDamageable
     [Range(0, -30)] public float armor;
     [Range(0, 30)] public float dodge;
     [Range(0, -50)] public float dodgeCooldownDecrease;
+    [Range(0, 50)] public float iFramesLengthIncrease;
+    #endregion
 
     [Space(20)]
     [SerializeField] private float baseMoveSpeed;
@@ -33,9 +36,10 @@ public class Player : MonoBehaviour, IDamageable
 
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;
-    private bool dodging;
+    private bool dodging, iFramesActive;
     private Vector2 movementDirection, shootDirection;
     private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
+
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
@@ -75,6 +79,7 @@ public class Player : MonoBehaviour, IDamageable
         movementDirection = inputActions.Gameplay.Movement.ReadValue<Vector2>();
         shootDirection = inputActions.Gameplay.ShootDirection.ReadValue<Vector2>();
         if (inputActions.Gameplay.Shoot.ReadValue<float>() > 0.5f) Shoot(); //ew, refactor
+
         shootTimer += Time.deltaTime; //shoot timer tick
         dodgeTimer += Time.deltaTime; //dodge timer tick
 
@@ -117,10 +122,16 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    
-
     public void TakeDamage(float damageAmount)
     {
+        //jos iframet aktivoituna, älä ota damagea -> return
+        //jos ei aktivoituna, ota damagea ja aloita iframet
+        if (iFramesActive) return;
+        else
+        {
+            StartCoroutine(IFrameRoutine());
+        }
+        
         //TODO death effects etc.
         
         if(Random.Range(0, 100) < dodge) //dodge success
@@ -158,5 +169,16 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         yield return new WaitForSeconds(0.1f);
         dodging = false;
+    }
+
+    /// <summary>
+    /// Coroutine for player i-frames
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator IFrameRoutine()
+    {
+        iFramesActive = true;
+        yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
+        iFramesActive = false;
     }
 }

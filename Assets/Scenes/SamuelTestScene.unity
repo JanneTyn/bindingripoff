@@ -135,27 +135,14 @@ GameObject:
   - component: {fileID: 130694412}
   - component: {fileID: 130694411}
   - component: {fileID: 130694410}
-  - component: {fileID: 130694409}
+  - component: {fileID: 130694415}
   m_Layer: 0
-  m_Name: TestEnemy (1)
+  m_Name: ShootAtPlayerEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &130694409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130694408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f456f52a8d5854e409ce2fb27b944880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: cca61ed5efaf2e343bf3abb525716065, type: 2}
 --- !u!61 &130694410
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,12 +297,27 @@ Transform:
   m_GameObject: {fileID: 130694408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.82, y: -3.9, z: 0}
+  m_LocalPosition: {x: 4.06, y: -1.82, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &130694415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130694408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4b97d340d4ef947819fff144f8f6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 2
+  aiTime: 1
+  weapon: {fileID: 11400000, guid: f38522e8cf059554685846b2afc516a8, type: 2}
 --- !u!1 &554080364
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +731,7 @@ GameObject:
   - component: {fileID: 1100334975600677300}
   - component: {fileID: 7160206324730457807}
   m_Layer: 0
-  m_Name: TestEnemy
+  m_Name: CrossPatternEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: fireRate
-      value: 131.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: maxHealth
@@ -814,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 673398e495cf1664db43857161716947, type: 2}
+      objectReference: {fileID: 11400000, guid: 966222dee5642c34498e6616a7c1f190, type: 2}
     - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: dodgeVelocity
       value: 15
@@ -926,6 +928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f456f52a8d5854e409ce2fb27b944880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 3
+  aiTime: 2
   weapon: {fileID: 11400000, guid: cca61ed5efaf2e343bf3abb525716065, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

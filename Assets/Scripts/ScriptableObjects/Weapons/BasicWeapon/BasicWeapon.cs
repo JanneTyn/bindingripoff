@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New TestWeapon", menuName = "Scriptable Object/Weapons/TestWeapon")]
-public class TestWeapon : Weapon
+[CreateAssetMenu(fileName = "New Basic Weapon", menuName = "Scriptable Object/Weapons/BasicWeapon")]
+public class BasicWeapon : Weapon
 {
     public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
     {
