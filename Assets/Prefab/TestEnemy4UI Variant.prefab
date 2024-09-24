@@ -78,11 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787850576513470814, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 184.25668
+      value: 225.2
       objectReference: {fileID: 0}
     - target: {fileID: 3787850576513470814, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 83.79233
+      value: 97.8
       objectReference: {fileID: 0}
     - target: {fileID: 3787850576513470814, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestEnemy4UI Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3740657583536422925, guid: e83cba004e937294cb263adbb1bfca1a, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: cca61ed5efaf2e343bf3abb525716065, type: 2}
     - target: {fileID: 5287234958878793276, guid: e83cba004e937294cb263adbb1bfca1a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.27
