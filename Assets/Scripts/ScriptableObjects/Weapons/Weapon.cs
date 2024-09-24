@@ -7,6 +7,7 @@ public abstract class Weapon : ScriptableObject
     public float projectileSpeed;
     public float projectileLifetime;
     public GameObject projectilePrefab;
+    public Sprite sprite;
 
     /// <summary>
     /// Fire this weapon. Abstract, so implement this in each child of 'Weapon'.

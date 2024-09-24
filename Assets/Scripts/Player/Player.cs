@@ -153,6 +153,18 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     /// <summary>
+    /// Equip player with this weapon
+    /// </summary>
+    /// <param name="_weapon"></param>
+    public void EquipWeapon(Weapon _weapon, WeaponPickup pickupComponent)
+    {
+        //TODO weapon slot system, drop current weapon
+        Weapon oldWeapon = currentWeapon;
+        currentWeapon = _weapon;
+        pickupComponent.UpdateWeaponPickup(oldWeapon);
+    }
+
+    /// <summary>
     /// Turn percentages to multipliers for easy increases
     /// </summary>
     /// <param name="percentage"></param>

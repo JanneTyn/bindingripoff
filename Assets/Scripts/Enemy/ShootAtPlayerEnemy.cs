@@ -69,7 +69,6 @@ public class ShootAtPlayerEnemy : Enemy
     /// </summary>
     private void DecideDirection()
     {
-        //TODO smarter, dont walk towards walls, etc.
         List<Vector2> directions = new()
         {
             Vector2.up,
@@ -77,7 +76,21 @@ public class ShootAtPlayerEnemy : Enemy
             Vector2.left,
             Vector2.right
         };
+        List<Vector2> freeDirections = new();
 
-        movementDirection = directions[Random.Range(0, 4)];
+        foreach (var dir in directions)
+        {
+            if(!Physics2D.Raycast(transform.position, dir, 5f, LayerMask.GetMask("Wall")))
+            {
+                freeDirections.Add(dir);
+            }
+        }
+
+        if(freeDirections.Count == 0) enemyFSM = EnemyStates.StopAndShoot;
+        else
+        {
+            movementDirection = freeDirections[Random.Range(0, freeDirections.Count)];
+        }
+        
     }
 }
