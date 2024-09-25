@@ -10998,6 +10998,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4403105278323612352, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Size.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403105278323612352, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -11014,6 +11022,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 554080366}
+    - target: {fileID: 8041736563121429759, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041736563121429759, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Size.y
+      value: 0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 8041736563121429759, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 129

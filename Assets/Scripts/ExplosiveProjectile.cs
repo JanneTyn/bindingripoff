@@ -23,7 +23,9 @@ public class ExplosiveProjectile : MonoBehaviour
     /// <param name="maxLifetime"></param>
     public void Initialize(Vector2 direction, float projectileSpeed, float maxLifetime, bool _shotByPlayer, float _damage, GameObject ignore, float _radius)
     {
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), ignore.GetComponent<Collider2D>()); //ignore collision with character that fired this projectile
+        if (ignore.CompareTag("Player")) GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Player");
+        else GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Enemy");
+
         Physics2D.IgnoreLayerCollision(6, 6); //temporary fix, projectiles ignore collisions with eachother
         rigidbody = GetComponent<Rigidbody2D>();
         velocityVector = direction * projectileSpeed;
