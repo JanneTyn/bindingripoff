@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectFollow : MonoBehaviour
+public class HealthSlider : MonoBehaviour
 {
     public Transform Follow;
     private Slider Slider;
@@ -14,15 +14,10 @@ public class ObjectFollow : MonoBehaviour
     {
         MainCamera = Camera.main;
         Slider = GetComponent<Slider>();
+        Slider.maxValue = 100f;
 
-        if (this.gameObject.name != "playerhp")
-        {
-            testEnemy = GetComponentInParent<TestEnemy>();
-        }
-        else
-        {
-
-        }
+        testEnemy = GetComponentInParent<TestEnemy>();
+        player = GetComponentInParent<Player>();
 
         if (Follow == null)
         {
@@ -45,6 +40,14 @@ public class ObjectFollow : MonoBehaviour
         
         transform.position = screenPos;
         
-        Debug.Log("enemy has " + testEnemy.PublicCurrentHealth().ToString("F2"));
+        if (testEnemy != null)
+        {
+            Slider.value = testEnemy.PublicCurrentHealth();
+        }
+        else
+        {
+            Slider.value = player.PublicCurrentHealth();
+        }
+        
     }
 }
