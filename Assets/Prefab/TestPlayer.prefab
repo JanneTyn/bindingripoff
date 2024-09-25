@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5837225386255967674}
   - component: {fileID: 8207955836038388867}
   - component: {fileID: 4403105278323612352}
+  - component: {fileID: 1169793670480629806}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,8 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d79c6bb4f48b64b99a9ab1019f3903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMoveSpeed: 5
-  movementSmoothing: 0.05
+  maxHealthIncrease: 0
+  fireRate: 0
+  damageIncrease: 0
+  moveSpeedIncrease: 0
+  armor: 0
+  dodge: 0
+  dodgeCooldownDecrease: 0
+  iFramesLengthIncrease: 0
+  baseMoveSpeed: 0
+  baseDodgeCooldown: 0
+  dodgeVelocity: 0
+  currentWeapon: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
 --- !u!61 &4403105278323612352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,3 +208,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.44}
   m_EdgeRadius: 0
+--- !u!114 &1169793670480629806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163709553974375063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: 0}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

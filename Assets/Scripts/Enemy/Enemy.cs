@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
-    private float currentHealth, maxHealth;
+    private float currentHealth;
+    [SerializeField] private float maxHealth;
     protected Vector2 movementVector = Vector2.zero;
 
     public void TakeDamage(float damageAmount)
