@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public float regenSpeed = 3.0f; //in seconds
+    public float maxHealth = 100;
     public float regenAmount = 0; //% of health
+    public float damage = 0; //base dmg increase
+    public float reloadSpeed = 0;
     public float defense = 0; //dmg resistance % increase
     public float evasion = 0;
     public float movementSpeed = 0; //only to apply buff/debuff
     public float luck = 0;
+
+    public List<string> upgrades;
 
     public bool regenAmountCapped = false;
 
@@ -22,6 +25,17 @@ public class PlayerStats : MonoBehaviour
     public float regenAmountIncreasePerUpgrade = 0.005f;
     public float regenAmountCap = 0.1f;
 
+    private void Start()
+    {
+        upgrades.Add("Health");
+        upgrades.Add("Health Regeneration");
+        upgrades.Add("Damage");
+        upgrades.Add("Fire Rate");
+        upgrades.Add("Defense");
+        upgrades.Add("Evasion");
+        upgrades.Add("Movement Speed");
+        upgrades.Add("Luck");
+    }
     public void IncreaseMaxHealth()
     {
         maxHealth = maxHealth + (baseHealthUpgrade + totalBonusHealthUpgrade);

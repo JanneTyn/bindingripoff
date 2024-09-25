@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private float currentHealth;
     [SerializeField] private float maxHealth;
     protected Vector2 movementVector = Vector2.zero;
+    private PlayerLeveling playerLeveling;
 
     public void TakeDamage(float damageAmount)
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable
     /// </summary>
     protected void Death()
     {
+        playerLeveling.IncreaseXP();
         Destroy(gameObject);
     }
 
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         maxHealth = 100f;
         currentHealth = maxHealth;
+        playerLeveling = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
     }
 
     protected void FixedUpdate()

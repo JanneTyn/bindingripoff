@@ -10,11 +10,13 @@ public class PlayerLeveling : MonoBehaviour
     public float totalXPRequired = 100;
     public int skillPoints = 0;
     
-    public PlayerStats stats;
+    private PlayerStats stats;
+    public UpgradeMenu upgradeMenu;
 
     private void Start()
     {
         stats = GetComponent<PlayerStats>();
+        //upgradeMenu = GameObject.Find("Canvas/UpgradingUI").GetComponent<UpgradeMenu>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class PlayerLeveling : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            IncreaseXP(20);
+            //IncreaseXP(20);
         }
 
         if (skillPoints > 0)
@@ -31,11 +33,11 @@ public class PlayerLeveling : MonoBehaviour
         }
     }
 
-    public void IncreaseXP(float experience)
+    public void IncreaseXP(float experience = 100)
     {
         currentExperience += experience;
 
-        if (currentExperience > totalXPRequired)
+        if (currentExperience >= totalXPRequired)
         {
             PlayerLevelUp();
         }
@@ -45,6 +47,7 @@ public class PlayerLeveling : MonoBehaviour
     {
         currentPlayerLevel++;
         skillPoints++;
+        upgradeMenu.OpenUpgradeMenu();
         SetNewLevelThreshold();
     }
 
