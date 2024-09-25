@@ -8,16 +8,26 @@ public class HealthSlider : MonoBehaviour
     private Camera MainCamera;
     private TestEnemy testEnemy;
     private Player player;
-    [SerializeField] Vector3 hpBarOffset = new Vector3(0, 0, 0);
+    private string CharacterType;
+    [SerializeField] Vector3 hpBarOffset = new Vector3(0, -0.8f, 0);
 
     void Start()
     {
+        if (GetComponentInParent<TestEnemy>() == null)
+        {
+            player = GetComponentInParent<Player>();
+            CharacterType = "Player";
+        }
+        else
+        {
+            testEnemy = GetComponentInParent<TestEnemy>();
+            CharacterType = "TestEnemy";
+        }
+
         MainCamera = Camera.main;
         Slider = GetComponent<Slider>();
         Slider.maxValue = 100f;
 
-        testEnemy = GetComponentInParent<TestEnemy>();
-        player = GetComponentInParent<Player>();
 
         if (Follow == null)
         {
@@ -40,13 +50,15 @@ public class HealthSlider : MonoBehaviour
         
         transform.position = screenPos;
         
-        if (testEnemy != null)
+        switch (CharacterType)
         {
-            Slider.value = testEnemy.PublicCurrentHealth();
-        }
-        else
-        {
-            Slider.value = player.PublicCurrentHealth();
+            case "Player":
+                Slider.value = player.PublicCurrentHealth();
+                break;
+            default:
+                Slider.value = testEnemy.PublicCurrentHealth();
+                break;
+
         }
         
     }
