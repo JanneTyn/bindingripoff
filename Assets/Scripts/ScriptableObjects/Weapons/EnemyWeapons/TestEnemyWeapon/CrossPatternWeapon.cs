@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New TestEnemyWeapon", menuName = "Scriptable Object/Weapons/Enemy Weapons/TestEnemyWeapon")]
-public class TestEnemyWeapon : Weapon
+[CreateAssetMenu(fileName = "New Cross Pattern Weapon", menuName = "Scriptable Object/Weapons/Enemy Weapons/Cross Pattern")]
+public class CrossPatternWeapon : Weapon
 {
     public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
     {
