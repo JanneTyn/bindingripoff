@@ -6,13 +6,24 @@ public class ObjectFollow : MonoBehaviour
     public Transform Follow;
     private Slider Slider;
     private Camera MainCamera;
+    private TestEnemy testEnemy;
+    private Player player;
     [SerializeField] Vector3 hpBarOffset = new Vector3(0, 0, 0);
 
     void Start()
     {
         MainCamera = Camera.main;
         Slider = GetComponent<Slider>();
-        
+
+        if (this.gameObject.name != "playerhp")
+        {
+            testEnemy = GetComponentInParent<TestEnemy>();
+        }
+        else
+        {
+
+        }
+
         if (Follow == null)
         {
             Follow = transform.parent;
@@ -33,6 +44,7 @@ public class ObjectFollow : MonoBehaviour
         var screenPos = MainCamera.WorldToScreenPoint(Follow.position + hpBarOffset);
         
         transform.position = screenPos;
-
+        
+        Debug.Log("enemy has " + testEnemy.PublicCurrentHealth().ToString("F2"));
     }
 }

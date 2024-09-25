@@ -232,7 +232,7 @@ GameObject:
   m_Layer: 0
   m_Name: TestEnemy4UI
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1955721339, guid: a45824083ce745d4d84bf2e0a009ce21, type: 3}
-  m_Color: {r: 1, g: 0.28773582, b: 0.28773582, a: 1}
+  m_Color: {r: 1, g: 0.28627455, b: 0.77471566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

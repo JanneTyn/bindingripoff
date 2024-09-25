@@ -48,4 +48,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         rigidbody.velocity = movementVector;
     }
+    public float PublicCurrentHealth()
+    {
+        float PublicHealth = currentHealth;
+        return PublicHealth;
+    }
 }

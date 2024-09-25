@@ -193,4 +193,10 @@ public class Player : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
         iFramesActive = false;
     }
+
+    public float PublicCurrentHealth()
+    {
+        float PublicHealth = currentHealth;
+        return PublicHealth;
+    }
 }
