@@ -20,7 +20,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if(collider.transform.CompareTag("Player"))
         {
-            collider.gameObject.GetComponent<Player>().EquipWeapon(weapon, this);
+            collider.transform.root.GetComponent<Player>().EquipWeapon(weapon, this);
             //Destroy(gameObject);
         }
     }
