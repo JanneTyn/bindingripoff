@@ -35,4 +35,14 @@ public class WeaponPickup : MonoBehaviour
         weapon = oldWeapon;
         spriteRenderer.sprite = weapon.sprite;
     }
+
+    /// <summary>
+    /// Randomize the weapon on this pickup
+    /// </summary>
+    public void RandomizeWeapon()
+    {
+        //TODO weighted generation
+        var weapons = Resources.LoadAll("Weapons/");
+        weapon = weapons[Random.Range(0, weapons.Length)] as Weapon;
+    }
 }
