@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Door logic
+/// </summary>
 public class Door : MonoBehaviour
 {
     private bool locked = true;
-    public Vector2 doorDirection;
+    public Vector2Int doorDirection;
+    private Room currentRoom;
 
     public void Unlock()
     {
+        currentRoom = transform.root.GetComponent<Room>();
         locked = false;
 
+        //TODO actual doors lol
         var green = Color.green;
         green.a = 0.5f;
         GetComponent<SpriteRenderer>().color = green;
@@ -23,11 +29,7 @@ public class Door : MonoBehaviour
 
         if(!locked)
         {
-            //Todo make this better lol
-            int nextRoomDistance = doorDirection.y == 0 ? 32 : 16;
-            Instantiate(Resources.Load("Room") as GameObject, transform.root.position + (Vector3)doorDirection * nextRoomDistance, Quaternion.identity);
-            collider.transform.position = collider.transform.position + (Vector3)doorDirection * 6f;
-            CameraController.instance.MoveCamera(doorDirection * nextRoomDistance);
+            Level.instance.RoomTransition(currentRoom, doorDirection);
         }
     }
 }

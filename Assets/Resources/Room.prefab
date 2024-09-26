@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorDirection: {x: 0, y: -1}
-  nextRoom: {fileID: 0}
 --- !u!212 &759210554048954734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -282,7 +281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorDirection: {x: 1, y: 0}
-  nextRoom: {fileID: 0}
 --- !u!212 &1729047418895284449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -427,7 +425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorDirection: {x: -1, y: 0}
-  nextRoom: {fileID: 0}
 --- !u!212 &7527883478883997260
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -535,7 +532,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 6a2ad8d7bcd57b749b363396c8db00e7, type: 2}
   - {fileID: 11400000, guid: 53cf7c852c3ae9943b9aa70721065713, type: 2}
-  - {fileID: 11400000, guid: acba156c65d346a4fbde08c185c980d9, type: 2}
+  - {fileID: 11400000, guid: 47bd693bd780c8f47b5d5e2f8ddf53f9, type: 2}
   tilemap: {fileID: 1255427198203775637}
   doors:
   - {fileID: 884130362397853914}
@@ -8120,7 +8117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorDirection: {x: 0, y: 1}
-  nextRoom: {fileID: 0}
 --- !u!212 &5533318111848303041
 SpriteRenderer:
   m_ObjectHideFlags: 0

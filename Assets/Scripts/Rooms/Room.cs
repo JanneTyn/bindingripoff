@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public class Room : MonoBehaviour
 {
-    public bool isStartingRoom;
+    public Vector2Int coordinate;
     [SerializeField] private Vector2Int tilemapSize;
     [SerializeField] private List<TileBase> tiles = new();
     [SerializeField] private Tilemap tilemap;
@@ -80,7 +80,7 @@ public class Room : MonoBehaviour
         }
 
         //generate locations
-        var enemyPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / enemyAmt) * 1.2f, tilemapSize, 30);
+        var enemyPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / enemyAmt), tilemapSize, 30);
         enemyPoints = OffsetPoints(enemyPoints);
 
         //spawn enemy, set room, disable it, and add into enemieslist
@@ -98,7 +98,7 @@ public class Room : MonoBehaviour
         //same shit for weapons except there's only 1 prefab
 
         var weaponPickup = Resources.Load("WeaponPickup") as GameObject;
-        var pickupPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / pickupAmt) * 1.2f, tilemapSize, 30);
+        var pickupPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / pickupAmt), tilemapSize, 30);
         pickupPoints = OffsetPoints(pickupPoints);
 
         foreach (var point in pickupPoints)

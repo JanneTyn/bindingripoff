@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 554080366}
   - component: {fileID: 554080365}
   - component: {fileID: 554080368}
+  - component: {fileID: 554080369}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -395,6 +396,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e7fa646106eef04cbc45781a6895ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &554080369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554080364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b407d562d26b8fa40a7a1c301dd579e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &950556122 stripped
@@ -572,6 +585,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 967238346573959351, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: tiles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 967238346573959351, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: tiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 47bd693bd780c8f47b5d5e2f8ddf53f9, type: 2}
     - target: {fileID: 5547498674522291007, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: m_Name
       value: Room
