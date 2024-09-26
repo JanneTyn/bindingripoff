@@ -11,6 +11,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float movementSpeed;
+    [HideInInspector] public Room room;
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected void Death()
     {
         playerLeveling.IncreaseXP();
+        room.EnemyKilled();
         Destroy(gameObject);
     }
 

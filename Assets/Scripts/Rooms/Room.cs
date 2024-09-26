@@ -4,25 +4,31 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /// <summary>
-/// WIP random tiles
+/// Random generation of room and game logic about room, doors, etc.
 /// </summary>
 public class Room : MonoBehaviour
 {
+    public bool isStartingRoom;
     [SerializeField] private Vector2Int tilemapSize;
     [SerializeField] private List<TileBase> tiles = new();
-    [SerializeField] private int iterations;
-    private float radius => (tilemapSize.x / iterations) * 1.2f;
     [SerializeField] private Tilemap tilemap;
+    [SerializeField] private List<Door> doors = new();
+    private Vector2 generationOffset = new Vector2(-13, -8);
 
     [Space(5)]
     [Header("Testing values for room generation")]
     [SerializeField] private int enemies;
     [SerializeField] private int weapons; //TODO replace with chance of weapon
+    [SerializeField] private int obstacles;
+
+    private int enemiesRemaining;
+    private List<Enemy> enemiesList = new();
 
     private void Start()
     {
         GenerateRandomObstacleTiles();
         GenerateRandomEnemiesAndPickups(enemies, weapons);
+        ActivateEnemies();
     }
 
     /// <summary>
@@ -31,7 +37,9 @@ public class Room : MonoBehaviour
     public void GenerateRandomObstacleTiles()
     {
         //generate points, convert them to int
-        var points = PoissonDiscSampling.GeneratePoints(radius, tilemapSize, 30);
+        var points = PoissonDiscSampling.GeneratePoints((tilemapSize.x / obstacles) * 1.2f, tilemapSize, 30);
+        points = OffsetPoints(points);
+
         var pointsInt = new List<Vector3Int>();
         var tilesToSet = new List<TileBase>();
 
@@ -42,7 +50,7 @@ public class Room : MonoBehaviour
 
         //choose random tiles
 
-        for (int i = 0; i < iterations; i++)
+        for (int i = 0; i < obstacles; i++)
         {
             tilesToSet.Add(tiles[Random.Range(0, tiles.Count)]);
         }
@@ -66,28 +74,89 @@ public class Room : MonoBehaviour
         List<GameObject> enemiesToPlace = new();
 
         //randomize which enemy prefabs are spawned
-        for(int i = 0; i < enemyAmt; i++)
+        for (int i = 0; i < enemyAmt; i++)
         {
             enemiesToPlace.Add(enemies[Random.Range(0, enemies.Length)] as GameObject);
         }
 
         //generate locations
         var enemyPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / enemyAmt) * 1.2f, tilemapSize, 30);
+        enemyPoints = OffsetPoints(enemyPoints);
 
-        //spawn
-        for(int i = 0; i < enemiesToPlace.Count; i++)
+        //spawn enemy, set room, disable it, and add into enemieslist
+        for (int i = 0; i < enemiesToPlace.Count; i++)
         {
-            Instantiate(enemiesToPlace[i], (Vector3)enemyPoints[i] + transform.position, Quaternion.identity);
+            var enemy = Instantiate(enemiesToPlace[i], (Vector3)enemyPoints[i] + transform.position, Quaternion.identity).GetComponent<Enemy>();
+            enemy.room = this;
+            enemy.enabled = false;
+            enemiesList.Add(enemy);
         }
+
+        enemiesRemaining = enemiesToPlace.Count;
+        Debug.Log(enemiesRemaining + " enemies remaining");
 
         //same shit for weapons except there's only 1 prefab
 
         var weaponPickup = Resources.Load("WeaponPickup") as GameObject;
         var pickupPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / pickupAmt) * 1.2f, tilemapSize, 30);
-        foreach(var point in pickupPoints)
+        pickupPoints = OffsetPoints(pickupPoints);
+
+        foreach (var point in pickupPoints)
         {
             var go = Instantiate(weaponPickup, (Vector3)point + transform.position, Quaternion.identity);
             go.GetComponent<WeaponPickup>().RandomizeWeapon();
         }
+    }
+
+    /// <summary>
+    /// Called when an enemy is killed
+    /// Updates room enemy count and unlocks doors when enemies are dead;
+    /// </summary>
+    public void EnemyKilled()
+    {
+        enemiesRemaining -= 1;
+        Debug.Log(enemiesRemaining + " enemies remaining");
+        if (enemiesRemaining == 0) UnlockDoors();
+    }
+
+    /// <summary>
+    /// Call Unlock() on all doors in this room
+    /// </summary>
+    public void UnlockDoors()
+    {
+        Debug.Log("Doors unlocked");
+
+        foreach (var door in doors)
+        {
+            door.Unlock();
+        }
+    }
+
+    /// <summary>
+    /// Activate enemies when player enters room
+    /// </summary>
+    public void ActivateEnemies()
+    {
+        foreach (var enemy in enemiesList)
+        {
+            enemy.enabled = true;
+        }
+    }
+
+    /// <summary>
+    /// Offset array of points by generationOffset variable
+    /// </summary>
+    /// <param name="points"></param>
+    /// <returns></returns>
+    private List<Vector2> OffsetPoints(List<Vector2> points)
+    {
+        var offsetPoints = new List<Vector2>();
+
+        foreach (var point in points)
+        {
+            offsetPoints.Add(point + generationOffset);
+        }
+
+        return offsetPoints;
     }
 }
