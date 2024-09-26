@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SamuelTestScene.unity
     guid: 69822ca4521c72442bc1227a557917a8
+  - enabled: 1
+    path: Assets/Scenes/UItest2.unity
+    guid: 7a03f56d27e85e0459e26eacb8cab58d
   m_configObjects: {}
