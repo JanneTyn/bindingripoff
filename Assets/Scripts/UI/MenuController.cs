@@ -49,6 +49,6 @@ public class MenuController : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene("UItest2");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
