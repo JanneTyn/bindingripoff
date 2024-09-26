@@ -27,14 +27,17 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        //TODO: add these in instructor
         upgrades.Add("Health");
-        upgrades.Add("Health Regeneration");
+        //upgrades.Add("Health Regeneration");
         upgrades.Add("Damage");
         upgrades.Add("Fire Rate");
         upgrades.Add("Defense");
         upgrades.Add("Evasion");
         upgrades.Add("Movement Speed");
-        upgrades.Add("Luck");
+        //upgrades.Add("Luck");
+        upgrades.Add("IFrames");
+        
     }
     public void IncreaseMaxHealth()
     {
