@@ -9,7 +9,8 @@ public class HealthSlider : MonoBehaviour
     private TestEnemy testEnemy;
     private Player player;
     private string CharacterType;
-    [SerializeField] Vector3 hpBarOffset = new Vector3(0, -0.8f, 0);
+    private Vector3 hpBarOffset = new Vector3(0, -1.2f, 0);
+    private RectTransform rectTransform;
 
     void Start()
     {
@@ -33,9 +34,10 @@ public class HealthSlider : MonoBehaviour
         {
             Follow = transform.parent;
         }
-        
+
+        rectTransform = GetComponent<RectTransform>();
         transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
-        this.gameObject.transform.localScale = new Vector3(1, 0.6f, 1);
+        this.gameObject.transform.localScale = new Vector3(1.3f, 0.8f, 1.3f);
     }
 
     void Update()
@@ -44,12 +46,17 @@ public class HealthSlider : MonoBehaviour
         {
             Destroy(this.gameObject);
             return;
-        } 
+        }
 
-        var screenPos = MainCamera.WorldToScreenPoint(Follow.position + hpBarOffset);
-        
-        transform.position = screenPos;
-        
+        Vector3 screenPos = MainCamera.WorldToScreenPoint(Follow.position + hpBarOffset);
+        Vector2 canvasPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform.parent as RectTransform,
+            screenPos,
+            MainCamera,
+            out canvasPos);
+        rectTransform.localPosition = canvasPos;
+
         switch (CharacterType)
         {
             case "Player":
