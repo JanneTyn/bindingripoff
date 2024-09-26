@@ -36,7 +36,7 @@ public class HealthSlider : MonoBehaviour
         }
 
         rectTransform = GetComponent<RectTransform>();
-        transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
+        transform.SetParent(GameObject.Find("Canvas").transform);
         this.gameObject.transform.localScale = new Vector3(1.3f, 0.8f, 1.3f);
     }
 
