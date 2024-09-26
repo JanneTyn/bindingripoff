@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float dodgeVelocity;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private float maxHealth;
-    [SerializeField] private float currentHealth;
+    [HideInInspector] public float currentHealth { get; private set; }
 
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;
@@ -192,11 +192,5 @@ public class Player : MonoBehaviour, IDamageable
         iFramesActive = true;
         yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
         iFramesActive = false;
-    }
-
-    public float PublicCurrentHealth()
-    {
-        float PublicHealth = currentHealth;
-        return PublicHealth;
     }
 }

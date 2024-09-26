@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
-    private float currentHealth;
+    [HideInInspector] public float currentHealth { get; private set; }
     [SerializeField] private float maxHealth;
     protected Vector2 movementVector = Vector2.zero;
     private PlayerLeveling playerLeveling;
@@ -53,10 +53,5 @@ public class Enemy : MonoBehaviour, IDamageable
         animator.SetFloat("MovementY", movementVector.normalized.y);
 
         rigidbody.velocity = movementVector;
-    }
-    public float PublicCurrentHealth()
-    {
-        float PublicHealth = currentHealth;
-        return PublicHealth;
     }
 }

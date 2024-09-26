@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// Poisson disc sampling algorithm
 /// https://github.com/SebLague/Poisson-Disc-Sampling

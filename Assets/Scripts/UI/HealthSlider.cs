@@ -6,7 +6,7 @@ public class HealthSlider : MonoBehaviour
     public Transform Follow;
     private Slider Slider;
     private Camera MainCamera;
-    private TestEnemy testEnemy;
+    private Enemy testEnemy;
     private Player player;
     private string CharacterType;
     private Vector3 hpBarOffset = new Vector3(0, -1.2f, 0);
@@ -14,14 +14,14 @@ public class HealthSlider : MonoBehaviour
 
     void Start()
     {
-        if (GetComponentInParent<TestEnemy>() == null)
+        if (GetComponentInParent<Enemy>() == null)
         {
             player = GetComponentInParent<Player>();
             CharacterType = "Player";
         }
         else
         {
-            testEnemy = GetComponentInParent<TestEnemy>();
+            testEnemy = GetComponentInParent<Enemy>();
             CharacterType = "TestEnemy";
         }
 
@@ -60,10 +60,10 @@ public class HealthSlider : MonoBehaviour
         switch (CharacterType)
         {
             case "Player":
-                Slider.value = player.PublicCurrentHealth();
+                Slider.value = player.currentHealth;
                 break;
             default:
-                Slider.value = testEnemy.PublicCurrentHealth();
+                Slider.value = testEnemy.currentHealth;
                 break;
 
         }
