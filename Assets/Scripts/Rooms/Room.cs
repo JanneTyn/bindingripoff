@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 /// </summary>
 public class Room : MonoBehaviour
 {
-    public Vector2Int coordinate;
+    [HideInInspector] public Vector2Int coordinate;
     [SerializeField] private Vector2Int tilemapSize;
     [SerializeField] private List<TileBase> tiles = new();
     [SerializeField] private Tilemap tilemap;
@@ -116,7 +116,11 @@ public class Room : MonoBehaviour
     {
         enemiesRemaining -= 1;
         Debug.Log(enemiesRemaining + " enemies remaining");
-        if (enemiesRemaining == 0) UnlockDoors();
+        if (enemiesRemaining == 0)
+        {
+            UnlockDoors();
+            RoomText.instance.RoomCleared();
+        }
     }
 
     /// <summary>

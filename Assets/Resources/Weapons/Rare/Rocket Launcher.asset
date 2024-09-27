@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3598c00e38b28408d8445150a69176, type: 3}
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
-  fireRate: 1
-  damage: 50
-  projectileSpeed: 6
+  rarity: 2
+  fireRate: 2
+  damage: 60
+  projectileSpeed: 10
   projectileLifetime: 5
   projectilePrefab: {fileID: 7067141648858296619, guid: 8eb166b9c8dc3bb44b254929c4d476fe, type: 3}
   sprite: {fileID: 21300000, guid: 94464830ec6008e4fb60978a37757838, type: 3}
-  aoeRadius: 4
+  aoeRadius: 5

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf8699274a859f45aa60b29a80e7c6a, type: 3}
   m_Name: RapidBasicWeapon
   m_EditorClassIdentifier: 
-  fireRate: 10
-  damage: 5
-  projectileSpeed: 20
+  rarity: 2
+  fireRate: 15
+  damage: 10
+  projectileSpeed: 25
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
   sprite: {fileID: 21300000, guid: f4f96ffb094124845859b7b6dee4211e, type: 3}

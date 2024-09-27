@@ -34,6 +34,7 @@ public class WeaponPickup : MonoBehaviour
     {
         weapon = oldWeapon;
         spriteRenderer.sprite = weapon.sprite;
+        UpdateColor();
     }
 
     /// <summary>
@@ -42,7 +43,35 @@ public class WeaponPickup : MonoBehaviour
     public void RandomizeWeapon()
     {
         //TODO weighted generation
+        /*
         var weapons = Resources.LoadAll("Weapons/");
         weapon = weapons[Random.Range(0, weapons.Length)] as Weapon;
+        */
+        var commonWeapons = Resources.LoadAll("Weapons/Common/");
+        var unCommonWeapons = Resources.LoadAll("Weapons/UnCommon/");
+        var rareWeapons = Resources.LoadAll("Weapons/Rare");
+        
+        var rarity = Random.Range(0, 101);
+        if(rarity > 90) //rare
+        {
+            weapon = rareWeapons[Random.Range(0, rareWeapons.Length)] as Weapon;
+        }
+        else if(rarity > 60) //uncommon
+        {
+            weapon = unCommonWeapons[Random.Range(0, unCommonWeapons.Length)] as Weapon;
+        }
+        else //common
+        {
+            weapon = commonWeapons[Random.Range(0, commonWeapons.Length)] as Weapon;
+        }
+
+        UpdateColor();
+    }
+    private void UpdateColor()
+    {
+        if(!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
+        if (weapon.rarity == Weapon.Rarity.Uncommon) spriteRenderer.color = Color.green;
+        else if (weapon.rarity == Weapon.Rarity.Rare) spriteRenderer.color = Color.blue;
+        else spriteRenderer.color = Color.gray;
     }
 }

@@ -42,6 +42,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
+    public GameObject deathUITest;
 
     #region Input
 
@@ -149,7 +150,9 @@ public class Player : MonoBehaviour, IDamageable
     private void Death()
     {
         //TODO death screen etc.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        deathUITest.SetActive(true);
+        Time.timeScale = 0f;
+        animator.SetBool("paused", true);
     }
 
     /// <summary>

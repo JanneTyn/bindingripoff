@@ -2,6 +2,13 @@ using UnityEngine;
 
 public abstract class Weapon : ScriptableObject
 {
+    public enum Rarity
+    {
+        Common,
+        Uncommon,
+        Rare
+    }
+    public Rarity rarity;
     public float fireRate;
     public float damage;
     public float projectileSpeed;
