@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15ae7d5521ea544184c3aa4f9f1e5c3, type: 3}
-  m_Name: Shotgun
+  m_Script: {fileID: 11500000, guid: 9cf8699274a859f45aa60b29a80e7c6a, type: 3}
+  m_Name: BasicWeapon
   m_EditorClassIdentifier: 
-  fireRate: 2
-  damage: 20
-  projectileSpeed: 10
+  rarity: 2
+  fireRate: 5
+  damage: 25
+  projectileSpeed: 14
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
-  sprite: {fileID: 21300000, guid: 8f261ccb67d0f67498eeb06e01c0a4a7, type: 3}
+  sprite: {fileID: 21300000, guid: cbe26d8b0acd50b4e97d62e805ba741a, type: 3}
