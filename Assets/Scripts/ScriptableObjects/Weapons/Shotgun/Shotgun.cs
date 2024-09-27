@@ -12,17 +12,22 @@ public class Shotgun : Weapon
         //Initialize projectiles to fly in adjusted directions
 
         List<Projectile> projectiles = new();
+        int projectile_count = 2;
+        float spread_value = 45f;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < projectile_count; i++)
         {
             projectiles.Add(Instantiate(projectilePrefab, origin.transform.position, Quaternion.identity).GetComponent<Projectile>());
         }
 
-        var lSpreadDir = Quaternion.AngleAxis(-15, Vector3.forward) * direction;
-        var rSpreadDir = Quaternion.AngleAxis(15, Vector3.forward) * direction;
+        //var lSpreadDir = Quaternion.AngleAxis(-15, Vector3.forward) * direction;
+        //var rSpreadDir = Quaternion.AngleAxis(15, Vector3.forward) * direction;
 
-        projectiles[0].Initialize(direction, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
-        projectiles[1].Initialize(lSpreadDir, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
-        projectiles[2].Initialize(rSpreadDir, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        float spread_angle = 2 * spread_value / (projectile_count - 1);
+        
+        for (int i = 0; i < projectiles.Count; i++){
+            var newDirection =  Quaternion.AngleAxis((-spread_value + spread_angle * i) / 2, Vector3.forward) * direction;
+            projectiles[i].Initialize(newDirection, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        }
     }
 }
