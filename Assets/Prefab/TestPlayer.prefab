@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7049685211689349339}
   - component: {fileID: 4697310100839879615}
   - component: {fileID: 8496270085257814382}
+  - component: {fileID: 6028763426409208576}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2f3cb852693e3514aa5c20aebde0b7e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -302,6 +303,18 @@ MonoBehaviour:
   totalXPRequired: 100
   skillPoints: 0
   upgradeMenu: {fileID: 0}
+--- !u!114 &6028763426409208576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163709553974375063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8501db25dd7d18740964ef81531e2031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6589986406497063618
 GameObject:
   m_ObjectHideFlags: 0
