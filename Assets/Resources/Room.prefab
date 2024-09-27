@@ -8176,7 +8176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fb1a61127aaac4ca2b52708757840f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corruptionTimer: 3
+  corruptionTimer: 120
   corruptionActive: 0
   corruptionTimeActive: 0
 --- !u!1 &8125493548149333280
