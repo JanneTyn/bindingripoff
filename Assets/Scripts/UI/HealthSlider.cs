@@ -9,7 +9,7 @@ public class HealthSlider : MonoBehaviour
     private Enemy testEnemy;
     private Player player;
     private string CharacterType;
-    private Vector3 hpBarOffset = new Vector3(0, -1.2f, 0);
+    private Vector3 hpBarOffset;
     private RectTransform rectTransform;
 
     void Start()
@@ -18,11 +18,13 @@ public class HealthSlider : MonoBehaviour
         {
             player = GetComponentInParent<Player>();
             CharacterType = "Player";
-        }
+            hpBarOffset = new Vector3(0, -1.4f, 0);
+}
         else
         {
             testEnemy = GetComponentInParent<Enemy>();
             CharacterType = "TestEnemy";
+            hpBarOffset = new Vector3(0, -1.2f, 0);
         }
 
         MainCamera = Camera.main;
