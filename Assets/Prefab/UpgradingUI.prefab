@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6023042214978822294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -192,8 +192,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7f70912a529334abc161ae9ed6975c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 0}
   UpgradeMultiplier: 1
+  baseHPUpgrade: 10
+  extraHPUpgrade: 0
+  fireRateUpgrade: 15
+  movementSpeedUpgrade: 20
+  damageUpgrade: 20
+  defenseUpgrade: -5
+  defenseMaxCap: -60
+  dodgeUpgrade: 5
+  dodgeMaxCap: 60
+  iframesUpgrade: 5
+  iframesMaxCap: 50
 --- !u!1 &2665812242995282486
 GameObject:
   m_ObjectHideFlags: 0

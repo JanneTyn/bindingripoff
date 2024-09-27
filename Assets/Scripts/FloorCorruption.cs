@@ -6,9 +6,10 @@ using UnityEngine.Tilemaps;
 public class FloorCorruption : MonoBehaviour
 {
     Color lerpedColor = Color.white;
-    public float corruptionTimer = 120;
+    public float timeBeforeCorruptionActivates = 120;
     public bool corruptionActive = false;
     public float corruptionTimeActive = 0;
+    public float corruptionTimeToReachMax = 120; //the 
     public static float corruptPercentage = 0;
     TilemapRenderer renderer;
 
@@ -22,10 +23,10 @@ public class FloorCorruption : MonoBehaviour
     {
         if (corruptionActive)
         {
-            if (lerpedColor.g > 0.05f)
+            if (corruptionTimeActive < corruptionTimeToReachMax)
             {
                 corruptionTimeActive += Time.deltaTime;
-                lerpedColor = Color.Lerp(Color.white, Color.red, Mathf.PingPong(corruptionTimeActive / 120, 1));
+                lerpedColor = Color.Lerp(Color.white, Color.red, Mathf.PingPong(corruptionTimeActive / corruptionTimeToReachMax, 1));
                 corruptPercentage = 1 - lerpedColor.g;
                 renderer.material.color = lerpedColor;
             }
@@ -34,7 +35,7 @@ public class FloorCorruption : MonoBehaviour
 
     private IEnumerator CorruptionActivationTimer()
     {
-        yield return new WaitForSeconds(corruptionTimer);
+        yield return new WaitForSeconds(timeBeforeCorruptionActivates);
         corruptionActive = true;
     }
 
