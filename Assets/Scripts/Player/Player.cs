@@ -164,6 +164,10 @@ public class Player : MonoBehaviour, IDamageable
         pickupComponent.UpdateWeaponPickup(oldWeapon);
     }
 
+    public Sprite CurrentWeaponSprite() {
+        return currentWeapon.sprite;
+    }
+
     /// <summary>
     /// Turn percentages to multipliers for easy increases
     /// </summary>
