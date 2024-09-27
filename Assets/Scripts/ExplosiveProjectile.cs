@@ -42,7 +42,7 @@ public class ExplosiveProjectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject, 0.1f);
-
+        CameraController.instance.StartShake(0.2f, 0.2f);
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true; //activate child AoE sprite
         GetComponent<SpriteRenderer>().enabled = false; // deactivate projectile sprite
         rigidbody.constraints = RigidbodyConstraints2D.FreezePosition; // freeze projectile
