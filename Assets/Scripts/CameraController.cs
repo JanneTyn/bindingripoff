@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
         {
             transform.localPosition = currentCameraPos + Random.insideUnitSphere * shakeAmount;
 
-            shakeDuration -= Time.deltaTime * decreaseFactor;
+            shakeDuration -= Time.unscaledDeltaTime * decreaseFactor;
         }
         else
         {

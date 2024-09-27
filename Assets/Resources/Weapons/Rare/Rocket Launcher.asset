@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
   rarity: 2
-  fireRate: 2
-  damage: 60
+  fireRate: 1.5
+  damage: 50
   projectileSpeed: 10
   projectileLifetime: 5
   projectilePrefab: {fileID: 7067141648858296619, guid: 8eb166b9c8dc3bb44b254929c4d476fe, type: 3}

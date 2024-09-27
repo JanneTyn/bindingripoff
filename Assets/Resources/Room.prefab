@@ -678,7 +678,7 @@ MonoBehaviour:
   - {fileID: 2668975017139672345}
   - {fileID: 6816506250628563054}
   enemies: 3
-  weapons: 3
+  weapons: 2
   obstacles: 4
 --- !u!1 &6336059478868742913
 GameObject:

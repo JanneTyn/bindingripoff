@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RapidBasicWeapon
   m_EditorClassIdentifier: 
   rarity: 2
-  fireRate: 15
+  fireRate: 12
   damage: 10
   projectileSpeed: 25
   projectileLifetime: 2

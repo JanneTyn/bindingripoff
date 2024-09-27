@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   rarity: 2
-  fireRate: 2.5
+  fireRate: 2
   damage: 25
   projectileSpeed: 13
   projectileLifetime: 2
