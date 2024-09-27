@@ -33,7 +33,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private float maxHealth;
     [HideInInspector] public float currentHealth { get; private set; }
-
+    
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;
     private bool dodging, iFramesActive;
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour, IDamageable
     private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
 
     private new Rigidbody2D rigidbody;
+    private SpriteTint tinter;
     private Animator animator;
     public GameObject deathUITest;
 
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour, IDamageable
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        tinter = GetComponent<SpriteTint>();
 
         maxHealth = 100 + maxHealthIncrease;
         currentHealth = maxHealth;
@@ -144,6 +146,8 @@ public class Player : MonoBehaviour, IDamageable
             Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " damage");
             currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
             if (currentHealth == 0f) Death();
+            tinter.FlashColor(SpriteTint.DamageRed);
+            CameraController.instance.StartShake(0.2f, 0.2f);
         }
     }
 

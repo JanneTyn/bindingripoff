@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     
     private void Awake()
     {
+        currentCameraPos = transform.position;
         if (instance != null && instance != this)
         {
             Debug.LogWarning("More than 1 instance of CameraController exists!");
@@ -22,8 +23,36 @@ public class CameraController : MonoBehaviour
     }
     #endregion
 
+    private float shakeDuration = 0f;
+    private float shakeAmount = 0f;
+    private float decreaseFactor = 1f;
+
+    Vector3 currentCameraPos;
+
+    public void StartShake(float duration, float amount)
+    {
+        shakeAmount = amount;
+        shakeDuration = duration;
+    }
+
     public void MoveCamera(Vector2 direction)
     {
         transform.Translate(direction);
+        currentCameraPos = transform.position;
+    }
+
+    private void Update()
+    {
+        if (shakeDuration > 0)
+        {
+            transform.localPosition = currentCameraPos + Random.insideUnitSphere * shakeAmount;
+
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            transform.localPosition = currentCameraPos;
+        }
     }
 }
