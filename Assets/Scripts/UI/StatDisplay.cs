@@ -6,12 +6,13 @@ using TMPro;
 
 public class StatDisplay : MonoBehaviour
 {
-    public PlayerLeveling Stat;
-    public Player Weapon;
-    public Image WeaponImage;
-    public GameObject CurrentLevelText;
+    private PlayerLeveling Stat;
+    private Player Weapon;
+    private Image WeaponImage;
+    private GameObject CurrentLevelText;
     void Start()
     {
+        CurrentLevelText = GameObject.Find("currentLevel");
         Stat = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
         Weapon = GameObject.Find("TestPlayer").GetComponent<Player>();
         WeaponImage = GameObject.Find("currentWeapon").GetComponent<Image>();
