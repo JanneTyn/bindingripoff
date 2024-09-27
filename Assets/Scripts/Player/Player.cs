@@ -37,6 +37,7 @@ public class Player : MonoBehaviour, IDamageable
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;
     private bool dodging, iFramesActive;
+    private bool corruptCRActive;
     private Vector2 movementDirection, shootDirection;
     private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
 
@@ -86,6 +87,11 @@ public class Player : MonoBehaviour, IDamageable
 
         animator.SetFloat("MovementX", movementDirection.x);
         animator.SetFloat("MovementY", movementDirection.y);
+
+        if (!corruptCRActive)
+        {
+            StartCoroutine(CorruptionDamageDelay());
+        }
     }
 
     private void FixedUpdate()
@@ -147,6 +153,12 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    public void TakeCorruptionDamage(float damageAmount)
+    {
+        Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " corruption damage");
+        currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
+        if (currentHealth == 0f) Death();
+    }
     private void Death()
     {
         //TODO death screen etc.
@@ -199,5 +211,13 @@ public class Player : MonoBehaviour, IDamageable
         iFramesActive = true;
         yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
         iFramesActive = false;
+    }
+
+    private IEnumerator CorruptionDamageDelay()
+    {
+        corruptCRActive = true;
+        yield return new WaitForSeconds(1);
+        TakeCorruptionDamage(maxHealth * 0.05f * FloorCorruption.corruptPercentage);
+        corruptCRActive = false;
     }
 }
