@@ -679,7 +679,7 @@ MonoBehaviour:
   - {fileID: 6816506250628563054}
   enemies: 3
   weapons: 2
-  obstacles: 4
+  obstacles: 3
 --- !u!1 &6336059478868742913
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +895,6 @@ GameObject:
   - component: {fileID: 960898256291249746}
   - component: {fileID: 6444844234390366106}
   - component: {fileID: 6276998044920970907}
-  - component: {fileID: 14439672328878251}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -8166,22 +8165,6 @@ TilemapRenderer:
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!114 &6276998044920970907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7428821397057612780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3799e6769fd0ac648b3168a6f48c98dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBeforeCorruptionActivates: 120
-  corruptionActive: 0
-  corruptionTimeActive: 0
-  corruptionTimeToReachMax: 120
---- !u!114 &14439672328878251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -9,7 +9,6 @@ using UnityEngine;
 public class ExplosiveProjectile : MonoBehaviour
 {
     private bool shotByPlayer;
-    private bool gizmo;
     private float radius;
     private float damage;
     private new Rigidbody2D rigidbody;
