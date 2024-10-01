@@ -96,7 +96,6 @@ public class Room : MonoBehaviour
         {
             var enemy = Instantiate(enemiesToPlace[i], (Vector3)enemyPoints[i] + transform.position, Quaternion.identity).GetComponent<Enemy>();
             enemy.room = this;
-            enemy.enabled = false;
         }
 
         enemiesRemaining = enemiesToPlace.Count;
