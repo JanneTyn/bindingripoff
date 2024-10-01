@@ -5,25 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Shotgun", menuName = "Scriptable Object/Weapons/Shotgun")]
 public class Shotgun : Weapon
 {
-    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
+    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f)
     {
-        //Create 3 projectiles
-        //Create 2 spread directions by rotating the direction vector +-15 degrees
-        //Initialize projectiles to fly in adjusted directions
-
         List<Projectile> projectiles = new();
-        int projectile_count = 2;
         float spread_value = 45f;
 
-        for (int i = 0; i < projectile_count; i++)
+        for (int i = 0; i < projectilesPerShot; i++)
         {
             projectiles.Add(Instantiate(projectilePrefab, origin.transform.position, Quaternion.identity).GetComponent<Projectile>());
         }
 
-        //var lSpreadDir = Quaternion.AngleAxis(-15, Vector3.forward) * direction;
-        //var rSpreadDir = Quaternion.AngleAxis(15, Vector3.forward) * direction;
+        float spread_angle = 0; // by default we assume we shoot one projectile
 
-        float spread_angle = 2 * spread_value / (projectile_count - 1);
+        if (projectilesPerShot > 1){ // if we shoot more than 1 projectile, apply angle calculations (otherwise divides by 0)
+            spread_angle = 2 * spread_value / (projectilesPerShot - 1);
+        } else {
+            spread_value = 0f; // set max_spread to 0 when shooting 1 projectile (otherwise it shoots in an unwanted angle and not at 0 degree)
+        }
         
         for (int i = 0; i < projectiles.Count; i++){
             var newDirection =  Quaternion.AngleAxis((-spread_value + spread_angle * i) / 2, Vector3.forward) * direction;

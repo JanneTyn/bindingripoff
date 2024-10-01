@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Cross Pattern Weapon", menuName = "Scriptable Object/Weapons/Enemy Weapons/Cross Pattern")]
 public class CrossPatternWeapon : Weapon
 {
-    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
+    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f)
     {
         List<Projectile> projectiles = new();
 

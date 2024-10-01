@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New X Pattern Weapon", menuName = "Scriptable Object/Weapons/Enemy Weapons/X Pattern")]
 public class XPatternWeapon : Weapon
 {
-    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
+    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f)
     {
         List<Projectile> projectiles = new();
 
