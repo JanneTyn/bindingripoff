@@ -9,6 +9,7 @@ using UnityEngine.Tilemaps;
 public class Room : MonoBehaviour
 {
     [HideInInspector] public Vector2Int coordinate;
+    [SerializeField] public int distanceToStartRoom;
     [SerializeField] private Vector2Int tilemapSize;
     [SerializeField] private List<TileBase> tiles = new();
     [SerializeField] private Tilemap tilemap;
