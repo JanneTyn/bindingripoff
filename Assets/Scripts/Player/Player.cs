@@ -229,7 +229,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         corruptCRActive = true;
         yield return new WaitForSeconds(1);
-        TakeCorruptionDamage(maxHealth * 0.05f * FloorCorruption.corruptPercentage);
+        TakeCorruptionDamage(maxHealth * 0.05f * CorruptTimer.corruptPercentage);
         corruptCRActive = false;
     }
 }

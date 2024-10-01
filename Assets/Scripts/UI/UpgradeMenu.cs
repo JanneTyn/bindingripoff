@@ -84,6 +84,7 @@ public class UpgradeMenu : MonoBehaviour
                     upgradeOptionList[i].GetComponent<TMP_Text>().text = playerStats.upgrades[upgradeID];
                     SetUpgradeDescription(playerStats.upgrades[upgradeID], i);
                     upgradeOptionList[i].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { UpgradeSelected(upgradeID); });
+                    upgradeOptionList[i].transform.GetChild(0).GetComponent<Button>().enabled = false;
                     break;
                 }
                 else if (rerollAttempts > 1000)
@@ -96,7 +97,17 @@ public class UpgradeMenu : MonoBehaviour
         rerollAttempts = 0;
 
         UpgradeMultiplierCheck();
+        StartCoroutine(OptionBufferDelay());
         
+    }
+
+    IEnumerator OptionBufferDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        for (int i = 0; i < 3; i++)
+        {
+            upgradeOptionList[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
+        }
     }
     public void UpgradeMultiplierCheck()
     {

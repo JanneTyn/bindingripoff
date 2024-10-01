@@ -16,8 +16,10 @@ public class Enemy : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     private Animator animator;
 
-    [HideInInspector] public float currentHealth { get; private set; }
+    [SerializeField] public float currentHealth; // { get; private set; }
     [SerializeField] private float maxHealth;
+    [SerializeField] public float maxHealthMultiplier;
+    [SerializeField] public float damageMultiplier;
     protected Vector2 movementVector = Vector2.zero;
     private PlayerLeveling playerLeveling;
 
@@ -42,7 +44,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        maxHealth = 100f;
+        maxHealth = 100f * maxHealthMultiplier;
         currentHealth = maxHealth;
         playerLeveling = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
     }
