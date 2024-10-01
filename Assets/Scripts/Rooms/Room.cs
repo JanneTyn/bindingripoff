@@ -23,13 +23,20 @@ public class Room : MonoBehaviour
     [SerializeField] private int obstacles;
 
     private int enemiesRemaining;
-    private List<Enemy> enemiesList = new();
+    public bool startingRoom;
 
     private void Start()
     {
-        GenerateRandomObstacleTiles();
-        GenerateRandomEnemiesAndPickups(enemies, weapons);
-        ActivateEnemies();
+        if(!startingRoom)
+        {
+            GenerateRandomObstacleTiles();
+            GenerateRandomEnemiesAndPickups(enemies, weapons);
+        }
+        else
+        {
+            //TODO boss huone ovi tähä
+            foreach(var d in doors) d.Unlock();
+        }
     }
 
     /// <summary>
@@ -89,8 +96,6 @@ public class Room : MonoBehaviour
         {
             var enemy = Instantiate(enemiesToPlace[i], (Vector3)enemyPoints[i] + transform.position, Quaternion.identity).GetComponent<Enemy>();
             enemy.room = this;
-            enemy.enabled = false;
-            enemiesList.Add(enemy);
         }
 
         enemiesRemaining = enemiesToPlace.Count;
@@ -120,7 +125,7 @@ public class Room : MonoBehaviour
         if (enemiesRemaining == 0)
         {
             UnlockDoors();
-            RoomText.instance.RoomCleared();
+            StatDisplay.instance.RoomCleared();
         }
     }
 
@@ -134,17 +139,6 @@ public class Room : MonoBehaviour
         foreach (var door in doors)
         {
             door.Unlock();
-        }
-    }
-
-    /// <summary>
-    /// Activate enemies when player enters room
-    /// </summary>
-    public void ActivateEnemies()
-    {
-        foreach (var enemy in enemiesList)
-        {
-            enemy.enabled = true;
         }
     }
 

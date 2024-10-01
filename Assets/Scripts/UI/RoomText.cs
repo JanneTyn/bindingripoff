@@ -1,34 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using TMPro;
-using UnityEngine.InputSystem.LowLevel;
 
 public class RoomText : MonoBehaviour
 {
-    #region Singleton
-    public static RoomText instance;
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Debug.Log("Instance of RoomText already exists!");
-            enabled = false;
-        }
-        else instance = this;
-    }
-    #endregion
-
-    private int roomsCleared = 0;
-    private TMP_Text roomText;
-
+    private GameObject Canvas;
     private void Start()
     {
-        roomText = GetComponent<TMP_Text>();
+        ObjectInstantiator("pause", "Canvas");
+        ObjectInstantiator("gameplayui", "Canvas");
+        GameObject.Find("Canvas").AddComponent<MenuController>();
+        Destroy(gameObject);
+
     }
-    public void RoomCleared()
+
+    private void ObjectInstantiator(string prefabName, string parentObjectName)
     {
-        roomsCleared++;
-        roomText.text = "Rooms cleared: " + roomsCleared;
+        GameObject prefab = Resources.Load<GameObject>("UI/" + prefabName);
+        if (prefab != null)
+        {
+            // Instantiate the prefab
+            GameObject instance = Instantiate(prefab);
+
+            // Find the parent object in the scene
+            GameObject parentObject = GameObject.Find(parentObjectName);
+
+            if (parentObject != null)
+            {
+                // Set the parent of the instantiated prefab
+                instance.transform.SetParent(parentObject.transform, false);
+            }
+            else
+            {
+                Debug.LogError("Parent object not found in the scene.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Prefab not found in Resources folder.");
+        }
     }
 }
+

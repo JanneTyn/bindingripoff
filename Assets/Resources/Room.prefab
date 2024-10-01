@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coordinate: {x: 0, y: 0}
+  distanceToStartRoom: 0
   tilemapSize: {x: 25, y: 12}
   tiles:
   - {fileID: 11400000, guid: c3b30ec3fdb632a449d21f1dfc44c465, type: 2}
@@ -678,8 +679,9 @@ MonoBehaviour:
   - {fileID: 2668975017139672345}
   - {fileID: 6816506250628563054}
   enemies: 3
-  weapons: 2
+  weapons: 3
   obstacles: 3
+  startingRoom: 0
 --- !u!1 &6336059478868742913
 GameObject:
   m_ObjectHideFlags: 0

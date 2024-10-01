@@ -811,11 +811,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 357982115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 703, y: 505}
-  m_SizeDelta: {x: 481.33, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -72.99988, y: -13.999939}
+  m_SizeDelta: {x: 481.32996, y: 50}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &762883330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,11 +1473,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 357982115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700, y: 460}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -16.66504, y: -59.00003}
   m_SizeDelta: {x: 600, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &2080824597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,6 +1595,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 967238346573959351, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: startingRoom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5547498674522291007, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: m_Name
       value: Room
