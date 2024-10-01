@@ -22,6 +22,7 @@ public class StatDisplay : MonoBehaviour
 
     private PlayerLeveling Stat;
 
+    Weapon currentWeapon;
     private Player Weapon;
     private Image WeaponImage;
 
@@ -44,7 +45,10 @@ public class StatDisplay : MonoBehaviour
     void Update()
     {
         CurrentLevelText.GetComponent<TMP_Text>().text = "Player level: " + Stat.currentPlayerLevel;
-        WeaponImage.sprite = Weapon.CurrentWeaponSprite();
+
+        currentWeapon = Weapon.CurrentWeaponSprite();
+        WeaponImage.sprite = currentWeapon.sprite;
+
     }
 
     public void RoomCleared()

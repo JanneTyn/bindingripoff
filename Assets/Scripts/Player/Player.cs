@@ -191,8 +191,8 @@ public class Player : MonoBehaviour, IDamageable
         pickupComponent.UpdateWeaponPickup(oldWeapon);
     }
 
-    public Sprite CurrentWeaponSprite() {
-        return currentWeapon.sprite;
+    public Weapon CurrentWeaponSprite() {
+        return currentWeapon;
     }
 
     /// <summary>
