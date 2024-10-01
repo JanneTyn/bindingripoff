@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     private SpriteTint tinter;
     private Animator animator;
-    public GameObject deathUITest;
+    private StatDisplay UI;
 
     #region Input
 
@@ -166,7 +167,14 @@ public class Player : MonoBehaviour, IDamageable
     private void Death()
     {
         //TODO death screen etc.
-        deathUITest.SetActive(true);
+
+        UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
+        UI.EnableGameobject("DeathScreen");
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator not assigned!");
+        }
         Time.timeScale = 0f;
         animator.SetBool("paused", true);
     }

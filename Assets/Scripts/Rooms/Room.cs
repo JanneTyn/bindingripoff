@@ -120,7 +120,7 @@ public class Room : MonoBehaviour
         if (enemiesRemaining == 0)
         {
             UnlockDoors();
-            RoomText.instance.RoomCleared();
+            StatDisplay.instance.RoomCleared();
         }
     }
 
