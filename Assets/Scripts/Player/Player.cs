@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -39,12 +40,12 @@ public class Player : MonoBehaviour, IDamageable
     private bool dodging, iFramesActive;
     private bool corruptCRActive;
     private Vector2 movementDirection, shootDirection;
-    private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
+    private Vector2 refVelocity = Vector2.zero; //forï¿½SmoothDamp
 
     private new Rigidbody2D rigidbody;
     private SpriteTint tinter;
     private Animator animator;
-    public GameObject deathUITest;
+    private StatDisplay UI;
 
     #region Input
 
@@ -116,7 +117,7 @@ public class Player : MonoBehaviour, IDamageable
             else //m&k aim
             {
                 var shootDir = ((Vector2)Camera.main.ScreenToWorldPoint(shootDirection) - (Vector2)transform.position).normalized;
-                currentWeapon.Shoot(gameObject, shootDir, true, PercentageToMultiplier(damageIncrease));
+                currentWeapon.Shoot(gameObject, shootDir, true, PercentageToMultiplier(damageIncrease), currentWeapon.projectilesPerShot, currentWeapon.projectileSpread, currentWeapon.randomSpread);
             }
         }
     }
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageAmount)
     {
-        //jos iframet aktivoituna, älä ota damagea -> return
+        //jos iframet aktivoituna, Ã¤lÃ¤ ota damagea -> return
         //jos ei aktivoituna, ota damagea ja aloita iframet
         if (iFramesActive) return;
         else
@@ -166,7 +167,14 @@ public class Player : MonoBehaviour, IDamageable
     private void Death()
     {
         //TODO death screen etc.
-        deathUITest.SetActive(true);
+
+        UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
+        UI.EnableGameobject("DeathScreen");
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator not assigned!");
+        }
         Time.timeScale = 0f;
         animator.SetBool("paused", true);
     }

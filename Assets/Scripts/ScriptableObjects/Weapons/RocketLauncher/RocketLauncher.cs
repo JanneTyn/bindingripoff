@@ -7,7 +7,7 @@ public class RocketLauncher : Weapon
 {
     public float aoeRadius;
 
-    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
+    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f)
     {
         var projectile = Instantiate(projectilePrefab, origin.transform.position, Quaternion.identity);
         projectile.GetComponent<ExplosiveProjectile>().Initialize(direction, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin, aoeRadius);
