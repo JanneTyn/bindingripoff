@@ -42,7 +42,7 @@ public class ShootAtPlayerEnemy : Enemy
                 {
                     var shootDir = (player.transform.position - transform.position).normalized;
                     // 1 - damageMultiplier
-                    weapon.Shoot(gameObject, shootDir, false, 1, weapon.projectilesPerShot, weapon.projectileSpread, weapon.randomSpread);
+                    weapon.Shoot(gameObject, shootDir, false, 1);
                     DecideDirection();
                     enemyFSM = EnemyStates.Move;
                     timer = aiTime;

@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Flamethrower", menuName = "Scriptable Object/Weapons/Flamethrower")]
 public class Flamethrower : Weapon
 {
-    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f)
+    public float randomSpread = 0f;
+
+    public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
     {
         var projectile = Instantiate(projectilePrefab, origin.transform.position, Quaternion.identity);
         float spreadRNG = UnityEngine.Random.Range(-0.5f, 0.5f); // if randomSpread is 5f, possible spread range is (-2.5f // 2.5f)

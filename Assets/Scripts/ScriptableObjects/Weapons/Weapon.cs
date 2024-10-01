@@ -13,9 +13,6 @@ public abstract class Weapon : ScriptableObject
     public float damage = 1f;
     public float projectileSpeed;
     public float projectileLifetime;
-    public int projectilesPerShot = 1;
-    public float projectileSpread = 0f;
-    public float randomSpread = 0f;
     public GameObject projectilePrefab;
     public Sprite sprite;
 
@@ -29,5 +26,5 @@ public abstract class Weapon : ScriptableObject
     /// <param name="damageMultiplier"></param>
     /// <param name="projectilesPerShot"></param>
     /// <param name="projectileSpread"></param>
-    public abstract void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f);
+    public abstract void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f);
 }

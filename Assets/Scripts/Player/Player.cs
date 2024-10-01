@@ -116,7 +116,7 @@ public class Player : MonoBehaviour, IDamageable
             else //m&k aim
             {
                 var shootDir = ((Vector2)Camera.main.ScreenToWorldPoint(shootDirection) - (Vector2)transform.position).normalized;
-                currentWeapon.Shoot(gameObject, shootDir, true, PercentageToMultiplier(damageIncrease), currentWeapon.projectilesPerShot, currentWeapon.projectileSpread, currentWeapon.randomSpread);
+                currentWeapon.Shoot(gameObject, shootDir, true, PercentageToMultiplier(damageIncrease));
             }
         }
     }
