@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 2
   fireRate: 2
-  damage: 25
+  damage: 20
   projectileSpeed: 13
   projectileLifetime: 2
+  projectilesPerShot: 5
+  projectileSpread: 10
+  randomSpread: 0
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
   sprite: {fileID: 21300000, guid: 8f261ccb67d0f67498eeb06e01c0a4a7, type: 3}

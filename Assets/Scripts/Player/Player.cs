@@ -40,7 +40,7 @@ public class Player : MonoBehaviour, IDamageable
     private bool dodging, iFramesActive;
     private bool corruptCRActive;
     private Vector2 movementDirection, shootDirection;
-    private Vector2 refVelocity = Vector2.zero; //for´SmoothDamp
+    private Vector2 refVelocity = Vector2.zero; //forï¿½SmoothDamp
 
     private new Rigidbody2D rigidbody;
     private SpriteTint tinter;
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour, IDamageable
             else //m&k aim
             {
                 var shootDir = ((Vector2)Camera.main.ScreenToWorldPoint(shootDirection) - (Vector2)transform.position).normalized;
-                currentWeapon.Shoot(gameObject, shootDir, true, PercentageToMultiplier(damageIncrease));
+                currentWeapon.Shoot(gameObject, shootDir, true, PercentageToMultiplier(damageIncrease), currentWeapon.projectilesPerShot, currentWeapon.projectileSpread, currentWeapon.randomSpread);
             }
         }
     }
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageAmount)
     {
-        //jos iframet aktivoituna, älä ota damagea -> return
+        //jos iframet aktivoituna, Ã¤lÃ¤ ota damagea -> return
         //jos ei aktivoituna, ota damagea ja aloita iframet
         if (iFramesActive) return;
         else

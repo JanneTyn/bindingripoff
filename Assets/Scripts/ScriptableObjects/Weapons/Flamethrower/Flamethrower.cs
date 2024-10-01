@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Basic Weapon", menuName = "Scriptable Object/Weapons/BasicWeapon")]
-public class BasicWeapon : Weapon
+[CreateAssetMenu(fileName = "New Flamethrower", menuName = "Scriptable Object/Weapons/Flamethrower")]
+public class Flamethrower : Weapon
 {
     public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f, int projectilesPerShot = 1, float projectileSpread = 0, float randomSpread = 0f)
     {
