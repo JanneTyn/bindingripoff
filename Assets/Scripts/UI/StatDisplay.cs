@@ -33,7 +33,7 @@ public class StatDisplay : MonoBehaviour
     {
         CurrentLevelText = GameObject.Find("currentLevel");
 
-        roomText = GameObject.Find("RoomText");
+        roomText = GameObject.Find("gameplayui(Clone)/RoomText");
 
         Stat = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
 
