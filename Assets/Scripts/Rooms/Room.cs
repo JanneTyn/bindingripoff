@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -21,6 +22,8 @@ public class Room : MonoBehaviour
     [SerializeField] private int enemies;
     [SerializeField] private int weapons; //TODO replace with chance of weapon
     [SerializeField] private int obstacles;
+    [SerializeField] private int finalEnemyCount = 3; //3 minimum
+    [SerializeField] private float maxHealthModifier;
 
     private int enemiesRemaining;
     public bool startingRoom;
@@ -29,8 +32,9 @@ public class Room : MonoBehaviour
     {
         if(!startingRoom)
         {
+            DifficultyScaler();
             GenerateRandomObstacleTiles();
-            GenerateRandomEnemiesAndPickups(enemies, weapons);
+            GenerateRandomEnemiesAndPickups(finalEnemyCount, weapons);
         }
         else
         {
@@ -96,6 +100,7 @@ public class Room : MonoBehaviour
         {
             var enemy = Instantiate(enemiesToPlace[i], (Vector3)enemyPoints[i] + transform.position, Quaternion.identity).GetComponent<Enemy>();
             enemy.room = this;
+            ScaleEnemyStats(enemy);
         }
 
         enemiesRemaining = enemiesToPlace.Count;
@@ -112,6 +117,18 @@ public class Room : MonoBehaviour
             var go = Instantiate(weaponPickup, (Vector3)point + transform.position, Quaternion.identity);
             go.GetComponent<WeaponPickup>().RandomizeWeapon();
         }
+    }
+
+    public void DifficultyScaler()
+    {
+        finalEnemyCount = Random.Range(3 + distanceToStartRoom, 5 + distanceToStartRoom);
+        maxHealthModifier = 1f + (0.15f * (distanceToStartRoom - 1));
+    }
+
+    public void ScaleEnemyStats(Enemy enemy)
+    {
+        enemy.maxHealthMultiplier = maxHealthModifier;
+        //damaget tänne ym.
     }
 
     /// <summary>
