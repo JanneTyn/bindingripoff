@@ -24,6 +24,7 @@ public class Room : MonoBehaviour
     [SerializeField] private int obstacles;
     [SerializeField] private int finalEnemyCount = 3; //3 minimum
     [SerializeField] private float maxHealthModifier;
+    [SerializeField] private float damageModifier;
 
     private int enemiesRemaining;
     public bool startingRoom;
@@ -123,11 +124,13 @@ public class Room : MonoBehaviour
     {
         finalEnemyCount = Random.Range(3 + distanceToStartRoom, 5 + distanceToStartRoom);
         maxHealthModifier = 1f + (0.15f * (distanceToStartRoom - 1));
+        damageModifier = 1f + (0.1f * (distanceToStartRoom - 1));
     }
 
     public void ScaleEnemyStats(Enemy enemy)
     {
         enemy.maxHealthMultiplier = maxHealthModifier;
+        enemy.damageMultiplier = damageModifier;
         //damaget tänne ym.
     }
 

@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] public float currentHealth; // { get; private set; }
     [SerializeField] private float maxHealth;
     [SerializeField] public float maxHealthMultiplier;
+    [SerializeField] public float damageMultiplier;
     protected Vector2 movementVector = Vector2.zero;
     private PlayerLeveling playerLeveling;
 
