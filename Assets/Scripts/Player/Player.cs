@@ -51,7 +51,8 @@ public class Player : MonoBehaviour, IDamageable
     #region Input
 
     private PlayerInput playerInput; //literally only to check control scheme, refactor this
-    private InputActionsAsset inputActions;
+    public InputActionsAsset inputActions { get; private set; }
+
     private void Awake()
     {
         inputActions = new InputActionsAsset();

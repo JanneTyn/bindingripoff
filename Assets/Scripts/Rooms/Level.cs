@@ -40,7 +40,7 @@ public class Level : MonoBehaviour
         int nextRoomDistance = roomDirection.y == 0 ? 32 : 20;
 
         int distanceToStart = RoomDistanceToStart(currentRoom.coordinate + roomDirection);
-        RoomDepthText.instance.RoomDepth(distanceToStart);
+        GameUIController.instance.RoomDepth(distanceToStart);
 
         if (!RoomExists(currentRoom.coordinate + roomDirection))
         {

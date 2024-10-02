@@ -62,6 +62,15 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.01,pressPoint=0.01)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""d57df063-1ffe-4f89-8930-340f91961237"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,39 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""624d4a85-02aa-4bda-bdfc-723e6a3291d4"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""177cf603-bfe1-4894-bb72-66b70b585f8d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""538f3458-e51a-4713-8cca-0fc3cf20e7c5"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -280,6 +322,7 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
         m_Gameplay_Dodge = m_Gameplay.FindAction("Dodge", throwIfNotFound: true);
         m_Gameplay_ShootDirection = m_Gameplay.FindAction("ShootDirection", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -345,6 +388,7 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Dodge;
     private readonly InputAction m_Gameplay_ShootDirection;
     private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_Pause;
     public struct GameplayActions
     {
         private @InputActionsAsset m_Wrapper;
@@ -353,6 +397,7 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_Gameplay_Dodge;
         public InputAction @ShootDirection => m_Wrapper.m_Gameplay_ShootDirection;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -374,6 +419,9 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -390,6 +438,9 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -431,5 +482,6 @@ public partial class @InputActionsAsset: IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnShootDirection(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

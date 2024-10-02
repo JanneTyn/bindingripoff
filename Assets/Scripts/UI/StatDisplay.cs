@@ -29,15 +29,11 @@ public class StatDisplay : MonoBehaviour
     private GameObject CurrentLevelText;
     
     private int roomsCleared = 0;
-    private GameObject roomText;
+    [SerializeField] private GameObject roomText;
     void Start()
     {
         CurrentLevelText = GameObject.Find("currentLevel");
-
-        roomText = GameObject.Find("gameplayui(Clone)/RoomText");
-
         Stat = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
-
         Weapon = GameObject.Find("TestPlayer").GetComponent<Player>();
         WeaponImage = GameObject.Find("currentWeapon").GetComponent<Image>();
     }
