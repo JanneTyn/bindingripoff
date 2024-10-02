@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float movementSpeed;
     [HideInInspector] public Room room;
+    [HideInInspector] public EnemyLootDrop enemyDrop;
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
@@ -37,7 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected void Death()
     {
         playerLeveling.IncreaseXP();
-        if(room) room.EnemyKilled();
+        if (room) room.EnemyKilled();
         Destroy(gameObject);
     }
     private void Awake()
@@ -50,6 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerLeveling = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
+        enemyDrop = GameObject.Find("EnemyDrops").GetComponent<EnemyLootDrop>();
     }
 
     protected void FixedUpdate()
