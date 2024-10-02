@@ -15,6 +15,7 @@ public class MenuController : MonoBehaviour
     {
         gameObject.AddComponent<StatDisplay>();
         UI = GetComponent<StatDisplay>();
+        
         UI.EnableGameobject("UpgradingUI");
         upgradeMenu = GameObject.Find("UpgradingUI");
         upgradeMenu.SetActive(false);
@@ -46,8 +47,10 @@ public class MenuController : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        Time.timeScale = 0f; // Pause the game     
-        pauseMenu.SetActive(true); // Show the pause menu UI
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+
+        UI.DisplayCurrentStats();
 
     }
 
@@ -63,8 +66,8 @@ public class MenuController : MonoBehaviour
     public void Resume()
     {
         isPaused = false;
-        Time.timeScale = 1f; // Unpause the game
-        pauseMenu.SetActive(false); // Hide the pause menu UI
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
     }
 
     public void QuitToMenu()
