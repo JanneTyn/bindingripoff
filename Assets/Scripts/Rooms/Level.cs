@@ -37,8 +37,6 @@ public class Level : MonoBehaviour
     /// <param name="roomDirection"></param>
     public void RoomTransition(Room currentRoom, Vector2Int roomDirection)
     {
-        Debug.Log(currentRoom.coordinate);
-        Debug.Log(roomDirection);
         int nextRoomDistance = roomDirection.y == 0 ? 32 : 20;
 
         int distanceToStart = RoomDistanceToStart(currentRoom.coordinate + roomDirection);
@@ -49,7 +47,7 @@ public class Level : MonoBehaviour
             roomLayout.Add(currentRoom.coordinate + roomDirection);
             var room = Instantiate(Resources.Load("Room") as GameObject, currentRoom.transform.position + (Vector3)(Vector2)roomDirection * nextRoomDistance, Quaternion.identity);
             room.GetComponent<Room>().coordinate = currentRoom.coordinate + roomDirection;
-            room.GetComponent<Room>().distanceToStartRoom = distanceToStart;           
+            room.GetComponent<Room>().distanceToStartRoom = distanceToStart;
         }
         
         CameraController.instance.MoveCamera(roomDirection * nextRoomDistance);

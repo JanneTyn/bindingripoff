@@ -13,7 +13,9 @@ public class CameraController : MonoBehaviour
     
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         currentCameraPos = transform.position;
+
         if (instance != null && instance != this)
         {
             Debug.LogWarning("More than 1 instance of CameraController exists!");

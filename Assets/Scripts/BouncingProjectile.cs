@@ -12,19 +12,21 @@ public class BouncingProjectile : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private Vector2 velocityVector;
     private float speed;
+    private bool initialized;
+
 
     public void Initialize(Vector2 direction, float projectileSpeed, float maxLifetime, bool _shotByPlayer, float _damage, GameObject ignore)
     {
         if (ignore.CompareTag("Player")) GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Player");
         else GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Enemy");
-        Physics2D.IgnoreLayerCollision(6, 6); //temporary fix, projectiles ignore collisions with eachother
-
         rigidbody = GetComponent<Rigidbody2D>();
+        Physics2D.IgnoreLayerCollision(6, 6);
         velocityVector = direction * projectileSpeed;
         speed = projectileSpeed;
         shotByPlayer = _shotByPlayer;
         damage = _damage;
         Destroy(gameObject, maxLifetime);
+        initialized = true;
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class BouncingProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!initialized) return;
         //velocityVector *= Vector2.Dot(velocityVector, collision.contacts[0].normal);
         velocityVector = Vector2.Reflect(velocityVector.normalized, collision.contacts[0].normal) * speed;
 

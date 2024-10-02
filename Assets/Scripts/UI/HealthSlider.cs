@@ -5,7 +5,22 @@ public class HealthSlider : MonoBehaviour
 {
     public Transform Follow;
     private Slider Slider;
-    private Camera MainCamera;
+    private Camera MainCamera //for additive scene loading
+    {
+        get
+        {
+            if (currentCamera == null)
+            {
+                currentCamera = Camera.main; // get a new camera
+                return currentCamera;
+            }
+            else
+            {
+                return currentCamera;
+            }
+        }
+    }
+    private Camera currentCamera;
     private Enemy testEnemy;
     private Player player;
     private string CharacterType;
@@ -27,7 +42,6 @@ public class HealthSlider : MonoBehaviour
             hpBarOffset = new Vector3(0, -1.2f, 0);
         }
 
-        MainCamera = Camera.main;
         Slider = GetComponent<Slider>();
         Slider.maxValue = 100f;
 
