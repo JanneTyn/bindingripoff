@@ -147,6 +147,7 @@ public class Room : MonoBehaviour
             UnlockDoors();
             StatDisplay.instance.RoomCleared();
         }
+        StatDisplay.instance.KillCount();
     }
 
     /// <summary>

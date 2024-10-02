@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         playerLeveling.IncreaseXP();
         if (room) room.EnemyKilled();
+        enemyDrop.RollEnemyDrop(this.transform);
         Destroy(gameObject);
     }
     private void Awake()
