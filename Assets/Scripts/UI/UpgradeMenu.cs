@@ -21,6 +21,8 @@ public class UpgradeMenu : MonoBehaviour
     public float iframesMaxCap = 50;
     public float healthPickUpUpgrade = 20;
     public float healthPickUpMaxCap = 100;
+    public float healthRegenUpgrade = 1;
+    public float healthRegenMaxCap = 10;
 
 
     private int totalHPUpgrade = 0;
@@ -32,10 +34,12 @@ public class UpgradeMenu : MonoBehaviour
     private float totaliframesUpgrade = 0;
     private float totalHealthPickUpUpgrade = 0;
     private float currenttotalHealthPickUpUpgrade = 0;
+    private float totalHealthRegenUpgrade = 0;
     private bool defenseCapped = false;
     private bool dodgeCapped = false;
     private bool iframesCapped = false;
     private bool healthPickUpCapped = false;
+    private bool healthRegenCapped = false;
 
     private bool objectsInitialized = false;
     private PlayerStats playerStats;  
@@ -90,6 +94,7 @@ public class UpgradeMenu : MonoBehaviour
                     if (playerStats.upgrades[upgradeID] == "Evasion" && dodgeCapped) continue;
                     if (playerStats.upgrades[upgradeID] == "IFrames" && iframesCapped) continue;
                     if (playerStats.upgrades[upgradeID] == "Health Pickup" && healthPickUpCapped) continue;
+                    if (playerStats.upgrades[upgradeID] == "Health Regeneration" && healthRegenCapped) continue;
 
                     rolledUpgrades.Add(upgradeID);
                     upgradeOptionList[i].GetComponent<TMP_Text>().text = playerStats.upgrades[upgradeID];
@@ -181,6 +186,14 @@ public class UpgradeMenu : MonoBehaviour
                     healthPickUpCapped = true;
                 }
                 break;
+            case "Health Regeneration":
+                player.healthRegen += totalHealthRegenUpgrade;
+                player.healthRegenEnabled = true;
+                if (player.healthRegen >= healthRegenMaxCap)
+                {
+                    healthRegenCapped = true;
+                }
+                break;
         }
 
         UpgradeMultiplier = 1;
@@ -241,6 +254,14 @@ public class UpgradeMenu : MonoBehaviour
                     totalHealthPickUpUpgrade = (healthPickUpMaxCap - currenttotalHealthPickUpUpgrade);
                 }
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Health Pickups +" + totalHealthPickUpUpgrade + "% Healing And Drop Rate";
+                break;
+            case "Health Regeneration":
+                totalHealthRegenUpgrade = healthRegenUpgrade * UpgradeMultiplier;
+                if (player.healthRegen + totalHealthRegenUpgrade > healthRegenMaxCap)
+                {
+                    totalHealthRegenUpgrade = (healthRegenMaxCap - player.healthRegen);
+                }
+                upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalHealthRegenUpgrade + "%/s Health Regeneration";
                 break;
             default:
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Unknown Upgrade";

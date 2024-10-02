@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
     {
         //TODO: add these in instructor
         upgrades.Add("Health");
-        //upgrades.Add("Health Regeneration");
+        upgrades.Add("Health Regeneration");
         upgrades.Add("Damage");
         upgrades.Add("Fire Rate");
         upgrades.Add("Defense");

@@ -26,6 +26,7 @@ public class Player : MonoBehaviour, IDamageable
     [Range(0, 30)] public float dodge;
     [Range(0, -50)] public float dodgeCooldownDecrease;
     [Range(0, 50)] public float iFramesLengthIncrease;
+    [Range(0, 10)] public float healthRegen;
     #endregion
 
     [Space(20)]
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour, IDamageable
     private float shootTimer, dodgeTimer;
     private bool dodging, iFramesActive;
     private bool corruptCRActive;
+    public bool healthRegenEnabled;
     private Vector2 movementDirection, shootDirection;
     private Vector2 refVelocity = Vector2.zero; //for�SmoothDamp
 
@@ -103,6 +105,10 @@ public class Player : MonoBehaviour, IDamageable
     {
         if(!dodging)
             rigidbody.velocity = Vector2.SmoothDamp(rigidbody.velocity, movementDirection * (baseMoveSpeed * PercentageToMultiplier(moveSpeedIncrease)), ref refVelocity, movementSmoothing);
+        if (healthRegenEnabled)
+        {
+            Heal(healthRegen * Time.fixedDeltaTime); //based on deltatimescale 0.02
+        }
     }
 
     private void Shoot()
@@ -242,7 +248,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         corruptCRActive = true;
         yield return new WaitForSeconds(1);
-        TakeCorruptionDamage(maxHealth * 0.05f * CorruptTimer.corruptPercentage);
+        TakeCorruptionDamage(maxHealth * (0.05f + (healthRegen / 100)) * CorruptTimer.corruptPercentage);
         corruptCRActive = false;
     }
 }
