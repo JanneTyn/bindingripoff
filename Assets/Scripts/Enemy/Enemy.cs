@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float movementSpeed;
     [HideInInspector] public Room room;
+    [HideInInspector] public EnemyLootDrop enemyDrop;
 
     private new Rigidbody2D rigidbody;
     private Animator animator;
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         playerLeveling.IncreaseXP();
         room.EnemyKilled();
+        enemyDrop.RollEnemyDrop(this.transform);
         Destroy(gameObject);
     }
 
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour, IDamageable
         maxHealth = 100f * maxHealthMultiplier;
         currentHealth = maxHealth;
         playerLeveling = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
+        enemyDrop = GameObject.Find("EnemyDrops").GetComponent<EnemyLootDrop>();
     }
 
     protected void FixedUpdate()

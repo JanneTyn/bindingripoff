@@ -19,6 +19,8 @@ public class UpgradeMenu : MonoBehaviour
     public int dodgeMaxCap = 60;
     public float iframesUpgrade = 5;
     public float iframesMaxCap = 50;
+    public float healthPickUpUpgrade = 20;
+    public float healthPickUpMaxCap = 100;
 
 
     private int totalHPUpgrade = 0;
@@ -28,9 +30,14 @@ public class UpgradeMenu : MonoBehaviour
     private int totalDefenseUpgrade = 0;
     private int totalDodgeUpgrade = 0;
     private float totaliframesUpgrade = 0;
+    private float totalHealthPickUpUpgrade = 0;
+    private float currenttotalHealthPickUpUpgrade = 0;
     private bool defenseCapped = false;
     private bool dodgeCapped = false;
     private bool iframesCapped = false;
+    private bool healthPickUpCapped = false;
+
+    private bool objectsInitialized = false;
     private PlayerStats playerStats;  
     private Player player;  
     private GameObject upgradingUI;
@@ -54,12 +61,15 @@ public class UpgradeMenu : MonoBehaviour
         upgradeOptionList.Add(upgradeOption1);
         upgradeOptionList.Add(upgradeOption2);
         upgradeOptionList.Add(upgradeOption3);
+        objectsInitialized = true;
+        HealthPickUp.healMultiplier = 1.0f;
+        EnemyLootDrop.chanceMultiplier = 1.0f;
 
     }
     public void OpenUpgradeMenu()
     {
         EnableUI();
-        InitializeObjects();      
+        if (!objectsInitialized) InitializeObjects();      
         Time.timeScale = 0f;
         player.GetComponent<Animator>().enabled = false;
         RollUpgradeChoices();
@@ -79,6 +89,7 @@ public class UpgradeMenu : MonoBehaviour
                     if (playerStats.upgrades[upgradeID] == "Defense" && defenseCapped) continue;
                     if (playerStats.upgrades[upgradeID] == "Evasion" && dodgeCapped) continue;
                     if (playerStats.upgrades[upgradeID] == "IFrames" && iframesCapped) continue;
+                    if (playerStats.upgrades[upgradeID] == "Health Pickup" && healthPickUpCapped) continue;
 
                     rolledUpgrades.Add(upgradeID);
                     upgradeOptionList[i].GetComponent<TMP_Text>().text = playerStats.upgrades[upgradeID];
@@ -161,6 +172,15 @@ public class UpgradeMenu : MonoBehaviour
                     iframesCapped = true;
                 }
                 break;
+            case "Health Pickup":
+                currenttotalHealthPickUpUpgrade += totalHealthPickUpUpgrade;
+                EnemyLootDrop.chanceMultiplier += totalHealthPickUpUpgrade / 100;
+                HealthPickUp.healMultiplier += totalHealthPickUpUpgrade / 100;
+                if (currenttotalHealthPickUpUpgrade >= healthPickUpMaxCap)
+                {
+                    healthPickUpCapped = true;
+                }
+                break;
         }
 
         UpgradeMultiplier = 1;
@@ -213,6 +233,14 @@ public class UpgradeMenu : MonoBehaviour
                 }
                 float totalpercentage = totaliframesUpgrade / 100;
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalpercentage + "s iframes duration";
+                break;
+            case "Health Pickup":
+                totalHealthPickUpUpgrade = healthPickUpUpgrade * UpgradeMultiplier;
+                if (currenttotalHealthPickUpUpgrade + totaliframesUpgrade > healthPickUpMaxCap)
+                {
+                    totalHealthPickUpUpgrade = (healthPickUpMaxCap - currenttotalHealthPickUpUpgrade);
+                }
+                upgradeOptionList[i].GetComponent<TMP_Text>().text = "Health Pickups +" + totalHealthPickUpUpgrade + "% Healing And Drop Rate";
                 break;
             default:
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Unknown Upgrade";

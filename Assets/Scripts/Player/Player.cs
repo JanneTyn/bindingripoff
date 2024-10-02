@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -129,6 +130,17 @@ public class Player : MonoBehaviour, IDamageable
         {
             dodgeTimer = 0f;
             StartCoroutine(DodgeRoutine());
+        }
+    }
+
+    public void Heal(float healAmountPercentage)
+    {
+        float healAmount = maxHealth * (healAmountPercentage / 100);
+        currentHealth += healAmount;
+        Debug.Log("Player healed for " + healAmount);
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
         }
     }
 
