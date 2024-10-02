@@ -196,7 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   room: {fileID: 0}
-  maxHealth: 100
+  currentHealth: 0
+  baseMaxHealth: 100
+  maxHealthMultiplier: 1
+  damageMultiplier: 1
   aiTime: 2
   weapon: {fileID: 11400000, guid: cca61ed5efaf2e343bf3abb525716065, type: 2}
 --- !u!1001 &1879172196701866174

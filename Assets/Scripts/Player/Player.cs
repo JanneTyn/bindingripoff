@@ -70,6 +70,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();

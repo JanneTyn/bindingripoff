@@ -6,7 +6,7 @@ public class ShootAtPlayerEnemy : Enemy
 {
     private float timer;
 
-    [SerializeField] private int aiTime;
+    [SerializeField] private float aiTime;
     [SerializeField] private Weapon weapon;
 
     private Vector2 movementDirection;

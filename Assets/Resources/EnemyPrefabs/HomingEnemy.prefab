@@ -196,7 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   room: {fileID: 0}
-  maxHealth: 50
+  currentHealth: 0
+  baseMaxHealth: 80
+  maxHealthMultiplier: 1
+  damageMultiplier: 1
   smoothing: 0.1
 --- !u!1001 &8438981998159951249
 PrefabInstance:
