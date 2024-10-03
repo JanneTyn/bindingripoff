@@ -25,35 +25,29 @@ public class StatDisplay : MonoBehaviour
     private PlayerLeveling playerLeveling;
 
     private PlayerStats playerStats;
-
+    private TMP_Text killCounter;
     private Weapon currentWeapon;
     private Player player;
     private Image WeaponImage;
 
-    private GameObject CurrentLevelText;
-
+    public TMP_Text CurrentLevelText;
+    private PlayerLeveling Stat;
+    private Player weapon;
     private int roomsCleared = 0;
     [SerializeField] private GameObject roomText;
+    private int enemiesKilled;
+
     void Start()
     {
-        CurrentLevelText = GameObject.Find("currentLevel");
-
-
-        Stat = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
-
-        Weapon = GameObject.Find("TestPlayer").GetComponent<Player>();
+        Stat = GameObject.FindWithTag("Player").GetComponent<PlayerLeveling>();
+        weapon = GameObject.FindWithTag("Player").GetComponent<Player>();
         WeaponImage = GameObject.Find("currentWeapon").GetComponent<Image>();
-
     }
 
     void Update()
     {
-        CurrentLevelText.GetComponent<TMP_Text>().text = "Player level: " + playerLeveling.currentPlayerLevel;
-
+        CurrentLevelText.text = "Player level: " + playerLeveling.currentPlayerLevel;
         SetCurrentWeapon();
-
-
-
     }
 
     public void RoomCleared()

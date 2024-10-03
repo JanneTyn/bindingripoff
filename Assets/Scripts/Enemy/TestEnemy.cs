@@ -38,7 +38,7 @@ public class TestEnemy : Enemy
                 //exit clause
                 if (timer <= 0)
                 {
-                    weapon.Shoot(gameObject, Vector2.zero, false, 1);
+                    weapon.Shoot(gameObject, Vector2.zero, false, damageMultiplier);
                     enemyFSM = TestEnemyStates.MovingLeft;
                     timer = aiTime;
                 }
@@ -51,7 +51,7 @@ public class TestEnemy : Enemy
                 //exit clause
                 if (timer <= 0)
                 {
-                    weapon.Shoot(gameObject, Vector2.zero, false, 1);
+                    weapon.Shoot(gameObject, Vector2.zero, false, damageMultiplier);
                     enemyFSM = TestEnemyStates.MovingRight;
                     timer = aiTime;
                 }

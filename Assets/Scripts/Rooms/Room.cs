@@ -145,9 +145,9 @@ public class Room : MonoBehaviour
         if (enemiesRemaining == 0)
         {
             UnlockDoors();
-            StatDisplay.instance.RoomCleared();
+            if(StatDisplay.instance) StatDisplay.instance.RoomCleared();
         }
-        StatDisplay.instance.KillCount();
+        if(StatDisplay.instance) StatDisplay.instance.KillCount();
     }
 
     /// <summary>
