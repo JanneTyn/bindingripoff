@@ -188,13 +188,9 @@ public class Player : MonoBehaviour, IDamageable
     {
         //TODO death screen etc.
 
-        UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
-        UI.EnableGameobject("DeathScreen");
+        //UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
+        //UI.EnableGameobject("DeathScreen");
 
-        if (animator == null)
-        {
-            Debug.LogError("Animator not assigned!");
-        }
         Time.timeScale = 0f;
         animator.SetBool("paused", true);
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8887281706820968726}
   - component: {fileID: 2699484196162866342}
   - component: {fileID: 4156134521374368993}
+  - component: {fileID: 8446666588235005843}
   m_Layer: 9
   m_Name: XPatternEnemy
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 8960353163399870945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.77, y: 2.92, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6088590500601545086}
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2f3cb852693e3514aa5c20aebde0b7e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,8 +106,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1955721339, guid: a45824083ce745d4d84bf2e0a009ce21, type: 3}
-  m_Color: {r: 1, g: 0.28773582, b: 0.28773582, a: 1}
+  m_Sprite: {fileID: -529204963, guid: 47f012e41bd5a1e4ba1148a5f4475672, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 8960353163399870945}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3bab09cba29f8c43aa102d9123c99a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: b72fbe4d8db08b44e82cf58c446b4128, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -173,7 +174,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.44}
+    oldSize: {x: 2, y: 3.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -196,12 +197,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   room: {fileID: 0}
+  enemyDrop: {fileID: 0}
   currentHealth: 0
+  tint: {fileID: 0}
   baseMaxHealth: 100
   maxHealthMultiplier: 1
   damageMultiplier: 1
   aiTime: 2
   weapon: {fileID: 11400000, guid: a16e9ee4af2908a45b56cb63748ac55e, type: 2}
+--- !u!114 &8446666588235005843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960353163399870945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8501db25dd7d18740964ef81531e2031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8241338536189460380
 PrefabInstance:
   m_ObjectHideFlags: 0

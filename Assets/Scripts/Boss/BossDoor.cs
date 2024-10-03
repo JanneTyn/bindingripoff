@@ -26,7 +26,6 @@ public class BossDoor : MonoBehaviour
                 async2.completed += SwitchLevel;
                 break;
         }
-        
     }
 
     private void SwitchLevel(AsyncOperation operation)
@@ -34,5 +33,4 @@ public class BossDoor : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
     }
-
 }

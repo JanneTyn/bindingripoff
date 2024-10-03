@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteTint))]
 public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float movementSpeed;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private Animator animator;
 
     public float currentHealth; // { get; private set; }
+    [SerializeField] private SpriteTint tint;
     [SerializeField] public float maxHealth { get; private set; }
     public float baseMaxHealth;
     [SerializeField] public float maxHealthMultiplier;
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damageAmount)
     {
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0f, maxHealth);
-
+        tint.FlashColor(SpriteTint.DamageRed);
         if (currentHealth == 0f) Death();
     }
 
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         playerLeveling = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
         enemyDrop = GameObject.Find("EnemyDrops").GetComponent<EnemyLootDrop>();
+        tint = GetComponent<SpriteTint>();
     }
 
     protected void FixedUpdate()
