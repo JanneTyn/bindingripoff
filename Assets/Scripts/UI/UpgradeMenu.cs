@@ -57,6 +57,7 @@ public class UpgradeMenu : MonoBehaviour
     private GameObject upgradesuffixText1;
     private GameObject upgradesuffixText2;
     private GameObject upgradesuffixText3;
+    private GameObject skipUpgradeButton;
     private Canvas gameplayCanvas;
 
     private IEnumerable<GameObject> enemyhpBars;
@@ -76,13 +77,14 @@ public class UpgradeMenu : MonoBehaviour
         upgradesuffixText2 = GameObject.Find("Option2/suffix");
         upgradesuffixText3 = GameObject.Find("Option3/suffix");
         upgrademultiplierText = GameObject.Find("UpgradeMultiplierText");
+        skipUpgradeButton = GameObject.Find("SkipUpgradeButton");
         upgradingUI = this.gameObject;
         upgradeOptionList.Add(upgradeOption1);
         upgradeOptionList.Add(upgradeOption2);
         upgradeOptionList.Add(upgradeOption3);
         upgradeSuffixList.Add(upgradesuffixText1);
         upgradeSuffixList.Add(upgradesuffixText2);
-        upgradeSuffixList.Add(upgradesuffixText3);
+        upgradeSuffixList.Add(upgradesuffixText3);      
         objectsInitialized = true;
         HealthPickUp.healMultiplier = 1.0f;
         EnemyLootDrop.chanceMultiplier = 1.0f;
@@ -131,6 +133,7 @@ public class UpgradeMenu : MonoBehaviour
         }
         rolledUpgrades.Clear();
         rerollAttempts = 0;
+        skipUpgradeButton.GetComponent<Button>().enabled = false;
 
         UpgradeMultiplierCheck();
         StartCoroutine(OptionBufferDelay());
@@ -144,6 +147,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             upgradeOptionList[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
         }
+        skipUpgradeButton.GetComponent<Button>().enabled = true;
     }
     public void UpgradeMultiplierCheck()
     {
