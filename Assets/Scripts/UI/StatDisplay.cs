@@ -94,12 +94,12 @@ public class StatDisplay : MonoBehaviour
 
     public void DisplayCurrentStats()
     {
-        StatDisplayFinder("Max Health", "maxHealth");
-        StatDisplayFinder("Damage", "damage");
-        StatDisplayFinder("Fire Rate", "reloadSpeed");
-        StatDisplayFinder("Defence", "defense");
-        StatDisplayFinder("Evasion", "evasion");
-        StatDisplayFinder("Movement Speed", "movementSpeed");
+        StatDisplayFinder("Max Health", "maxHealthIncrease");
+        StatDisplayFinder("Damage", "damageIncrease");
+        StatDisplayFinder("Fire Rate", "fireRate");
+        StatDisplayFinder("Defence", "armor");
+        StatDisplayFinder("Evasion", "dodge");
+        StatDisplayFinder("Movement Speed", "moveSpeedIncrease");
     }
 
     private void StatDisplayFinder(string stringStatName, string floatStatName)
@@ -108,12 +108,17 @@ public class StatDisplay : MonoBehaviour
 
         GameObject.Find(stringStatName + " stat").GetComponent<TMP_Text>().text = stringStatName + ": " + value;**/
 
+     //   if (GameObject.Find(stringStatName + " stat") != gameObject.activeSelf)
+      //  {
+         //   return;
+       // }
+            
         TMP_Text textComponent = GameObject.Find(stringStatName + " stat").GetComponent<TMP_Text>();
 
-        var field = playerStats.GetType().GetField(floatStatName);
+        var field = player.GetType().GetField(floatStatName);
         if (field != null)
         {
-            float value = (float)field.GetValue(playerStats);
+            float value = (float)field.GetValue(player);
             textComponent.text = stringStatName + ": " + value;
         }
         else

@@ -33,13 +33,13 @@ public class HealthSlider : MonoBehaviour
         {
             player = GetComponentInParent<Player>();
             CharacterType = "Player";
-            hpBarOffset = new Vector3(0, -1.4f, 0);
+            hpBarOffset = new Vector3(0, -1.45f, 0);
 }
         else
         {
             testEnemy = GetComponentInParent<Enemy>();
             CharacterType = "TestEnemy";
-            hpBarOffset = new Vector3(0, -1.2f, 0);
+            hpBarOffset = new Vector3(0, -1.50f, 0);
         }
 
         Slider = GetComponent<Slider>();

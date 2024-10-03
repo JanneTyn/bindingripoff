@@ -20,14 +20,14 @@ public class GameUIController : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private GameObject deathUI;
+    public GameObject deathUI;
     [SerializeField] private TMP_Text roomDepthText;
 
     public void RestartGame()
     {
         deathUI.SetActive(false);
-        GameObject.Find("Player").transform.position = Vector3.zero;
-        SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
+      //  GameObject.Find("TestPlayer").transform.position = Vector3.zero;
+        SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
         Time.timeScale = 1f;
     }
 
