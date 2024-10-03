@@ -44,11 +44,6 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyDrop.RollEnemyDrop(this.transform);
         Destroy(gameObject);
     }
-    private void Awake()
-    {
-        maxHealth = baseMaxHealth * maxHealthMultiplier;
-        currentHealth = maxHealth;
-    }
     protected void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -56,6 +51,8 @@ public class Enemy : MonoBehaviour, IDamageable
         playerLeveling = GameObject.Find("TestPlayer").GetComponent<PlayerLeveling>();
         enemyDrop = GameObject.Find("EnemyDrops").GetComponent<EnemyLootDrop>();
         tint = GetComponent<SpriteTint>();
+        maxHealth = baseMaxHealth * maxHealthMultiplier;
+        currentHealth = maxHealth;
     }
 
     protected void FixedUpdate()

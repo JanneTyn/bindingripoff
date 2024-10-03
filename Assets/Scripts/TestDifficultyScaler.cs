@@ -25,7 +25,7 @@ public class TestDifficultyScaler : MonoBehaviour
     [SerializeField] public float currentRoomDifficulty;
     [SerializeField] public float generalDifficultyMultiplier;
     [Range(1, 10)] public float levelDifficultyMultiplier = 2f;
-    [Range(1, 10)] public float roomDepthDifficultyMultiplier = 1.3f;
+    [Range(0, 10)] public float roomDepthDifficultyMultiplier = 0.3f;
     [Range(1, 10)] private float timeDifficultyMultiplier;
     [Range(60, 900)] public float timeDifficultyScaler = 300;
     [Range(1, 10)] public float enemyCountScaler;
@@ -56,7 +56,7 @@ public class TestDifficultyScaler : MonoBehaviour
         if (enemyCount > 20) enemyCount = 20;
         enemyHealthMultiplierFinal = currentRoomDifficulty * enemyHealthMultiplier;
         enemyDamageMultiplierFinal = currentRoomDifficulty * enemyDamageMultiplier;
-        float[] modifiers = {enemyCount, enemyHealthMultiplier, enemyDamageMultiplier};
+        float[] modifiers = {enemyCount, enemyHealthMultiplierFinal, enemyDamageMultiplierFinal};
         return modifiers;
     }
 }
