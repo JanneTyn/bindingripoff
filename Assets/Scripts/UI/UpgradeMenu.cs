@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,10 @@ public class UpgradeMenu : MonoBehaviour
     public float healthRegenUpgrade = 1;
     public float healthRegenMaxCap = 10;
 
+    public const string healingSuffix = "Healing";
+    public const string damagingSuffix = "Damaging";
+    public const string mobilitySuffix = "Mobility";
+    public const string defenseSuffix = "Defense";
 
     private int totalHPUpgrade = 0;
     private int totalFireRateUpgrade = 0;
@@ -49,8 +54,15 @@ public class UpgradeMenu : MonoBehaviour
     private GameObject upgradeOption2;
     private GameObject upgradeOption3;
     private GameObject upgrademultiplierText;
+    private GameObject upgradesuffixText1;
+    private GameObject upgradesuffixText2;
+    private GameObject upgradesuffixText3;
+    private Canvas gameplayCanvas;
 
+    private IEnumerable<GameObject> enemyhpBars;
+    //private List<GameObject> enemyhpbars = new List<GameObject>();
     private List<GameObject> upgradeOptionList = new List<GameObject>();
+    private List<GameObject> upgradeSuffixList = new List<GameObject>();
     private List<int> rolledUpgrades = new List<int>();
     private int rerollAttempts = 0;
     private void InitializeObjects()
@@ -60,18 +72,26 @@ public class UpgradeMenu : MonoBehaviour
         upgradeOption1 = GameObject.Find("Option1");
         upgradeOption2 = GameObject.Find("Option2");
         upgradeOption3 = GameObject.Find("Option3");
+        upgradesuffixText1 = GameObject.Find("Option1/suffix");
+        upgradesuffixText2 = GameObject.Find("Option2/suffix");
+        upgradesuffixText3 = GameObject.Find("Option3/suffix");
         upgrademultiplierText = GameObject.Find("UpgradeMultiplierText");
         upgradingUI = this.gameObject;
         upgradeOptionList.Add(upgradeOption1);
         upgradeOptionList.Add(upgradeOption2);
         upgradeOptionList.Add(upgradeOption3);
+        upgradeSuffixList.Add(upgradesuffixText1);
+        upgradeSuffixList.Add(upgradesuffixText2);
+        upgradeSuffixList.Add(upgradesuffixText3);
         objectsInitialized = true;
         HealthPickUp.healMultiplier = 1.0f;
         EnemyLootDrop.chanceMultiplier = 1.0f;
+        
 
     }
     public void OpenUpgradeMenu()
     {
+        gameplayCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         EnableUI();
         if (!objectsInitialized) InitializeObjects();      
         Time.timeScale = 0f;
@@ -209,18 +229,22 @@ public class UpgradeMenu : MonoBehaviour
             case "Health":
                 totalHPUpgrade = (baseHPUpgrade + extraHPUpgrade) * UpgradeMultiplier;
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalHPUpgrade + " " + upgName;
+                SetSuffixTitle(healingSuffix, i);
                 break;
             case "Fire Rate":
                 totalFireRateUpgrade = fireRateUpgrade * UpgradeMultiplier;
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalFireRateUpgrade + "% " + upgName;
+                SetSuffixTitle(damagingSuffix, i);
                 break;
             case "Movement Speed":
                 totalMovementSpeedUpgrade = movementSpeedUpgrade * UpgradeMultiplier;
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalMovementSpeedUpgrade + "% " + upgName;
+                SetSuffixTitle(mobilitySuffix, i);
                 break;
             case "Damage":
                 totalDamageUpgrade = damageUpgrade * UpgradeMultiplier;
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalDamageUpgrade + "% " + upgName;
+                SetSuffixTitle(damagingSuffix, i);
                 break;
             case "Defense":
                 totalDefenseUpgrade = defenseUpgrade * UpgradeMultiplier;
@@ -229,6 +253,7 @@ public class UpgradeMenu : MonoBehaviour
                     totalDefenseUpgrade = (int)(defenseMaxCap - player.armor);
                 }
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = totalDefenseUpgrade + "% damage taken";
+                SetSuffixTitle(defenseSuffix, i);
                 break;
             case "Evasion":
                 totalDodgeUpgrade = dodgeUpgrade * UpgradeMultiplier;
@@ -237,6 +262,7 @@ public class UpgradeMenu : MonoBehaviour
                     totalDodgeUpgrade = (int)(dodgeMaxCap - player.dodge);
                 }
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalDodgeUpgrade + "% dodge chance";
+                SetSuffixTitle(mobilitySuffix, i);
                 break;
             case "IFrames":
                 totaliframesUpgrade = iframesUpgrade * UpgradeMultiplier;
@@ -246,6 +272,7 @@ public class UpgradeMenu : MonoBehaviour
                 }
                 float totalpercentage = totaliframesUpgrade / 100;
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalpercentage + "s iframes duration";
+                SetSuffixTitle(defenseSuffix, i);
                 break;
             case "Health Pickup":
                 totalHealthPickUpUpgrade = healthPickUpUpgrade * UpgradeMultiplier;
@@ -254,6 +281,7 @@ public class UpgradeMenu : MonoBehaviour
                     totalHealthPickUpUpgrade = (healthPickUpMaxCap - currenttotalHealthPickUpUpgrade);
                 }
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Health Pickups +" + totalHealthPickUpUpgrade + "% Healing And Drop Rate";
+                SetSuffixTitle(healingSuffix, i);
                 break;
             case "Health Regeneration":
                 totalHealthRegenUpgrade = healthRegenUpgrade * UpgradeMultiplier;
@@ -262,9 +290,30 @@ public class UpgradeMenu : MonoBehaviour
                     totalHealthRegenUpgrade = (healthRegenMaxCap - player.healthRegen);
                 }
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalHealthRegenUpgrade + "%/s Health Regeneration";
+                SetSuffixTitle(healingSuffix, i);
                 break;
             default:
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Unknown Upgrade";
+                break;
+        }
+    }
+
+    public void SetSuffixTitle(string suffix, int i)
+    {
+        upgradeSuffixList[i].GetComponent<TMP_Text>().text = suffix;
+        switch (suffix)
+        {
+            case healingSuffix:
+                upgradeSuffixList[i].GetComponent<TMP_Text>().color = new Color(0.1f, 0.8f, 0.1f, 1);
+                break;
+            case damagingSuffix:
+                upgradeSuffixList[i].GetComponent<TMP_Text>().color = new Color(0.8f, 0.1f, 0.1f, 1);
+                break;
+            case mobilitySuffix:
+                upgradeSuffixList[i].GetComponent<TMP_Text>().color = new Color(0.1f, 0.1f, 0.8f, 1);
+                break;
+            case defenseSuffix:
+                upgradeSuffixList[i].GetComponent<TMP_Text>().color = new Color(0.8f, 0.8f, 0.8f, 1);
                 break;
         }
     }
@@ -279,7 +328,7 @@ public class UpgradeMenu : MonoBehaviour
 
     public void SkipUpgrade()
     {
-        UpgradeMultiplier++;
+        UpgradeMultiplier += 2;
         RemoveButtonListeners();
         DisableUI();
         ReturnToGame();
@@ -294,11 +343,14 @@ public class UpgradeMenu : MonoBehaviour
     void EnableUI()
     {
         this.gameObject.SetActive(true);
+        gameplayCanvas.enabled = false;
+        enemyhpBars = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "enemyhph");
     }
 
     void DisableUI()
     {
         this.gameObject.SetActive(false);
+        gameplayCanvas.enabled = true;
     }
 
     // Update is called once per frame
