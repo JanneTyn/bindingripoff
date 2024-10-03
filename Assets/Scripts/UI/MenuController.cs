@@ -24,6 +24,11 @@ public class MenuController : MonoBehaviour
         isPaused = !isPaused;
         Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+        if(GameObject.Find("statstext") != null)
+        {
+            StatDisplay.instance.DisplayCurrentStats();
+        }
     }
 
     public void QuitToMenu()
