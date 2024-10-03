@@ -25,29 +25,40 @@ public class StatDisplay : MonoBehaviour
     private PlayerLeveling playerLeveling;
 
     private PlayerStats playerStats;
-    private TMP_Text killCounter;
+
     private Weapon currentWeapon;
     private Player player;
     private Image WeaponImage;
 
-    public TMP_Text CurrentLevelText;
-    private PlayerLeveling Stat;
-    private Player weapon;
-    private int roomsCleared = 0;
-    [SerializeField] private GameObject roomText;
-    private int enemiesKilled;
+    [SerializeField] GameObject playerPrefab;
 
+    [SerializeField]private GameObject CurrentLevelText;
+
+    private int roomsCleared = 0;
+    [SerializeField]private GameObject roomText;
+
+    private int enemiesKilled = 0;
+    [SerializeField]private GameObject killCounter;
+    [SerializeField]private GameObject currentWeaponPrefab;
     void Start()
     {
-        Stat = GameObject.FindWithTag("Player").GetComponent<PlayerLeveling>();
-        weapon = GameObject.FindWithTag("Player").GetComponent<Player>();
-        WeaponImage = GameObject.Find("currentWeapon").GetComponent<Image>();
+        playerLeveling = playerPrefab.GetComponent<PlayerLeveling>();
+
+        playerStats = playerPrefab.GetComponent<PlayerStats>();
+
+        player = playerPrefab.GetComponent<Player>();
+        WeaponImage = currentWeaponPrefab.GetComponent<Image>();
+
     }
 
     void Update()
     {
-        CurrentLevelText.text = "Player level: " + playerLeveling.currentPlayerLevel;
+        CurrentLevelText.GetComponent<TMP_Text>().text = "Player level: " + playerLeveling.currentPlayerLevel;
+
         SetCurrentWeapon();
+
+
+
     }
 
     public void RoomCleared()
@@ -96,7 +107,7 @@ public class StatDisplay : MonoBehaviour
         /**float value = (float)playerStats.GetType().GetField(floatStatName).GetValue(playerStats);
 
         GameObject.Find(stringStatName + " stat").GetComponent<TMP_Text>().text = stringStatName + ": " + value;**/
-        
+
         TMP_Text textComponent = GameObject.Find(stringStatName + " stat").GetComponent<TMP_Text>();
 
         var field = playerStats.GetType().GetField(floatStatName);
