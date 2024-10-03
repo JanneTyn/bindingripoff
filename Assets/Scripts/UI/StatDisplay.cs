@@ -104,18 +104,21 @@ public class StatDisplay : MonoBehaviour
 
     private void StatDisplayFinder(string stringStatName, string floatStatName)
     {
-        /**float value = (float)playerStats.GetType().GetField(floatStatName).GetValue(playerStats);
+        GameObject StatObject = GameObject.Find(stringStatName + " stat");
+        
+        if (StatObject != gameObject.activeSelf) {
+            Debug.Log(stringStatName + " not found");
+            return; 
+        }
+        
+        //Debug.Log(stringStatName + " found");
 
-        GameObject.Find(stringStatName + " stat").GetComponent<TMP_Text>().text = stringStatName + ": " + value;**/
+        TMP_Text textComponent = StatObject.GetComponent<TMP_Text>();
+        if (textComponent == null) { return; }
 
-     //   if (GameObject.Find(stringStatName + " stat") != gameObject.activeSelf)
-      //  {
-         //   return;
-       // }
-            
-        TMP_Text textComponent = GameObject.Find(stringStatName + " stat").GetComponent<TMP_Text>();
-
+        if (player == null) { player = playerPrefab.GetComponent<Player>(); }
         var field = player.GetType().GetField(floatStatName);
+        
         if (field != null)
         {
             float value = (float)field.GetValue(player);

@@ -25,10 +25,10 @@ public class MenuController : MonoBehaviour
         Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
-      //  if(GameObject.Find("statstext") != gameObject.activeSelf)
-        //{
+        if(GameObject.Find("statstext") == gameObject.activeSelf)
+        {
             StatDisplay.instance.DisplayCurrentStats();
-        //}
+        }
     }
 
     public void QuitToMenu()
