@@ -16,6 +16,7 @@ public class Room : MonoBehaviour
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private List<Door> doors = new();
     private Vector2 generationOffset = new Vector2(-13, -8);
+    private TestDifficultyScaler diffScaler;
 
     [Space(5)]
     [Header("Testing values for room generation")]
@@ -27,10 +28,13 @@ public class Room : MonoBehaviour
     [SerializeField] private float damageModifier;
 
     private int enemiesRemaining;
+    private float[] enemyModifiers = new float[3];
     public bool startingRoom;
 
     private void Start()
     {
+        diffScaler = GameObject.Find("DifficultyScaler").GetComponent<TestDifficultyScaler>();
+
         if(!startingRoom)
         {
             DifficultyScaler();
@@ -122,9 +126,10 @@ public class Room : MonoBehaviour
 
     public void DifficultyScaler()
     {
-        finalEnemyCount = Random.Range(3 + distanceToStartRoom, 5 + distanceToStartRoom);
-        maxHealthModifier = 1f + (0.15f * (distanceToStartRoom - 1));
-        damageModifier = 1f + (0.1f * (distanceToStartRoom - 1));
+        enemyModifiers = diffScaler.SetCurrentRoomDifficulty(distanceToStartRoom);
+        finalEnemyCount = (int)enemyModifiers[0];
+        maxHealthModifier = enemyModifiers[1];
+        damageModifier = enemyModifiers[2]; //0 = count, 1 = health, 2 = dmg
     }
 
     public void ScaleEnemyStats(Enemy enemy)
