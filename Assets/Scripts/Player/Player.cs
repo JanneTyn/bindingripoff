@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float baseDodgeCooldown;
     [SerializeField] private float dodgeVelocity;
     [SerializeField] private Weapon currentWeapon;
-    [SerializeField] private float maxHealth;
+    [SerializeField] public float maxHealth;
     [HideInInspector] public float currentHealth;
     
     private float movementSmoothing = .05f;
