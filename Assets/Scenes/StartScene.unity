@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7fa646106eef04cbc45781a6895ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransitionSpeed: 0.3
+  cameraTransitionLength: 0
 --- !u!1 &711896232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2282,22 @@ PrefabInstance:
     - target: {fileID: 4403105278323612352, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: m_Size.y
       value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4608152520450035123, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: m_SortingOrder

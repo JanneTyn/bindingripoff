@@ -50,6 +50,7 @@ public class Player : MonoBehaviour, IDamageable
     private Animator animator;
     private StatDisplay UI;
     private TrailRenderer2D trails;
+    private SpriteRenderer spriteRenderer;
 
     #region Input
 
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour, IDamageable
         playerInput = GetComponent<PlayerInput>();
         tinter = GetComponent<SpriteTint>();
         trails = GetComponent<TrailRenderer2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         maxHealth = 100 + maxHealthIncrease;
         currentHealth = maxHealth;
@@ -264,8 +266,10 @@ public class Player : MonoBehaviour, IDamageable
     /// <returns></returns>
     private IEnumerator IFrameRoutine()
     {
+        spriteRenderer.color = new Color(1, 1, 1, 0.8f);
         iFramesActive = true;
         yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
+        spriteRenderer.color = new Color(1, 1, 1, 1);
         iFramesActive = false;
     }
 

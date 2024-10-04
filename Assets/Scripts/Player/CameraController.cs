@@ -29,8 +29,8 @@ public class CameraController : MonoBehaviour
     private float shakeAmount = 0f;
     private float decreaseFactor = 1f;
 
-    Vector3 currentCameraPos;
-    Vector3 nextCameraPos;
+    public Vector3 currentCameraPos { get; private set; }
+    private Vector3 nextCameraPos;
     private bool cameraTransitioning;
     [SerializeField] private float cameraTransitionLength;
     private Vector3 refVelocity = Vector3.zero;
@@ -41,10 +41,10 @@ public class CameraController : MonoBehaviour
         shakeDuration = duration;
     }
 
-    public void MoveCamera(Vector2 direction)
+    public void MoveCamera(Vector2 newPos)
     {
         cameraTransitioning = true;
-        nextCameraPos = transform.position + (Vector3)direction;
+        nextCameraPos = transform.position + (Vector3)newPos;
         currentCameraPos = transform.position;
     }
 
