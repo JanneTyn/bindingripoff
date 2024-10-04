@@ -10,6 +10,7 @@ public class UpgradeMenu : MonoBehaviour
 {
     //nyt kun alkaa olla enemmän upgradeja niin huomaa että aika paskasti suunniteltu :D
 
+    public string[] upgradesList = { "Health", "Health Regeneration", "Health Pickup", "Damage", "Fire Rate", "Defense", "Evasion", "IFrames", "Movement Speed", "Dash" };
     public int UpgradeMultiplier = 1;
     public int baseHPUpgrade = 10; //every upgrade has the base increase
     public int extraHPUpgrade = 0; //rises by x amount every upgrade
@@ -34,6 +35,7 @@ public class UpgradeMenu : MonoBehaviour
     public const string mobilitySuffix = "Mobility";
     public const string defenseSuffix = "Defense";
 
+    private List<float> allUpgrades = new List<float>();
     private int totalHPUpgrade = 0;
     private int totalFireRateUpgrade = 0;
     private int totalMovementSpeedUpgrade = 0;
@@ -53,7 +55,6 @@ public class UpgradeMenu : MonoBehaviour
     private bool dashCapped = false;
 
     private bool objectsInitialized = false;
-    private PlayerStats playerStats;  
     private Player player;  
     private GameObject upgradingUI;
     private GameObject upgradeOption1;
@@ -64,6 +65,9 @@ public class UpgradeMenu : MonoBehaviour
     private GameObject upgradesuffixText2;
     private GameObject upgradesuffixText3;
     private GameObject skipUpgradeButton;
+    private GameObject upgradeStatsList;
+    private TMP_Text upgradeStatsText;
+    private List<TMP_Text> allStats = new List<TMP_Text>();
     private Canvas gameplayCanvas;
 
     private IEnumerable<GameObject> enemyhpBars;
@@ -76,7 +80,6 @@ public class UpgradeMenu : MonoBehaviour
     
     private void InitializeObjects()
     {
-        playerStats = GameObject.Find("TestPlayer").GetComponent<PlayerStats>();
         player = GameObject.Find("TestPlayer").GetComponent<Player>();
         upgradeOption1 = GameObject.Find("Option1");
         upgradeOption2 = GameObject.Find("Option2");
@@ -86,13 +89,17 @@ public class UpgradeMenu : MonoBehaviour
         upgradesuffixText3 = GameObject.Find("Option3/suffix");
         upgrademultiplierText = GameObject.Find("UpgradeMultiplierText");
         skipUpgradeButton = GameObject.Find("SkipUpgradeButton");
+        upgradeStatsList = GameObject.Find("UpgradeList");
+        upgradeStatsText = GameObject.Find("UpgradeList/UpgradeListText").GetComponent<TMP_Text>();
         upgradingUI = this.gameObject;
         upgradeOptionList.Add(upgradeOption1);
         upgradeOptionList.Add(upgradeOption2);
         upgradeOptionList.Add(upgradeOption3);
         upgradeSuffixList.Add(upgradesuffixText1);
         upgradeSuffixList.Add(upgradesuffixText2);
-        upgradeSuffixList.Add(upgradesuffixText3);       
+        upgradeSuffixList.Add(upgradesuffixText3);  
+        InitializeUpgradesListText();
+        InitializeCurrentStatsList();
         objectsInitialized = true;
         HealthPickUp.healMultiplier = 1.0f;
         EnemyLootDrop.chanceMultiplier = 1.0f;
@@ -106,6 +113,7 @@ public class UpgradeMenu : MonoBehaviour
         if (!objectsInitialized) InitializeObjects();      
         Time.timeScale = 0f;
         player.GetComponent<Animator>().enabled = false;
+        SetCurrentStats();
         RollUpgradeChoices();
     }
 
@@ -116,20 +124,20 @@ public class UpgradeMenu : MonoBehaviour
             while (true)
             {
                 rerollAttempts++;
-                int upgradeID = UnityEngine.Random.Range(0, playerStats.upgrades.Count);
+                int upgradeID = UnityEngine.Random.Range(0, upgradesList.Length);
 
                 if (!rolledUpgrades.Contains(upgradeID))
                 {
-                    if (playerStats.upgrades[upgradeID] == "Defense" && defenseCapped) continue;
-                    if (playerStats.upgrades[upgradeID] == "Evasion" && dodgeCapped) continue;
-                    if (playerStats.upgrades[upgradeID] == "IFrames" && iframesCapped) continue;
-                    if (playerStats.upgrades[upgradeID] == "Health Pickup" && healthPickUpCapped) continue;
-                    if (playerStats.upgrades[upgradeID] == "Health Regeneration" && healthRegenCapped) continue;
-                    if (playerStats.upgrades[upgradeID] == "Dash" && dashCapped) continue;
+                    if (upgradesList[upgradeID] == "Defense" && defenseCapped) continue;
+                    if (upgradesList[upgradeID] == "Evasion" && dodgeCapped) continue;
+                    if (upgradesList[upgradeID] == "IFrames" && iframesCapped) continue;
+                    if (upgradesList[upgradeID] == "Health Pickup" && healthPickUpCapped) continue;
+                    if (upgradesList[upgradeID] == "Health Regeneration" && healthRegenCapped) continue;
+                    if (upgradesList[upgradeID] == "Dash" && dashCapped) continue;
 
                     rolledUpgrades.Add(upgradeID);
-                    upgradeOptionList[i].GetComponent<TMP_Text>().text = playerStats.upgrades[upgradeID];
-                    SetUpgradeDescription(playerStats.upgrades[upgradeID], i);
+                    upgradeOptionList[i].GetComponent<TMP_Text>().text = upgradesList[upgradeID];
+                    SetUpgradeDescription(upgradesList[upgradeID], i);
                     upgradeOptionList[i].transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { UpgradeSelected(upgradeID); });
                     upgradeOptionList[i].transform.GetChild(0).GetComponent<Button>().enabled = false;
                     break;
@@ -173,7 +181,7 @@ public class UpgradeMenu : MonoBehaviour
     {
         Debug.Log("Selected " + ID);
 
-        string upgradeName = playerStats.upgrades[ID];
+        string upgradeName = upgradesList[ID];
 
         switch (upgradeName) {
             case "Health":
@@ -347,6 +355,46 @@ public class UpgradeMenu : MonoBehaviour
         }
     }
 
+    public void InitializeUpgradesListText()
+    {
+        allUpgrades.Clear();
+        allUpgrades.Add(player.maxHealthIncrease);
+        allUpgrades.Add(player.healthRegen);
+        allUpgrades.Add(currenttotalHealthPickUpUpgrade);
+        allUpgrades.Add(player.damageIncrease);
+        allUpgrades.Add(player.fireRate);
+        allUpgrades.Add(Math.Abs(player.armor));
+        allUpgrades.Add(player.dodge);
+        allUpgrades.Add(player.iFramesLengthIncrease);
+        allUpgrades.Add(player.moveSpeedIncrease);
+        allUpgrades.Add(Math.Abs(player.dashCooldownDecrease));
+    }
+    public void InitializeCurrentStatsList()
+    {
+        for (int i = 0; i < upgradesList.Length; i++)
+        {
+            TMP_Text currentUpgradeText;
+            currentUpgradeText = Instantiate(upgradeStatsText, transform.position, Quaternion.identity);
+            allStats.Add(currentUpgradeText);
+            currentUpgradeText.transform.SetParent(upgradeStatsList.transform, false);
+            currentUpgradeText.text = upgradesList[i].ToString();
+        }
+    }
+
+    public void SetCurrentStats()
+    {      
+        for (int i = 0; i < upgradesList.Length; i++)
+        {
+            if (i == 0) allStats[i].text = upgradesList[i].ToString() + " +" + allUpgrades[i].ToString();
+            else allStats[i].text = upgradesList[i].ToString() + " +" + allUpgrades[i].ToString() + "%";
+
+            if (allUpgrades[i] > 0)
+            {
+                allStats[i].color = new Color(0.2f, 0.8f, 0.2f);
+            }
+        }
+    }
+
     public void RemoveButtonListeners()
     {
         for (int i = 0; i < 3; i++)
@@ -365,6 +413,7 @@ public class UpgradeMenu : MonoBehaviour
 
     public void ReturnToGame()
     {
+        InitializeUpgradesListText();
         player.GetComponent<Animator>().enabled = true;
         Time.timeScale = 1.0f;
     }
@@ -378,7 +427,7 @@ public class UpgradeMenu : MonoBehaviour
 
     void DisableUI()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);     
         gameplayCanvas.enabled = true;
     }
 
