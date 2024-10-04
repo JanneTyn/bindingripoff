@@ -17,6 +17,7 @@ public class BouncingProjectile : MonoBehaviour
 
     public void Initialize(Vector2 direction, float projectileSpeed, float maxLifetime, bool _shotByPlayer, float _damage, GameObject ignore)
     {
+        transform.up = direction;
         if (ignore.CompareTag("Player")) GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Player");
         else GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Enemy");
         rigidbody = GetComponent<Rigidbody2D>();

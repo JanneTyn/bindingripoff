@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
     /// <param name="maxLifetime"></param>
     public void Initialize(Vector2 direction, float projectileSpeed, float maxLifetime, bool _shotByPlayer, float _damage, GameObject ignore)
     {
+        transform.up = direction;
         collider = GetComponent<Collider2D>();
 
         if (ignore.CompareTag("Player")) collider.excludeLayers = LayerMask.GetMask("Player");

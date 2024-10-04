@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &5837225386255967674
 Animator:
   serializedVersion: 5
@@ -160,14 +160,15 @@ MonoBehaviour:
   moveSpeedIncrease: 0
   armor: 0
   dodge: 0
-  dodgeCooldownDecrease: 0
+  dashCooldownDecrease: 0
   iFramesLengthIncrease: 0
+  healthRegen: 0
   baseMoveSpeed: 5
   baseDodgeCooldown: 2
   dodgeVelocity: 15
   currentWeapon: {fileID: 11400000, guid: 673398e495cf1664db43857161716947, type: 2}
   maxHealth: 100
-  deathUITest: {fileID: 0}
+  healthRegenEnabled: 0
 --- !u!61 &4403105278323612352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -200,10 +201,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.26}
+  m_Offset: {x: 0, y: 0.19}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.49713084, y: 0.028933337}
     oldSize: {x: 1.8000001, y: 3.3020506}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -211,7 +212,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.18}
+  m_Size: {x: 1.45, y: 0.71}
   m_EdgeRadius: 0
 --- !u!114 &7049685211689349339
 MonoBehaviour:
@@ -254,6 +255,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 69e8e6ce-cd09-43cd-b0d2-df3130f16bbf
     m_ActionName: Gameplay/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d57df063-1ffe-4f89-8930-340f91961237
+    m_ActionName: Gameplay/Pause[/Keyboard/p,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -379,7 +384,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.52}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -390,7 +395,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.22}
+  m_Size: {x: 0.64, y: 2.45}
   m_EdgeRadius: 0
 --- !u!1001 &8717608328106727404
 PrefabInstance:
@@ -402,15 +407,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383205480882913762, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 383205480882913762, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2448374149548863708, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_Name
       value: enemyhph
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448374149548863708, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2747223770520567522, guid: a6fe43f9ada69394d889077a407d5cbd, type: 3}
       propertyPath: m_Pivot.x

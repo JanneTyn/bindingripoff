@@ -145,6 +145,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         float healAmount = maxHealth * (healAmountPercentage / 100);
         currentHealth += healAmount;
+        tinter.FlashColor(SpriteTint.HealGreen);
         Debug.Log("Player healed for " + healAmount);
         if (currentHealth > maxHealth)
         {
