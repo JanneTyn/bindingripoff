@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
+
 /// <summary>
 /// Player main class
 /// </summary>
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float dodgeVelocity;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private float maxHealth;
-    [HideInInspector] public float currentHealth { get; private set; }
+    [HideInInspector] public float currentHealth;
     
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private new Rigidbody2D rigidbody;
     private SpriteTint tinter;
-    private Animator animator;
+    public Animator animator;
     private StatDisplay UI;
     private TrailRenderer2D trails;
     private SpriteRenderer spriteRenderer;
@@ -142,7 +142,6 @@ public class Player : MonoBehaviour, IDamageable
         {
             dodgeTimer = 0f;
             StartCoroutine(DodgeRoutine());
-            StartCoroutine(DodgeTrails());
         }
     }
 
@@ -150,7 +149,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         float healAmount = maxHealth * (healAmountPercentage / 100);
         currentHealth += healAmount;
-        tinter.FlashColor(SpriteTint.HealGreen);
         Debug.Log("Player healed for " + healAmount);
         if (currentHealth > maxHealth)
         {
@@ -211,8 +209,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Death()
     {
         //TODO death screen etc.
-
-        //UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
+        Debug.Log("player died");
         GameUIController.instance.deathUI.SetActive(true);
 
         Time.timeScale = 0f;
@@ -252,12 +249,6 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         yield return new WaitForSeconds(0.1f);
         dodging = false;
-    }
-    private IEnumerator DodgeTrails()
-    {
-        trails.enabled = true;
-        yield return new WaitForSeconds(0.2f);
-        trails.enabled = false;
     }
 
     /// <summary>

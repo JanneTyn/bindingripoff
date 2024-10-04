@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     private float decreaseFactor = 1f;
 
     public Vector3 currentCameraPos { get; private set; }
-    private Vector3 nextCameraPos;
+    Vector3 nextCameraPos;
     private bool cameraTransitioning;
     [SerializeField] private float cameraTransitionLength;
     private Vector3 refVelocity = Vector3.zero;

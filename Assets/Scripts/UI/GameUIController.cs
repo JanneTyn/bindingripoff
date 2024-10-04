@@ -26,8 +26,19 @@ public class GameUIController : MonoBehaviour
     public void RestartGame()
     {
         deathUI.SetActive(false);
-        GameObject.Find("TestPlayer").transform.position = Vector3.zero;
+
+        GameObject player = GameObject.Find("TestPlayer");
+        player.transform.position = Vector3.zero;
+
+        Player playerComponent = player.GetComponent<Player>();
+        playerComponent.currentHealth = 100f;
+        playerComponent.animator.SetBool("paused", false);
+
+
+        CameraController.instance.currentCameraPos = new Vector3(0, -0.720000029f, -10);
         SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
+
+        Time.timeScale = 1f;
     }
 
     public void RoomDepth(int roomDepth)

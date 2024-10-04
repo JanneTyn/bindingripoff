@@ -8,20 +8,19 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    private bool isPaused;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject upgradeMenu;
 
     void Start()
     {
         GameObject.FindWithTag("Player").GetComponent<Player>().inputActions.Gameplay.Pause.performed += Pause;
+
         Pause();
     }
 
     private void Pause(InputAction.CallbackContext context) => Pause();
     public void Pause()
     {
-        isPaused = !isPaused;
         Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
@@ -33,7 +32,13 @@ public class MenuController : MonoBehaviour
 
     public void QuitToMenu()
     {
-        GameObject.Find("TestPlayer").transform.position = Vector3.zero;
+        GameObject player = GameObject.Find("TestPlayer");
+        player.transform.position = Vector3.zero;
+        player.GetComponent<Player>().currentHealth = 100f;
+
+        CameraController.instance.currentCameraPos = new Vector3(0, -0.720000029f, -10);
         SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
+
+        Time.timeScale = 0f;
     }
 }
