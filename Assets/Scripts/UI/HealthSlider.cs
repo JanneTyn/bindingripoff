@@ -21,7 +21,7 @@ public class HealthSlider : MonoBehaviour
         }
     }
     private Camera currentCamera;
-    private Enemy testEnemy;
+    private Enemy enemy;
     private Player player;
     private string CharacterType;
     private Vector3 hpBarOffset;
@@ -29,21 +29,21 @@ public class HealthSlider : MonoBehaviour
 
     void Start()
     {
+        Slider = GetComponent<Slider>();
         if (GetComponentInParent<Enemy>() == null)
         {
             player = GetComponentInParent<Player>();
             CharacterType = "Player";
-            hpBarOffset = new Vector3(0, - .45f, 0);
-}
+            hpBarOffset = new Vector3(0, - .45f, 0); 
+        }
         else
         {
-            testEnemy = GetComponentInParent<Enemy>();
-            CharacterType = "TestEnemy";
+            enemy = GetComponentInParent<Enemy>();
+            CharacterType = "Enemy";
             hpBarOffset = new Vector3(0, -1.50f, 0);
         }
 
-        Slider = GetComponent<Slider>();
-        Slider.maxValue = 100f;
+        
 
 
         if (Follow == null)
@@ -77,9 +77,11 @@ public class HealthSlider : MonoBehaviour
         {
             case "Player":
                 Slider.value = player.currentHealth;
+                Slider.maxValue = player.maxHealth;
                 break;
             default:
-                Slider.value = testEnemy.currentHealth;
+                Slider.value = enemy.currentHealth;
+                Slider.maxValue = enemy.maxHealth;
                 break;
 
         }

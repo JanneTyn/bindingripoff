@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public float currentHealth; // { get; private set; }
     [SerializeField] private SpriteTint tint;
-    [SerializeField] public float maxHealth { get; private set; }
+    [SerializeField] public float maxHealth;
     public float baseMaxHealth;
     [SerializeField] public float maxHealthMultiplier;
     [SerializeField] public float damageMultiplier;
