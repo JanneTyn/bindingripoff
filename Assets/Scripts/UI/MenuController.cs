@@ -33,6 +33,7 @@ public class MenuController : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameObject.Find("TestPlayer").transform.position = Vector3.zero;
+        SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
     }
 }

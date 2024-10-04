@@ -26,9 +26,8 @@ public class GameUIController : MonoBehaviour
     public void RestartGame()
     {
         deathUI.SetActive(false);
-      //  GameObject.Find("TestPlayer").transform.position = Vector3.zero;
-        SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
-        Time.timeScale = 1f;
+        GameObject.Find("TestPlayer").transform.position = Vector3.zero;
+        SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
     }
 
     public void RoomDepth(int roomDepth)
