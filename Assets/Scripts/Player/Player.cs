@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-
+using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
 /// <summary>
 /// Player main class
 /// </summary>
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, IDamageable
     private SpriteTint tinter;
     private Animator animator;
     private StatDisplay UI;
+    private TrailRenderer2D trails;
 
     #region Input
 
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         tinter = GetComponent<SpriteTint>();
+        trails = GetComponent<TrailRenderer2D>();
 
         maxHealth = 100 + maxHealthIncrease;
         currentHealth = maxHealth;
@@ -138,6 +140,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             dodgeTimer = 0f;
             StartCoroutine(DodgeRoutine());
+            StartCoroutine(DodgeTrails());
         }
     }
 
@@ -247,6 +250,12 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         yield return new WaitForSeconds(0.1f);
         dodging = false;
+    }
+    private IEnumerator DodgeTrails()
+    {
+        trails.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        trails.enabled = false;
     }
 
     /// <summary>
