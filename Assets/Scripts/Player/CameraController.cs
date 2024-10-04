@@ -30,6 +30,10 @@ public class CameraController : MonoBehaviour
     private float decreaseFactor = 1f;
 
     Vector3 currentCameraPos;
+    Vector3 nextCameraPos;
+    private bool cameraTransitioning;
+    [SerializeField] private float cameraTransitionLength;
+    private Vector3 refVelocity = Vector3.zero;
 
     public void StartShake(float duration, float amount)
     {
@@ -39,22 +43,37 @@ public class CameraController : MonoBehaviour
 
     public void MoveCamera(Vector2 direction)
     {
-        transform.Translate(direction);
+        cameraTransitioning = true;
+        nextCameraPos = transform.position + (Vector3)direction;
         currentCameraPos = transform.position;
     }
 
     private void Update()
     {
-        if (shakeDuration > 0)
+        
+        if(cameraTransitioning)
         {
-            transform.localPosition = currentCameraPos + Random.insideUnitSphere * shakeAmount;
-
-            shakeDuration -= Time.unscaledDeltaTime * decreaseFactor;
+            transform.position = Vector3.SmoothDamp(transform.position, nextCameraPos, ref refVelocity, cameraTransitionLength);
+            if ((nextCameraPos - transform.position).magnitude < 0.05f)
+            {
+                cameraTransitioning = false;
+                currentCameraPos = transform.position;
+            }
         }
         else
         {
-            shakeDuration = 0f;
-            transform.localPosition = currentCameraPos;
+            if (shakeDuration > 0)
+            {
+                transform.localPosition = currentCameraPos + Random.insideUnitSphere * shakeAmount;
+
+                shakeDuration -= Time.unscaledDeltaTime * decreaseFactor;
+            }
+            else
+            {
+                shakeDuration = 0f;
+                transform.localPosition = currentCameraPos;
+            }
         }
+        
     }
 }

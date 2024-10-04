@@ -23,6 +23,7 @@ namespace SpriteTrailRenderer
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _timeAlive = 0f;
             _active = false;
+            DontDestroyOnLoad(gameObject);
         }
 
 
