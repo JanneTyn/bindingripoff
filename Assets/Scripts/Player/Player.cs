@@ -206,7 +206,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         //TODO death screen etc.
         Debug.Log("player died");
-        //UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
         GameUIController.instance.deathUI.SetActive(true);
 
         Time.timeScale = 0f;

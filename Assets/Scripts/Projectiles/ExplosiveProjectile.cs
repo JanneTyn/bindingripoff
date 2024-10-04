@@ -22,6 +22,7 @@ public class ExplosiveProjectile : MonoBehaviour
     /// <param name="maxLifetime"></param>
     public void Initialize(Vector2 direction, float projectileSpeed, float maxLifetime, bool _shotByPlayer, float _damage, GameObject ignore, float _radius)
     {
+        transform.up = direction;
         if (ignore.CompareTag("Player")) GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Player");
         else GetComponent<Collider2D>().excludeLayers = LayerMask.GetMask("Enemy");
 

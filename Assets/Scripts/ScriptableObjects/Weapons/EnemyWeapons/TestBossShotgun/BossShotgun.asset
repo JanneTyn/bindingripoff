@@ -15,9 +15,9 @@ MonoBehaviour:
   rarity: 0
   fireRate: 1
   damage: 10
-  projectileSpeed: 15
+  projectileSpeed: 10
   projectileLifetime: 3
-  projectilePrefab: {fileID: 568801683787549821, guid: e4f959d8127422e46a48ab9539778f9b, type: 3}
+  projectilePrefab: {fileID: 568801683787549821, guid: df5ba78f2c437bd459d7b6bcf098893c, type: 3}
   sprite: {fileID: 0}
-  projectilesPerShot: 4
-  projectileSpread: 90
+  projectilesPerShot: 16
+  projectileSpread: 360

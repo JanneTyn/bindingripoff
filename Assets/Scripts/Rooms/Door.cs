@@ -16,11 +16,7 @@ public class Door : MonoBehaviour
         currentRoom = transform.root.GetComponent<Room>();
         locked = false;
 
-        //TODO actual doors lol
-        var green = Color.green;
-        green.a = 0.5f;
-        GetComponent<SpriteRenderer>().color = green;
-
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

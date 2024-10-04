@@ -202,8 +202,8 @@ MonoBehaviour:
   baseMaxHealth: 500
   maxHealthMultiplier: 1
   damageMultiplier: 1
-  aiTime: 1
-  weapon: {fileID: 11400000, guid: 7e332b3f64021f144a62fbd37c133870, type: 2}
+  aiTime: 0.5
+  weapon: {fileID: 11400000, guid: cd887d43a1d39db41a3c32cb3acdbafc, type: 2}
 --- !u!114 &7495335992615019152
 MonoBehaviour:
   m_ObjectHideFlags: 0
