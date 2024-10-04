@@ -102,7 +102,7 @@ public class UpgradeMenu : MonoBehaviour
         InitializeCurrentStatsList();
         objectsInitialized = true;
         HealthPickUp.healMultiplier = 1.0f;
-        EnemyLootDrop.chanceMultiplier = 1.0f;
+        EnemyLootDrop.healthChanceMultiplier = 1.0f;
         
 
     }
@@ -220,7 +220,7 @@ public class UpgradeMenu : MonoBehaviour
                 break;
             case "Health Pickup":
                 currenttotalHealthPickUpUpgrade += totalHealthPickUpUpgrade;
-                EnemyLootDrop.chanceMultiplier += totalHealthPickUpUpgrade / 100;
+                EnemyLootDrop.healthChanceMultiplier += totalHealthPickUpUpgrade / 100;
                 HealthPickUp.healMultiplier += totalHealthPickUpUpgrade / 100;
                 if (currenttotalHealthPickUpUpgrade >= healthPickUpMaxCap)
                 {

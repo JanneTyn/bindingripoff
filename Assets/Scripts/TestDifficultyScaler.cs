@@ -52,7 +52,7 @@ public class TestDifficultyScaler : MonoBehaviour
     {
         currentRoomDifficulty = generalDifficultyMultiplier + (distanceToStartRoom * roomDepthDifficultyMultiplier);
         Debug.Log("Difficulty multiplier in this room: " + currentRoomDifficulty);
-        enemyCount = Random.Range(3 + enemyCountScaler + currentLevel + Mathf.RoundToInt(distanceToStartRoom / 2), 7 + enemyCountScaler + currentLevel + Mathf.RoundToInt(distanceToStartRoom / 2));
+        enemyCount = Random.Range(3 + enemyCountScaler + currentLevel + Mathf.RoundToInt(distanceToStartRoom / 2), 5 + enemyCountScaler + currentLevel + Mathf.RoundToInt(distanceToStartRoom / 2));
         if (enemyCount > 20) enemyCount = 20;
         enemyHealthMultiplierFinal = currentRoomDifficulty * enemyHealthMultiplier;
         enemyDamageMultiplierFinal = currentRoomDifficulty * enemyDamageMultiplier;
