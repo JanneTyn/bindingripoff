@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     private float shakeAmount = 0f;
     private float decreaseFactor = 1f;
 
-    public Vector3 currentCameraPos { get; private set; }
+    public Vector3 currentCameraPos;
     Vector3 nextCameraPos;
     private bool cameraTransitioning;
     [SerializeField] private float cameraTransitionLength;

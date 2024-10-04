@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
 
 /// <summary>
 /// Player main class
