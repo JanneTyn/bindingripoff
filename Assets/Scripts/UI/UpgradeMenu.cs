@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
+    //nyt kun alkaa olla enemmän upgradeja niin huomaa että aika paskasti suunniteltu :D
+
     public int UpgradeMultiplier = 1;
     public int baseHPUpgrade = 10; //every upgrade has the base increase
     public int extraHPUpgrade = 0; //rises by x amount every upgrade
@@ -24,6 +26,8 @@ public class UpgradeMenu : MonoBehaviour
     public float healthPickUpMaxCap = 100;
     public float healthRegenUpgrade = 1;
     public float healthRegenMaxCap = 10;
+    public float dashCooldownUpgrade = -10;
+    public float dashCooldownMaxCap = -80;
 
     public const string healingSuffix = "Healing";
     public const string damagingSuffix = "Damaging";
@@ -40,11 +44,13 @@ public class UpgradeMenu : MonoBehaviour
     private float totalHealthPickUpUpgrade = 0;
     private float currenttotalHealthPickUpUpgrade = 0;
     private float totalHealthRegenUpgrade = 0;
+    private float totalDashUpgrade = 0;
     private bool defenseCapped = false;
     private bool dodgeCapped = false;
     private bool iframesCapped = false;
     private bool healthPickUpCapped = false;
     private bool healthRegenCapped = false;
+    private bool dashCapped = false;
 
     private bool objectsInitialized = false;
     private PlayerStats playerStats;  
@@ -66,6 +72,8 @@ public class UpgradeMenu : MonoBehaviour
     private List<GameObject> upgradeSuffixList = new List<GameObject>();
     private List<int> rolledUpgrades = new List<int>();
     private int rerollAttempts = 0;
+
+    
     private void InitializeObjects()
     {
         playerStats = GameObject.Find("TestPlayer").GetComponent<PlayerStats>();
@@ -84,7 +92,7 @@ public class UpgradeMenu : MonoBehaviour
         upgradeOptionList.Add(upgradeOption3);
         upgradeSuffixList.Add(upgradesuffixText1);
         upgradeSuffixList.Add(upgradesuffixText2);
-        upgradeSuffixList.Add(upgradesuffixText3);      
+        upgradeSuffixList.Add(upgradesuffixText3);       
         objectsInitialized = true;
         HealthPickUp.healMultiplier = 1.0f;
         EnemyLootDrop.chanceMultiplier = 1.0f;
@@ -117,6 +125,7 @@ public class UpgradeMenu : MonoBehaviour
                     if (playerStats.upgrades[upgradeID] == "IFrames" && iframesCapped) continue;
                     if (playerStats.upgrades[upgradeID] == "Health Pickup" && healthPickUpCapped) continue;
                     if (playerStats.upgrades[upgradeID] == "Health Regeneration" && healthRegenCapped) continue;
+                    if (playerStats.upgrades[upgradeID] == "Dash" && dashCapped) continue;
 
                     rolledUpgrades.Add(upgradeID);
                     upgradeOptionList[i].GetComponent<TMP_Text>().text = playerStats.upgrades[upgradeID];
@@ -218,6 +227,13 @@ public class UpgradeMenu : MonoBehaviour
                     healthRegenCapped = true;
                 }
                 break;
+            case "Dash":
+                player.dashCooldownDecrease += totalDashUpgrade;
+                if (player.dashCooldownDecrease <= dashCooldownMaxCap)
+                {
+                    dashCapped = true;
+                }
+                break;
         }
 
         UpgradeMultiplier = 1;
@@ -295,6 +311,15 @@ public class UpgradeMenu : MonoBehaviour
                 }
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalHealthRegenUpgrade + "%/s Health Regeneration";
                 SetSuffixTitle(healingSuffix, i);
+                break;
+            case "Dash":
+                totalDashUpgrade = dashCooldownUpgrade * UpgradeMultiplier;
+                if (player.dashCooldownDecrease - totalDashUpgrade < dashCooldownMaxCap)
+                {
+                    totalDashUpgrade = (int)(dashCooldownMaxCap - player.dashCooldownDecrease);
+                }
+                upgradeOptionList[i].GetComponent<TMP_Text>().text = totalDashUpgrade + "% Dash Cooldown";
+                SetSuffixTitle(mobilitySuffix, i);
                 break;
             default:
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Unknown Upgrade";

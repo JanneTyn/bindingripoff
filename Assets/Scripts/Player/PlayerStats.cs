@@ -38,6 +38,7 @@ public class PlayerStats : MonoBehaviour
         //upgrades.Add("Luck");
         upgrades.Add("IFrames");
         upgrades.Add("Health Pickup");
+        upgrades.Add("Dash");
         
     }
     public void IncreaseMaxHealth()

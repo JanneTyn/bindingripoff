@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IDamageable
     [Range(0, 200)] public float moveSpeedIncrease;
     [Range(0, -30)] public float armor;
     [Range(0, 30)] public float dodge;
-    [Range(0, -50)] public float dodgeCooldownDecrease;
+    [Range(0, -80)] public float dashCooldownDecrease;
     [Range(0, 50)] public float iFramesLengthIncrease;
     [Range(0, 10)] public float healthRegen;
     #endregion
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Dash()
     {
         //TODO effects
-        if(dodgeTimer >= baseDodgeCooldown * PercentageToMultiplier(dodgeCooldownDecrease) && movementDirection != Vector2.zero)
+        if(dodgeTimer >= baseDodgeCooldown * PercentageToMultiplier(dashCooldownDecrease) && movementDirection != Vector2.zero)
         {
             dodgeTimer = 0f;
             StartCoroutine(DodgeRoutine());
@@ -166,6 +166,7 @@ public class Player : MonoBehaviour, IDamageable
         
         if(Random.Range(0, 100) < dodge) //dodge success
         {
+            //StartCoroutine(DodgeWasSuccessful()); //ei toiminnassa
             Debug.Log("Player dodged");
         }
         else //take dmg
@@ -180,9 +181,26 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeCorruptionDamage(float damageAmount)
     {
-        Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " corruption damage");
+        //Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " corruption damage");
         currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
         if (currentHealth == 0f) Death();
+    }
+
+    IEnumerator DodgeWasSuccessful() //tää paska ei toiminu viel
+    {
+        var dodgeT = Resources.Load("DodgeText") as GameObject;
+        Instantiate(dodgeT, this.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        float elapsedTime = 0;
+        Vector3 startingPos = this.transform.position;
+        Vector3 finalPos = this.transform.position + (this.transform.up * 10);
+        while (elapsedTime < 1f)
+        {
+            dodgeT.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / 1f));
+            elapsedTime += Time.fixedDeltaTime;
+            yield return null;
+        }
+        DestroyImmediate(dodgeT.gameObject, true);
+
     }
     private void Death()
     {
@@ -224,7 +242,7 @@ public class Player : MonoBehaviour, IDamageable
     /// <returns></returns>
     private IEnumerator DodgeRoutine()
     {
-        rigidbody.velocity = movementDirection * dodgeVelocity;
+        rigidbody.velocity = movementDirection * dodgeVelocity * PercentageToMultiplier(moveSpeedIncrease);
         dodging = true;
         yield return new WaitForSeconds(0.1f);
         dodging = false;

@@ -208,6 +208,8 @@ MonoBehaviour:
   healthPickUpMaxCap: 100
   healthRegenUpgrade: 1
   healthRegenMaxCap: 10
+  dashCooldownUpgrade: -10
+  dashCooldownMaxCap: -80
 --- !u!1 &2510108692743322451
 GameObject:
   m_ObjectHideFlags: 0

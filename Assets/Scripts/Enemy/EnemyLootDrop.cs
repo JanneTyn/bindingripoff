@@ -18,6 +18,5 @@ public class EnemyLootDrop : MonoBehaviour
             var healthPickup = Resources.Load("Pickups/HealthPickUp") as GameObject;
             Instantiate(healthPickup, enemyPos.position, Quaternion.identity);
         }
-        Debug.Log("Rolled");
     }
 }
