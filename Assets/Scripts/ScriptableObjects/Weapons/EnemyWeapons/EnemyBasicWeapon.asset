@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15ae7d5521ea544184c3aa4f9f1e5c3, type: 3}
-  m_Name: EnemyShotgun
+  m_Script: {fileID: 11500000, guid: 9cf8699274a859f45aa60b29a80e7c6a, type: 3}
+  m_Name: EnemyBasicWeapon
   m_EditorClassIdentifier: 
   rarity: 0
-  fireRate: 0
-  damage: 15
-  projectileSpeed: 5
-  projectileLifetime: 3
+  fireRate: 5
+  damage: 10
+  projectileSpeed: 8
+  projectileLifetime: 0
   projectilePrefab: {fileID: 568801683787549821, guid: df5ba78f2c437bd459d7b6bcf098893c, type: 3}
   sprite: {fileID: 0}
-  projectilesPerShot: 3
-  projectileSpread: 30
+  randomSpread: 0
