@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float dodgeVelocity;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private float maxHealth;
-    [HideInInspector] public float currentHealth { get; private set; }
+    [HideInInspector] public float currentHealth;
     
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private new Rigidbody2D rigidbody;
     private SpriteTint tinter;
-    private Animator animator;
+    public Animator animator;
     private StatDisplay UI;
 
     #region Input
@@ -205,7 +205,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Death()
     {
         //TODO death screen etc.
-
+        Debug.Log("player died");
         //UI = GameObject.Find("Canvas").GetComponent<StatDisplay>();
         GameUIController.instance.deathUI.SetActive(true);
 

@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     private float shakeAmount = 0f;
     private float decreaseFactor = 1f;
 
-    Vector3 currentCameraPos;
+    public Vector3 currentCameraPos;
 
     public void StartShake(float duration, float amount)
     {
