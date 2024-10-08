@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IDamageable
     private StatDisplay UI;
     private TrailRenderer2D trails;
     private SpriteRenderer spriteRenderer;
+    private GameObject dodgeT;
 
     #region Input
 
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour, IDamageable
         tinter = GetComponent<SpriteTint>();
         trails = GetComponent<TrailRenderer2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dodgeT = Resources.Load("DodgeText") as GameObject;
 
         maxHealth = 100 + maxHealthIncrease;
         currentHealth = maxHealth;
@@ -159,23 +161,21 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageAmount)
     {
-        //jos iframet aktivoituna, älä ota damagea -> return
-        //jos ei aktivoituna, ota damagea ja aloita iframet
-        if (iFramesActive) return;
-        else
-        {
-            StartCoroutine(IFrameRoutine());
-        }
-        
         //TODO death effects etc.
-        
-        if(Random.Range(0, 100) < dodge) //dodge success
+        if (iFramesActive) return;
+
+        if (Random.Range(0, 100) < dodge) //dodge success
         {
-            //StartCoroutine(DodgeWasSuccessful()); //ei toiminnassa
+            StartCoroutine(DodgeWasSuccessful()); //ei toiminnassa
             Debug.Log("Player dodged");
         }
         else //take dmg
         {
+            //jos iframet aktivoituna, älä ota damagea -> return
+            //jos ei aktivoituna, ota damagea ja aloita iframet
+
+            StartCoroutine(IFrameRoutine());
+            
             Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " damage");
             currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
             if (currentHealth == 0f) Death();
@@ -193,18 +193,17 @@ public class Player : MonoBehaviour, IDamageable
 
     IEnumerator DodgeWasSuccessful() //tää paska ei toiminu viel
     {
-        var dodgeT = Resources.Load("DodgeText") as GameObject;
-        Instantiate(dodgeT, this.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        var dodgeText = Instantiate(dodgeT, this.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         float elapsedTime = 0;
         Vector3 startingPos = this.transform.position;
-        Vector3 finalPos = this.transform.position + (this.transform.up * 10);
+        Vector3 finalPos = this.transform.position + (this.transform.up * 2);
         while (elapsedTime < 1f)
         {
-            dodgeT.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / 1f));
+            dodgeText.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / 1f));
             elapsedTime += Time.fixedDeltaTime;
             yield return null;
         }
-        DestroyImmediate(dodgeT.gameObject, true);
+        Destroy(dodgeText.gameObject);
 
     }
     private void Death()

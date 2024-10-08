@@ -298,8 +298,8 @@ public class UpgradeMenu : MonoBehaviour
                 {
                     totaliframesUpgrade = (iframesMaxCap - player.iFramesLengthIncrease);
                 }
-                float totalpercentage = totaliframesUpgrade / 100;
-                upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalpercentage + "s iframes duration";
+                //float totalpercentage = totaliframesUpgrade / 100;
+                upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totaliframesUpgrade + "% invincibility after being damaged";
                 SetSuffixTitle(defenseSuffix, i);
                 break;
             case "Health Pickup":

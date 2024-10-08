@@ -411,8 +411,8 @@ MonoBehaviour:
   defenseMaxCap: -60
   dodgeUpgrade: 5
   dodgeMaxCap: 60
-  iframesUpgrade: 5
-  iframesMaxCap: 50
+  iframesUpgrade: 10
+  iframesMaxCap: 100
   healthPickUpUpgrade: 20
   healthPickUpMaxCap: 100
   healthRegenUpgrade: 1

@@ -46,6 +46,11 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyDrop.RollEnemyDrop(this.transform);
         Destroy(gameObject);
     }
+
+    protected void DeathNoRewards()
+    {
+        Destroy(gameObject);
+    }
     protected void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
