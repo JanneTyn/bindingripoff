@@ -13,7 +13,7 @@ public class DamageDisplayText : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Debug.LogWarning("More than 1 instance of Level exists!");
+            Debug.LogWarning("More than 1 instance of DamageDisplayText exists!");
             enabled = false;
         }
         else instance = this;
@@ -30,11 +30,13 @@ public class DamageDisplayText : MonoBehaviour
     public IEnumerator DamageDisplay(float dmgAmount, Transform pos , bool player = false, bool corruptDmg = false)
     {
         var dmgDisplayText = Instantiate(damageText, pos.position, Quaternion.identity, GameObject.Find("Canvas").transform);
-        
-        damageText.GetComponent<TMP_Text>().text = "-" + dmgAmount.ToString("F1");
-        if (corruptDmg) { damageText.GetComponent<TMP_Text>().color = new Color(0.5f, 0.1f, 0.8f, 1); }
-        else if (player) { damageText.GetComponent<TMP_Text>().color = new Color(0.8f, 0.1f, 0.1f, 1); }
-        else { damageText.GetComponent<TMP_Text>().color = new Color(0.0f, 0.0f, 0.0f, 1); }
+
+        var text = dmgDisplayText.GetComponent<TMP_Text>();
+
+        text.text = "-" + dmgAmount.ToString("F1");
+        if (corruptDmg) { text.color = new Color(0.5f, 0.1f, 0.8f, 1); }
+        else if (player) { text.color = new Color(0.8f, 0.1f, 0.1f, 1); }
+        else { text.color = new Color(0.0f, 0.0f, 0.0f, 1); }
 
         float elapsedTime = 0;
         Vector3 startingPos = pos.position;
