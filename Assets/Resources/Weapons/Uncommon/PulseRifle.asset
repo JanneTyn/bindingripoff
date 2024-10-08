@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa9f5b74fe1f2345ae87ecc54a87cfc, type: 3}
   m_Name: PulseRifle
   m_EditorClassIdentifier: 
+  playerVisualWeaponType: 1
   rarity: 0
   fireRate: 3
   damage: 7

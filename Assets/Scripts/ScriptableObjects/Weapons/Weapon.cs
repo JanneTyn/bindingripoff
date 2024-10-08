@@ -8,6 +8,15 @@ public abstract class Weapon : ScriptableObject
         Uncommon,
         Rare
     }
+    public enum PlayerVisualWeaponType
+    {
+        Pistol = 0,
+        Rifle,
+        Shotgun,
+        Flamer,
+        Rocket
+    }
+    public PlayerVisualWeaponType playerVisualWeaponType;
     public Rarity rarity;
     public float fireRate = 5f;
     public float damage = 1f;

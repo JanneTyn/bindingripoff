@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3598c00e38b28408d8445150a69176, type: 3}
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
+  playerVisualWeaponType: 4
   rarity: 0
   fireRate: 1
   damage: 40

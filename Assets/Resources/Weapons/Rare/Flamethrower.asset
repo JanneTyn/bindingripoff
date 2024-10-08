@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d68c92f2c4bed44bf2f1d67a33687c, type: 3}
   m_Name: Flamethrower
   m_EditorClassIdentifier: 
+  playerVisualWeaponType: 3
   rarity: 2
   fireRate: 24
   damage: 4

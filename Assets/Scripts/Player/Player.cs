@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
 
 /// <summary>
@@ -49,6 +45,8 @@ public class Player : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     private SpriteTint tinter;
     public Animator animator;
+    public Animator weaponAnimator;
+    public SpriteRenderer weaponRenderer;
     private StatDisplay UI;
     private TrailRenderer2D trails;
     private SpriteRenderer spriteRenderer;
@@ -102,6 +100,10 @@ public class Player : MonoBehaviour, IDamageable
 
         animator.SetFloat("MovementX", movementDirection.x);
         animator.SetFloat("MovementY", movementDirection.y);
+        weaponAnimator.SetFloat("DirectionX", movementDirection.x);
+        weaponAnimator.SetFloat("DirectionY", movementDirection.y);
+        weaponRenderer.sortingOrder = movementDirection.y == 1 ? 1 : 3;
+
 
         if (!corruptCRActive)
         {
@@ -226,6 +228,8 @@ public class Player : MonoBehaviour, IDamageable
         Weapon oldWeapon = currentWeapon;
         currentWeapon = _weapon;
         pickupComponent.UpdateWeaponPickup(oldWeapon);
+        weaponAnimator.SetInteger("WeaponType", (int)currentWeapon.playerVisualWeaponType);
+        weaponAnimator.SetTrigger("SwapWeapon");
     }
 
     public Weapon CurrentWeaponSprite() {

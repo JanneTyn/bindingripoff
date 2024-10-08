@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15ae7d5521ea544184c3aa4f9f1e5c3, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
+  playerVisualWeaponType: 2
   rarity: 0
   fireRate: 1.2
   damage: 20
@@ -19,5 +20,5 @@ MonoBehaviour:
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
   sprite: {fileID: 21300000, guid: 8f261ccb67d0f67498eeb06e01c0a4a7, type: 3}
-  projectileCount: 3
+  projectilesPerShot: 3
   projectileSpread: 30
