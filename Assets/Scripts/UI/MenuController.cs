@@ -22,6 +22,7 @@ public class MenuController : MonoBehaviour
     public void Pause()
     {
         if (GameObject.Find("UpgradingUI") == gameObject.activeSelf) { return; }
+        pauseMenu.transform.SetAsLastSibling();
         Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
