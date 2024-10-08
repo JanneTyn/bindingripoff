@@ -30,7 +30,7 @@ public class HomingEnemy : Enemy
             if(dmg is Player)
             {
                 dmg.TakeDamage(20);
-                Death();
+                DeathNoRewards();
             }
         }
     }
