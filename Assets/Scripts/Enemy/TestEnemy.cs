@@ -26,6 +26,8 @@ public class TestEnemy : Enemy
 
     private void FixedUpdate()
     {
+        if (!aiActive) return;
+
         timer -= Time.fixedDeltaTime;
 
         //ai fsm

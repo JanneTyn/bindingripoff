@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteTint))]
 public class Enemy : MonoBehaviour, IDamageable
 {
+    protected bool aiActive = false;
     [SerializeField] protected float movementSpeed;
     [HideInInspector] public Room room;
     [HideInInspector] public EnemyLootDrop enemyDrop;
@@ -53,10 +55,23 @@ public class Enemy : MonoBehaviour, IDamageable
         tint = GetComponent<SpriteTint>();
         maxHealth = baseMaxHealth * maxHealthMultiplier;
         currentHealth = maxHealth;
+        StartCoroutine(ActivateAI());
+    }
+
+    private IEnumerator ActivateAI()
+    {
+        var rend = GetComponent<SpriteRenderer>();
+        var col = new Color(1, 1, 1, 0.7f);
+        rend.color = col;
+
+        yield return new WaitForSeconds(1f);
+        aiActive = true;
+        rend.color = Color.white;
     }
 
     protected void FixedUpdate()
     {
+        if (!aiActive) return;
         animator.SetFloat("MovementX", movementVector.normalized.x);
         animator.SetFloat("MovementY", movementVector.normalized.y);
 

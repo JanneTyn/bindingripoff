@@ -16,6 +16,8 @@ public class HomingEnemy : Enemy
 
     private void FixedUpdate()
     {
+        if (!aiActive) return;
+
         var playerDirection = (player.position - transform.position).normalized;
         movementVector = Vector2.SmoothDamp(movementVector, playerDirection * movementSpeed, ref refVelocity, smoothing);
         base.FixedUpdate();

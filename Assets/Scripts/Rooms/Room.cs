@@ -10,18 +10,23 @@ using UnityEngine.Tilemaps;
 public class Room : MonoBehaviour
 {
     [HideInInspector] public Vector2Int coordinate;
-    [SerializeField] public int distanceToStartRoom;
-    [SerializeField] private Vector2Int tilemapSize;
+    [HideInInspector] public int distanceToStartRoom;
     [SerializeField] private List<TileBase> tiles = new();
-    [SerializeField] private Tilemap tilemap;
+    [SerializeField] private TileBase holeTile;
+    [SerializeField] private Tilemap objectTilemap;
+    [SerializeField] private Tilemap holeTilemap;
     [SerializeField] private List<Door> doors = new();
-    private Vector2 generationOffset = new Vector2(-13, -8);
+    [SerializeField] private List<Rect> rejectRects;
 
-    [Space(5)]
+    private Vector3Int generationOffset = new(-13, -8, 0);
+    private Vector2Int tilemapSize = new(25, 12);
+
+    [Space(10)]
     [Header("Testing values for room generation")]
     [SerializeField] private int enemies;
     [SerializeField] private int weapons; //TODO replace with chance of weapon
     [SerializeField] private int obstacles;
+    [SerializeField] private int holes;
     [SerializeField] private int finalEnemyCount = 3; //3 minimum
     [SerializeField] private float maxHealthModifier;
     [SerializeField] private float damageModifier;
@@ -36,7 +41,7 @@ public class Room : MonoBehaviour
         {
             DifficultyScaler();
             GenerateRandomObstacleTiles();
-            GenerateRandomEnemiesAndPickups(finalEnemyCount, weapons);
+            GenerateRandomEnemiesAndPickups();
         }
         else
         {
@@ -51,26 +56,22 @@ public class Room : MonoBehaviour
     public void GenerateRandomObstacleTiles()
     {
         //generate points, convert them to int
-        var points = PoissonDiscSampling.GeneratePoints((tilemapSize.x / obstacles) * 1.2f, tilemapSize, 30);
-        points = OffsetPoints(points);
+        var obstaclePoints = OffsetPoints(RandomPoints(obstacles));
 
-        var pointsInt = new List<Vector3Int>();
+        var holePoints = OffsetPoints(RandomPoints(holes));
+
         var tilesToSet = new List<TileBase>();
 
-        foreach (var point in points)
-        {
-            pointsInt.Add(new Vector3Int((int)point.x, (int)point.y, 0));
-        }
-
         //choose random tiles
-
         for (int i = 0; i < obstacles; i++)
-        {
             tilesToSet.Add(tiles[Random.Range(0, tiles.Count)]);
-        }
 
         //place tiles
-        tilemap.SetTiles(pointsInt.ToArray(), tilesToSet.ToArray());
+        objectTilemap.SetTiles(obstaclePoints.ToArray(), tilesToSet.ToArray());
+
+        foreach (var point in holePoints)
+            holeTilemap.SetTile(point, holeTile);
+
     }
 
     /// <summary>
@@ -79,40 +80,34 @@ public class Room : MonoBehaviour
     /// </summary>
     /// <param name="enemyAmt"></param>
     /// <param name="pickupAmt"></param>
-    public void GenerateRandomEnemiesAndPickups(int enemyAmt, int pickupAmt)
+    public void GenerateRandomEnemiesAndPickups()
     {
-        //TODO actually get the correct amount of spawns, lol
-
         //load all enemy prefabs
-        var enemies = Resources.LoadAll("EnemyPrefabs/");
+        var enemyPrefabs = Resources.LoadAll("EnemyPrefabs/");
         List<GameObject> enemiesToPlace = new();
 
         //randomize which enemy prefabs are spawned
-        for (int i = 0; i < enemyAmt; i++)
-        {
-            enemiesToPlace.Add(enemies[Random.Range(0, enemies.Length)] as GameObject);
-        }
+        for (int i = 0; i < finalEnemyCount; i++)
+            enemiesToPlace.Add(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)] as GameObject);
 
         //generate locations
-        var enemyPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / enemyAmt), tilemapSize, 30);
-        enemyPoints = OffsetPoints(enemyPoints);
+        var enemyPoints = OffsetPoints(RandomPoints(finalEnemyCount));
 
         //spawn enemy, set room, disable it, and add into enemieslist
-        for (int i = 0; i < enemiesToPlace.Count; i++)
+        for (int i = 0; i < finalEnemyCount; i++)
         {
             var enemy = Instantiate(enemiesToPlace[i], (Vector3)enemyPoints[i] + transform.position, Quaternion.identity).GetComponent<Enemy>();
             enemy.room = this;
             ScaleEnemyStats(enemy);
         }
 
-        enemiesRemaining = enemiesToPlace.Count;
+        enemiesRemaining = finalEnemyCount;
         Debug.Log(enemiesRemaining + " enemies remaining");
 
         //same shit for weapons except there's only 1 prefab
 
         var weaponPickup = Resources.Load("WeaponPickup") as GameObject;
-        var pickupPoints = PoissonDiscSampling.GeneratePoints((tilemapSize.x / pickupAmt), tilemapSize, 30);
-        pickupPoints = OffsetPoints(pickupPoints);
+        var pickupPoints = OffsetPoints(RandomPoints(weapons));
 
         foreach (var point in pickupPoints)
         {
@@ -169,10 +164,10 @@ public class Room : MonoBehaviour
     /// Offset array of points by generationOffset variable
     /// </summary>
     /// <param name="points"></param>
-    /// <returns></returns>
-    private List<Vector2> OffsetPoints(List<Vector2> points)
+    /// <returns>Offset list of points</returns>
+    private List<Vector3Int> OffsetPoints(List<Vector3Int> points)
     {
-        var offsetPoints = new List<Vector2>();
+        var offsetPoints = new List<Vector3Int>();
 
         foreach (var point in points)
         {
@@ -180,5 +175,41 @@ public class Room : MonoBehaviour
         }
 
         return offsetPoints;
+    }
+
+    /// <summary>
+    /// Generate a list of random points
+    /// </summary>
+    /// <param name="length"></param>
+    /// <returns>List of random points inside tileMapSize</returns>
+    private List<Vector3Int> RandomPoints(int length)
+    {
+        var randomPoints = new List<Vector3Int>();
+
+        for (int i = 0; i < length; i++)
+            randomPoints.Add(RandomPoint());
+
+        return randomPoints;
+    }
+
+    /// <summary>
+    /// Generate a random point
+    /// </summary>
+    /// <returns>Random point inside tilemapSize</returns>
+    private Vector3Int RandomPoint()
+    {
+        Vector3Int randPos;
+        bool reject;
+
+        do
+        {
+            reject = false;
+            randPos = new Vector3Int(Random.Range(0, tilemapSize.x), Random.Range(0, tilemapSize.y));
+
+            foreach (var rect in rejectRects) if (rect.Contains(randPos)) reject = true;
+        }
+        while (reject);
+
+        return randPos;
     }
 }
