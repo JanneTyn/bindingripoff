@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected void DeathNoRewards()
     {
+        if (room) room.EnemyKilled();
         Destroy(gameObject);
     }
     protected void Start()

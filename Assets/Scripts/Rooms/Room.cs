@@ -137,7 +137,7 @@ public class Room : MonoBehaviour
     /// </summary>
     public void EnemyKilled()
     {
-        enemiesRemaining -= 1;
+        enemiesRemaining--;
         Debug.Log(enemiesRemaining + " enemies remaining");
         if (enemiesRemaining == 0)
         {

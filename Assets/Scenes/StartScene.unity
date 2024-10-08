@@ -424,7 +424,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1978520457}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1232,7 +1232,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1978520457}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1411,6 +1411,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828169153}
   m_CullTransparentMesh: 1
+--- !u!20 &1978520457 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2419649786816401095, guid: ce3f8218cd78e6848a112c78cff24070, type: 3}
+  m_PrefabInstance: {fileID: 1263066148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1990973242 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6023042214978822294, guid: 4ffab292c29b4ad428e1429939b82573, type: 3}
@@ -1860,6 +1865,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 6756402192209880373, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 330707fe6cef2e64980cf280607484c9, type: 2}
     - target: {fileID: 7324565230680038286, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1912,7 +1921,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 7.25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6756402192209880373, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
