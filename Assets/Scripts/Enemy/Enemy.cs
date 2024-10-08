@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0f, maxHealth);
         tint.FlashColor(SpriteTint.DamageRed);
+        DamageDisplayText.instance.DisplayDmgText(damageAmount, transform);
         if (currentHealth == 0f) Death();
     }
 
