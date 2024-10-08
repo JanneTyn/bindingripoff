@@ -95,10 +95,13 @@ public class StatDisplay : MonoBehaviour
     public void DisplayCurrentStats()
     {
         StatDisplayFinder("Max Health", "maxHealthIncrease");
+        StatDisplayFinder("Health Regen", "healthRegen");
+        StatDisplayFinder("Invincibility Frames", "iFramesLengthIncrease");
         StatDisplayFinder("Damage", "damageIncrease");
         StatDisplayFinder("Fire Rate", "fireRate");
         StatDisplayFinder("Defence", "armor");
-        StatDisplayFinder("Evasion", "dodge");
+        StatDisplayFinder("Dash", "dodge");
+        StatDisplayFinder("Dash Cooldown", "dashCooldownDecrease");
         StatDisplayFinder("Movement Speed", "moveSpeedIncrease");
     }
 
@@ -113,15 +116,18 @@ public class StatDisplay : MonoBehaviour
         
         //Debug.Log(stringStatName + " found");
 
+
         TMP_Text textComponent = StatObject.GetComponent<TMP_Text>();
         if (textComponent == null) { return; }
 
         if (player == null) { player = playerPrefab.GetComponent<Player>(); }
         var field = player.GetType().GetField(floatStatName);
         
+
         if (field != null)
         {
             float value = (float)field.GetValue(player);
+            if (value < 0) { value = value * -1; }
             textComponent.text = stringStatName + ": " + value;
         }
         else
