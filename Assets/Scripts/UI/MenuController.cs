@@ -8,6 +8,21 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    #region Singleton
+    public static MenuController instance;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if (instance != null && instance != this)
+        {
+            Debug.Log("Instance of MenuController already exists!");
+            enabled = false;
+        }
+        else instance = this;
+    }
+    #endregion
+
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject upgradeMenu;
 
@@ -41,6 +56,20 @@ public class MenuController : MonoBehaviour
         CameraController.instance.currentCameraPos = new Vector3(0, -0.720000029f, -10);
         SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
 
+        DestroyAllObjectsByName("BossBar(Clone)");
+
         Time.timeScale = 0f;
+    }
+
+    public void DestroyAllObjectsByName(string name)
+    {
+        GameObject[] objects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name == name)
+            {
+                Destroy(obj);
+            }
+        }
     }
 }

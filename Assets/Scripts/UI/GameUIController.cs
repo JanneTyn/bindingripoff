@@ -38,6 +38,8 @@ public class GameUIController : MonoBehaviour
         CameraController.instance.currentCameraPos = new Vector3(0, -0.720000029f, -10);
         SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
 
+        MenuController.instance.DestroyAllObjectsByName("BossBar(Clone)");
+
         Time.timeScale = 1f;
     }
 
