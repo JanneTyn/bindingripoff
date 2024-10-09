@@ -23,6 +23,7 @@ public class Level : MonoBehaviour
 
     private List<Vector2Int> roomLayout = new();
     private Transform player;
+    public int roomDepth;
 
     private void Start()
     {
@@ -48,6 +49,7 @@ public class Level : MonoBehaviour
             var room = Instantiate(Resources.Load("Room") as GameObject, currentRoom.transform.position + (Vector3)(Vector2)roomDirection * nextRoomDistance, Quaternion.identity);
             room.GetComponent<Room>().coordinate = currentRoom.coordinate + roomDirection;
             room.GetComponent<Room>().distanceToStartRoom = distanceToStart;
+            roomDepth = distanceToStart;
         }
         
         CameraController.instance.MoveCamera(roomDirection * nextRoomDistance);
