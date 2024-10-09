@@ -432,7 +432,7 @@ public class UpgradeMenu : MonoBehaviour
 
     public void SkipUpgrade()
     {
-        UpgradeMultiplier += 2;
+        UpgradeMultiplier += 1;
         RemoveButtonListeners();
         DisableUI();
         ReturnToGame();
