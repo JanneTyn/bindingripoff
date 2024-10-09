@@ -11,6 +11,7 @@ public class Room : MonoBehaviour
 {
     [HideInInspector] public Vector2Int coordinate;
     [HideInInspector] public int distanceToStartRoom;
+    [HideInInspector] private float playerLuckModifier = 1.0f;
     [SerializeField] private List<TileBase> tiles = new();
     [SerializeField] private TileBase holeTile;
     [SerializeField] private Tilemap objectTilemap;
@@ -105,6 +106,11 @@ public class Room : MonoBehaviour
         Debug.Log(enemiesRemaining + " enemies remaining");
 
         //same shit for weapons except there's only 1 prefab
+
+        float weaponChance = Random.Range(0, 1000);
+        if (weaponChance < 50 * ( 1.0f + (UpgradeMenu.currentTotalLuckUpgrade / 100))) { weapons = 2; }
+        else if (weaponChance < 500 * (1.0f + (UpgradeMenu.currentTotalLuckUpgrade / 100))) { weapons = 1; }
+        else { weapons = 0; }
 
         var weaponPickup = Resources.Load("WeaponPickup") as GameObject;
         var pickupPoints = OffsetPoints(RandomPoints(weapons));
