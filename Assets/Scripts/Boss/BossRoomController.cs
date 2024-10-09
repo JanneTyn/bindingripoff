@@ -35,6 +35,7 @@ public class BossRoomController : MonoBehaviour
             bossDoor.SetActive(true);
             Destroy(bossBar.gameObject);
             Instantiate(Resources.Load("Pickups/HealthPickup") as GameObject, Vector3.zero, Quaternion.identity);
+            StatDisplay.instance.BossCount();
         }
 
         bossBar.value = bossEntity.currentHealth / bossEntity.maxHealth;

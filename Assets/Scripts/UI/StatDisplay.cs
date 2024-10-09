@@ -40,6 +40,10 @@ public class StatDisplay : MonoBehaviour
 
     private int enemiesKilled = 0;
     [SerializeField]private GameObject killCounter;
+
+    private int bossesSlain = 0;
+    [SerializeField] private GameObject bossCounter;
+
     [SerializeField]private GameObject currentWeaponPrefab;
     void Start()
     {
@@ -69,6 +73,11 @@ public class StatDisplay : MonoBehaviour
     {
         enemiesKilled++;
         killCounter.GetComponent<TMP_Text>().text = ": " + enemiesKilled;
+    }
+    public void BossCount()
+    {
+        bossesSlain++;
+        bossCounter.GetComponent<TMP_Text>().text = ": " + bossesSlain;
     }
 
     private void SetCurrentWeapon()
