@@ -9,6 +9,7 @@ public class PlayerLeveling : MonoBehaviour
     public float levelXPThreshold = 100;
     public float totalXPRequired = 100;
     public int skillPoints = 0;
+    private float previousXp = 0; //for slider
     
     private PlayerStats stats;
     public UpgradeMenu upgradeMenu;
@@ -36,17 +37,20 @@ public class PlayerLeveling : MonoBehaviour
     public void IncreaseXP(float experience = 100)
     {
         currentExperience += experience;
+        
 
         if (currentExperience >= totalXPRequired)
         {
             PlayerLevelUp();
         }
+        StatDisplay.instance.UpdateXp(currentExperience - previousXp, levelXPThreshold);
     }
 
     private void PlayerLevelUp()
     {
         currentPlayerLevel++;
         skillPoints++;
+        previousXp += levelXPThreshold;
         upgradeMenu.OpenUpgradeMenu();
         SetNewLevelThreshold();
     }

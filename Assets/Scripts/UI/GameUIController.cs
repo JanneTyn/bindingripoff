@@ -43,6 +43,6 @@ public class GameUIController : MonoBehaviour
 
     public void RoomDepth(int roomDepth)
     {
-        roomDepthText.text = "Rooms Depth Level: " + roomDepth;
+        roomDepthText.text = "Room depth: " + roomDepth;
     }
 }

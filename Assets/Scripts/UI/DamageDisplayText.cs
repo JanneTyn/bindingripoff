@@ -33,10 +33,10 @@ public class DamageDisplayText : MonoBehaviour
 
         var text = dmgDisplayText.GetComponent<TMP_Text>();
 
-        text.text = "-" + dmgAmount.ToString("F1");
-        if (corruptDmg) { text.color = new Color(0.5f, 0.1f, 0.8f, 1); }
-        else if (player) { text.color = new Color(0.8f, 0.1f, 0.1f, 1); }
-        else { text.color = new Color(0.0f, 0.0f, 0.0f, 1); }
+        text.text = ((int)dmgAmount).ToString();
+        if (corruptDmg) { text.color = Color.magenta; }
+        else if (player) { text.color = Color.red; }
+        else { text.color = Color.yellow; }
 
         float elapsedTime = 0;
         Vector3 startingPos = pos.position;

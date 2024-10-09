@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4697310100839879615}
   - component: {fileID: 8496270085257814382}
   - component: {fileID: 6028763426409208576}
+  - component: {fileID: 6374275757047661173}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -325,6 +326,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8501db25dd7d18740964ef81531e2031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6374275757047661173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163709553974375063}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a957e37da95464baa8067fc6756f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScale: {x: 0.8, y: 0.8}
+  _endScale: {x: 0.8, y: 0.8}
+  _trailLifetime: 0.3
+  _spawnType: 0
+  _timeBetweenTrailSpawn: 0.05
+  _distanceBetweenTrailSpawn: 0
+  _alphaUpdateOn: 0
+  _maxAlpha: 0
+  _minAlpha: 0
+  _useSolidColors: 0
+  _rainbowMode: 0
+  _userSelectedColorPalette: []
 --- !u!1 &3614275538126715779
 GameObject:
   m_ObjectHideFlags: 0

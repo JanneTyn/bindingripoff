@@ -147,6 +147,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             dodgeTimer = 0f;
             StartCoroutine(DodgeRoutine());
+            StartCoroutine(DodgeTrailRoutine());
         }
     }
 
@@ -255,6 +256,16 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         yield return new WaitForSeconds(0.1f);
         dodging = false;
+    }
+    /// <summary>
+    /// Dodge trails
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator DodgeTrailRoutine()
+    {
+        trails.enabled = true;
+        yield return new WaitForSeconds(0.3f);
+        trails.enabled = false;
     }
 
     /// <summary>

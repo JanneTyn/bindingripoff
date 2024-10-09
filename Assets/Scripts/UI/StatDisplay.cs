@@ -31,7 +31,8 @@ public class StatDisplay : MonoBehaviour
     private Image WeaponImage;
 
     [SerializeField] GameObject playerPrefab;
-
+    [SerializeField] Slider xpSlider;
+    [SerializeField] TMP_Text xpText;
     [SerializeField]private GameObject CurrentLevelText;
 
     private int roomsCleared = 0;
@@ -53,12 +54,9 @@ public class StatDisplay : MonoBehaviour
 
     void Update()
     {
-        CurrentLevelText.GetComponent<TMP_Text>().text = "Player level: " + playerLeveling.currentPlayerLevel;
+        CurrentLevelText.GetComponent<TMP_Text>().text = "Lvl: " + playerLeveling.currentPlayerLevel;
 
         SetCurrentWeapon();
-
-
-
     }
 
     public void RoomCleared()
@@ -70,7 +68,7 @@ public class StatDisplay : MonoBehaviour
     public void KillCount()
     {
         enemiesKilled++;
-        killCounter.GetComponent<TMP_Text>().text = "Kill counter: " + enemiesKilled;
+        killCounter.GetComponent<TMP_Text>().text = ": " + enemiesKilled;
     }
 
     private void SetCurrentWeapon()
@@ -155,5 +153,15 @@ public class StatDisplay : MonoBehaviour
         {
             Debug.LogError("Parent object not found!");
         }
+    }
+
+    /// <summary>
+    /// Update the xp slider
+    /// </summary>
+    /// <param name="xpAmount"></param>
+    public void UpdateXp(float currentXp, float maxXp)
+    {
+        xpText.text = currentXp + " / " + maxXp;
+        xpSlider.value = currentXp / maxXp;
     }
 }
