@@ -9,7 +9,7 @@ public class Flamethrower : Weapon
 
     public override void Shoot(GameObject origin, Vector2 direction, bool shotByPlayer, float damageMultiplier = 1f)
     {
-        var projectile = Instantiate(projectilePrefab, origin.transform.position, Quaternion.identity);
+        var projectile = Instantiate(projectilePrefab, origin.transform.position + Vector3.up + (Vector3)direction * 1.2f, Quaternion.identity);
         float spreadRNG = UnityEngine.Random.Range(-0.5f, 0.5f); // if randomSpread is 5f, possible spread range is (-2.5f // 2.5f)
         var newDirection =  Quaternion.AngleAxis(randomSpread * spreadRNG, Vector3.forward) * direction; // apply some randomness to the projectile direction
 

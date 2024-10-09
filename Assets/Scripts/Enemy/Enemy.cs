@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageAmount)
     {
+        if (!aiActive) return;
+
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0f, maxHealth);
         tint.FlashColor(SpriteTint.DamageRed);
         DamageDisplayText.instance.DisplayDmgText(damageAmount, transform);

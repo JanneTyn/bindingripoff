@@ -14,7 +14,7 @@ public class Shotgun : Weapon
 
         for (int i = 0; i < projectilesPerShot; i++)
         {
-            projectiles.Add(Instantiate(projectilePrefab, origin.transform.position, Quaternion.identity).GetComponent<Projectile>());
+            projectiles.Add(Instantiate(projectilePrefab, origin.transform.position + Vector3.up + (Vector3)direction * 1.2f, Quaternion.identity).GetComponent<Projectile>());
         }
 
         float spread_angle = 0; // by default we assume we shoot one projectile
