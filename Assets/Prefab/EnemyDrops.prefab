@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthDropChance: 10
+  weaponDropChance: 3

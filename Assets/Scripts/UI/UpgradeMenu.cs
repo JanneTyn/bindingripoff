@@ -10,7 +10,7 @@ public class UpgradeMenu : MonoBehaviour
 {
     //nyt kun alkaa olla enemmän upgradeja niin huomaa että aika paskasti suunniteltu :D
 
-    public string[] upgradesList = { "Health", "Health Regeneration", "Health Pickup", "Damage", "Fire Rate", "Defense", "Evasion", "IFrames", "Movement Speed", "Dash" };
+    public string[] upgradesList = { "Health", "Health Regeneration", "Health Pickup", "Damage", "Fire Rate", "Defense", "Evasion", "IFrames", "Movement Speed", "Dash", "Luck" };
     public int UpgradeMultiplier = 1;
     public int baseHPUpgrade = 10; //every upgrade has the base increase
     public int extraHPUpgrade = 0; //rises by x amount every upgrade
@@ -29,11 +29,14 @@ public class UpgradeMenu : MonoBehaviour
     public float healthRegenMaxCap = 10;
     public float dashCooldownUpgrade = -10;
     public float dashCooldownMaxCap = -80;
+    public float luckUpgrade = 10;
+    public float luckMaxCap = 100;
 
     public const string healingSuffix = "Healing";
     public const string damagingSuffix = "Damaging";
     public const string mobilitySuffix = "Mobility";
     public const string defenseSuffix = "Defense";
+    public const string luckSuffix = "Luck";
 
     private List<float> allUpgrades = new List<float>();
     private int totalHPUpgrade = 0;
@@ -47,12 +50,15 @@ public class UpgradeMenu : MonoBehaviour
     private float currenttotalHealthPickUpUpgrade = 0;
     private float totalHealthRegenUpgrade = 0;
     private float totalDashUpgrade = 0;
+    private float totalLuckUpgrade = 0;
+    public static float currentTotalLuckUpgrade = 0;
     private bool defenseCapped = false;
     private bool dodgeCapped = false;
     private bool iframesCapped = false;
     private bool healthPickUpCapped = false;
     private bool healthRegenCapped = false;
     private bool dashCapped = false;
+    private bool luckCapped = false;
 
     private bool objectsInitialized = false;
     private Player player;  
@@ -134,6 +140,7 @@ public class UpgradeMenu : MonoBehaviour
                     if (upgradesList[upgradeID] == "Health Pickup" && healthPickUpCapped) continue;
                     if (upgradesList[upgradeID] == "Health Regeneration" && healthRegenCapped) continue;
                     if (upgradesList[upgradeID] == "Dash" && dashCapped) continue;
+                    if (upgradesList[upgradeID] == "Luck" && luckCapped) continue;
 
                     rolledUpgrades.Add(upgradeID);
                     upgradeOptionList[i].GetComponent<TMP_Text>().text = upgradesList[upgradeID];
@@ -242,6 +249,13 @@ public class UpgradeMenu : MonoBehaviour
                     dashCapped = true;
                 }
                 break;
+            case "Luck":
+                currentTotalLuckUpgrade += totalDashUpgrade;
+                if (currentTotalLuckUpgrade >= luckMaxCap)
+                {
+                    luckCapped = true;
+                }
+                break;
         }
 
         UpgradeMultiplier = 1;
@@ -298,8 +312,8 @@ public class UpgradeMenu : MonoBehaviour
                 {
                     totaliframesUpgrade = (iframesMaxCap - player.iFramesLengthIncrease);
                 }
-                //float totalpercentage = totaliframesUpgrade / 100;
-                upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totaliframesUpgrade + "% invincibility after being damaged";
+                float totalpercentage = totaliframesUpgrade / 100;
+                upgradeOptionList[i].GetComponent<TMP_Text>().text = "+" + totalpercentage.ToString().Replace(",", ".") + "s iframes duration";
                 SetSuffixTitle(defenseSuffix, i);
                 break;
             case "Health Pickup":
@@ -329,6 +343,15 @@ public class UpgradeMenu : MonoBehaviour
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = totalDashUpgrade + "% Dash Cooldown";
                 SetSuffixTitle(mobilitySuffix, i);
                 break;
+            case "Luck":
+                totalLuckUpgrade = luckUpgrade * UpgradeMultiplier;
+                if (currentTotalLuckUpgrade + luckUpgrade > luckMaxCap)
+                {
+                    totalLuckUpgrade = (int)(luckMaxCap - currentTotalLuckUpgrade);
+                }
+                upgradeOptionList[i].GetComponent<TMP_Text>().text = totalLuckUpgrade + "% More Weapon Drops";
+                SetSuffixTitle(luckSuffix, i);
+                break;
             default:
                 upgradeOptionList[i].GetComponent<TMP_Text>().text = "Unknown Upgrade";
                 break;
@@ -352,6 +375,9 @@ public class UpgradeMenu : MonoBehaviour
             case defenseSuffix:
                 upgradeSuffixList[i].GetComponent<TMP_Text>().color = new Color(0.8f, 0.8f, 0.8f, 1);
                 break;
+            case luckSuffix:
+                upgradeSuffixList[i].GetComponent<TMP_Text>().color = new Color(0.8f, 0.1f, 0.8f, 1);
+                break;
         }
     }
 
@@ -368,6 +394,7 @@ public class UpgradeMenu : MonoBehaviour
         allUpgrades.Add(player.iFramesLengthIncrease);
         allUpgrades.Add(player.moveSpeedIncrease);
         allUpgrades.Add(Math.Abs(player.dashCooldownDecrease));
+        allUpgrades.Add(currentTotalLuckUpgrade);
     }
     public void InitializeCurrentStatsList()
     {
