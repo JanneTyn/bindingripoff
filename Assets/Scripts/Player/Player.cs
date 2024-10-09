@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float dodgeVelocity;
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] public float maxHealth;
-    [HideInInspector] public float currentHealth;
+    [SerializeField] public float currentHealth;
     
     private float movementSmoothing = .05f;
     private float shootTimer, dodgeTimer;

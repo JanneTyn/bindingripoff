@@ -29,7 +29,7 @@ public class HomingEnemy : Enemy
         {
             if(dmg is Player)
             {
-                dmg.TakeDamage(20);
+                dmg.TakeDamage(20 * damageMultiplier);
                 DeathNoRewards();
             }
         }

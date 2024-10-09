@@ -20,6 +20,8 @@ public class TestEnemy : Enemy
 
     private void Start()
     {
+        aiTime = aiTime - (aiTime / 40 * TestDifficultyScaler.instance.currentRoomDifficulty);
+        if (aiTime < 0.5f) aiTime = 0.5f;
         timer = aiTime;
         base.Start();
     }

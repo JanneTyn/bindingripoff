@@ -21,23 +21,10 @@ public class PlayerLeveling : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //IncreaseXP(20);
-        }
 
-        if (skillPoints > 0)
-        {
-            AssignSkillPoints();
-        }
-    }
-
-    public void IncreaseXP(float experience = 100)
+    public void IncreaseXP(float experience = 50)
     {
-        currentExperience += experience;
-        
+        currentExperience += experience * (TestDifficultyScaler.instance.currentRoomDifficulty);
 
         if (currentExperience >= totalXPRequired)
         {
@@ -49,7 +36,6 @@ public class PlayerLeveling : MonoBehaviour
     private void PlayerLevelUp()
     {
         currentPlayerLevel++;
-        skillPoints++;
         previousXp += levelXPThreshold;
         upgradeMenu.OpenUpgradeMenu();
         SetNewLevelThreshold();
@@ -60,25 +46,6 @@ public class PlayerLeveling : MonoBehaviour
         levelXPThreshold = 30 + Mathf.Round(levelXPThreshold * 1.1f);
         Debug.Log("new threshold: " + levelXPThreshold);
         totalXPRequired = totalXPRequired + levelXPThreshold;
-    }
-
-    void AssignSkillPoints() //temporary num inputs, to be replaced with UI
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            stats.IncreaseMaxHealth();
-            skillPoints--;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (stats.regenAmountCapped == false)
-            {
-                stats.IncreaseRegenAmount();
-                skillPoints--;
-            }
-        }
-
     }
 
 }

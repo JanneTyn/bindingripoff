@@ -23,6 +23,8 @@ public class ShootAtPlayerEnemy : Enemy
     private void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        aiTime = aiTime - (aiTime / 40 * TestDifficultyScaler.instance.currentRoomDifficulty);
+        if (aiTime < 0.5f) aiTime = 0.5f;
         timer = aiTime;
         DecideDirection();
         enemyFSM = EnemyStates.Move;
