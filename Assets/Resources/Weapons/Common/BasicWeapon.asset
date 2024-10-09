@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf8699274a859f45aa60b29a80e7c6a, type: 3}
   m_Name: BasicWeapon
   m_EditorClassIdentifier: 
+  playerVisualWeaponType: 0
   rarity: 0
   fireRate: 2
   damage: 20
   projectileSpeed: 10
   projectileLifetime: 2
-  projectilesPerShot: 1
-  projectileSpread: 0
-  randomSpread: 5
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
-  sprite: {fileID: 21300000, guid: cbe26d8b0acd50b4e97d62e805ba741a, type: 3}
+  sprite: {fileID: 21300000, guid: ddb9e6e17bed36a4391d417451648d1f, type: 3}
+  randomSpread: 5

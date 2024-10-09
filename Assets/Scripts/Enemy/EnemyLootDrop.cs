@@ -16,7 +16,7 @@ public class EnemyLootDrop : MonoBehaviour
     public void RollEnemyDrop(Transform enemyPos)
     {
         int weapondrop = Random.Range(0, 101);
-        if (weapondrop < (weaponDropChance * weaponChanceMultiplier))
+        if (weapondrop < (weaponDropChance * (1.0f + (UpgradeMenu.currentTotalLuckUpgrade / 100))))
         {
             var weaponPickup = Resources.Load("WeaponPickup") as GameObject;
             var go = Instantiate(weaponPickup, enemyPos.position, Quaternion.identity);
