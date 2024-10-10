@@ -12,6 +12,9 @@ public class Door : MonoBehaviour
     public Vector2Int doorDirection;
     private Room currentRoom;
 
+    /// <summary>
+    /// Disable the collision and sprites on this door and enable the trigger
+    /// </summary>
     public void Unlock()
     {
         currentRoom = transform.root.GetComponent<Room>();

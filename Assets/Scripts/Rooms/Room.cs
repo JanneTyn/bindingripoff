@@ -18,6 +18,7 @@ public class Room : MonoBehaviour
     [SerializeField] private Tilemap holeTilemap;
     [SerializeField] private List<Door> doors = new();
     [SerializeField] private List<Rect> rejectRects;
+    [SerializeField] private List<Vector3Int> filledPositions;
 
     private Vector3Int generationOffset = new(-13, -8, 0);
     private Vector2Int tilemapSize = new(25, 12);
@@ -212,9 +213,11 @@ public class Room : MonoBehaviour
             reject = false;
             randPos = new Vector3Int(Random.Range(0, tilemapSize.x), Random.Range(0, tilemapSize.y));
 
+            if (filledPositions.Contains(randPos)) reject = true;
             foreach (var rect in rejectRects) if (rect.Contains(randPos)) reject = true;
         }
         while (reject);
+        filledPositions.Add(randPos);
 
         return randPos;
     }
