@@ -19,5 +19,5 @@ MonoBehaviour:
   projectileSpeed: 22
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
-  sprite: {fileID: 21300000, guid: 57678ac2afb7a4248b2230ae637419fc, type: 3}
+  sprite: {fileID: 21300000, guid: 7f448132682b5774dafc8cf869e8f3a2, type: 3}
   randomSpread: 0

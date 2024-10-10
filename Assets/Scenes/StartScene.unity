@@ -887,6 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b407d562d26b8fa40a7a1c301dd579e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomDepth: 0
 --- !u!4 &711896234
 Transform:
   m_ObjectHideFlags: 0
@@ -1700,6 +1701,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 357982115}
     m_Modifications:
+    - target: {fileID: 824393199327160827, guid: e836def8140ebf44d867c97de5f76a49, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f038a5f6dfb5ab24293bc020c93b353c, type: 3}
     - target: {fileID: 1289930332131982462, guid: e836def8140ebf44d867c97de5f76a49, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
