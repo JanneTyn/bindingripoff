@@ -1789,7 +1789,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3689807813278077850, guid: 7ad2333c194956341963f775400ad845, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.61
+      value: -5.34
       objectReference: {fileID: 0}
     - target: {fileID: 3689807813278077850, guid: 7ad2333c194956341963f775400ad845, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1831,18 +1831,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossDoor
       objectReference: {fileID: 0}
-    - target: {fileID: 8771879984406650032, guid: 7ad2333c194956341963f775400ad845, type: 3}
-      propertyPath: m_Size.x
-      value: 1.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 8771879984406650032, guid: 7ad2333c194956341963f775400ad845, type: 3}
-      propertyPath: m_Size.y
-      value: 0.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 8771879984406650032, guid: 7ad2333c194956341963f775400ad845, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.71
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1859,6 +1847,14 @@ PrefabInstance:
     - target: {fileID: 967238346573959351, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: startingRoom
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074321751603458716, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813086019157634670, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 5547498674522291007, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: m_Name
