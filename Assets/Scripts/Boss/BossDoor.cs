@@ -24,7 +24,7 @@ public class BossDoor : MonoBehaviour
             case Direction.Out:
                 var async2 = SceneManager.LoadSceneAsync("NewLevel", LoadSceneMode.Additive);
                 async2.completed += SwitchLevel;
-                TestDifficultyScaler.currentLevel++;
+                TestDifficultyScaler.instance.currentLevel++;
                 break;
         }
     }

@@ -6,7 +6,9 @@ public abstract class Weapon : ScriptableObject
     {
         Common,
         Uncommon,
-        Rare
+        Rare,
+        Epic,
+        Legendary
     }
     public enum PlayerVisualWeaponType
     {
