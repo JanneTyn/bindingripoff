@@ -1959,22 +1959,6 @@ PrefabInstance:
       propertyPath: doors.Array.data[1]
       value: 
       objectReference: {fileID: 2132540444}
-    - target: {fileID: 2806317137083934885, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
-      propertyPath: m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2806317137083934885, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
-      propertyPath: m_SortOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2806317137083934885, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
-      propertyPath: m_DetectChunkCullingBounds
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4696101486151415193, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
-      propertyPath: doorDirection.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4979313416860632309, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: m_Size.x
       value: 4
