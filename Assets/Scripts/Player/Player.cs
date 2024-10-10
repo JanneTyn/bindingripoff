@@ -181,7 +181,7 @@ public class Player : MonoBehaviour, IDamageable
             
             Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " damage");
             currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
-            DamageDisplayText.instance.DisplayDmgText(damageAmount, transform, true);
+            DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true);
             if (currentHealth == 0f) Death();
             tinter.FlashColor(SpriteTint.DamageRed);
             CameraController.instance.StartShake(0.2f, 0.2f);
@@ -192,7 +192,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         //Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " corruption damage");
         currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
-        if (damageAmount * PercentageToMultiplier(armor) > 1f) { DamageDisplayText.instance.DisplayDmgText(damageAmount, transform, true, true); }
+        if (damageAmount * PercentageToMultiplier(armor) > 1f) { DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true, true); }
         if (currentHealth == 0f) Death();
     }
 
