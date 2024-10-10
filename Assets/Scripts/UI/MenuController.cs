@@ -61,6 +61,11 @@ public class MenuController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
     public void DestroyAllObjectsByName(string name)
     {
         GameObject[] objects = FindObjectsOfType<GameObject>();

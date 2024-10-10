@@ -92,6 +92,12 @@ public class StatDisplay : MonoBehaviour
             case Weapon.Rarity.Rare:
                 WeaponImage.color = Color.blue;
                 break;
+            case Weapon.Rarity.Epic:
+                WeaponImage.color = new Color(0.8f, 0.1f, 0.8f, 1);
+                break;
+            case Weapon.Rarity.Legendary:
+                WeaponImage.color = new Color(1.0f, 0.6f, 0f, 1);
+                break;
             default:
                 WeaponImage.color = Color.gray;
                 break;
