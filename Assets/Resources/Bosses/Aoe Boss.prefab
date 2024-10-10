@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8010872245720722925}
   - component: {fileID: 7495335992615019152}
   m_Layer: 9
-  m_Name: Test Boss
+  m_Name: Aoe Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

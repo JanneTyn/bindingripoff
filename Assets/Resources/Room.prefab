@@ -2521,7 +2521,6 @@ MonoBehaviour:
   distanceToStartRoom: 0
   tiles:
   - {fileID: 11400000, guid: c3b30ec3fdb632a449d21f1dfc44c465, type: 2}
-  - {fileID: 11400000, guid: 53cf7c852c3ae9943b9aa70721065713, type: 2}
   holeTile: {fileID: 11400000, guid: 47bd693bd780c8f47b5d5e2f8ddf53f9, type: 2}
   objectTilemap: {fileID: 1255427198203775637}
   holeTilemap: {fileID: 1714500316864062204}
