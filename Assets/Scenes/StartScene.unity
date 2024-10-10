@@ -1827,6 +1827,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: VelocityModule.speedModifier.scalar
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 43947
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.5153613
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
+      value: 0.491333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486638807762536550, guid: 7ad2333c194956341963f775400ad845, type: 3}
+      propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8051380649459876505, guid: 7ad2333c194956341963f775400ad845, type: 3}
       propertyPath: m_Name
       value: BossDoor
