@@ -250,7 +250,7 @@ public class UpgradeMenu : MonoBehaviour
                 }
                 break;
             case "Luck":
-                currentTotalLuckUpgrade += totalDashUpgrade;
+                currentTotalLuckUpgrade += totalLuckUpgrade;
                 if (currentTotalLuckUpgrade >= luckMaxCap)
                 {
                     luckCapped = true;

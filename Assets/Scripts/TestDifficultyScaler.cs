@@ -6,7 +6,7 @@ public class TestDifficultyScaler : MonoBehaviour
 {
     #region Singleton
     public static TestDifficultyScaler instance;
-    public static int currentLevel = 0;
+    public int currentLevel = 0;
     private void Awake()
     {
         if (instance != null && instance != this)

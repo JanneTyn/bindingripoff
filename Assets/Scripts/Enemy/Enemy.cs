@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] public float damageMultiplier;
     protected Vector2 movementVector = Vector2.zero;
     private PlayerLeveling playerLeveling;
+    private bool alreadyDead = false;
 
     public void TakeDamage(float damageAmount)
     {
@@ -36,7 +37,7 @@ public class Enemy : MonoBehaviour, IDamageable
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0f, maxHealth);
         tint.FlashColor(SpriteTint.DamageRed);
         DamageDisplayText.instance.DisplayDmgText(damageAmount, transform);
-        if (currentHealth == 0f) Death();
+        if (currentHealth == 0f && !alreadyDead) Death();
     }
 
     /// <summary>
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour, IDamageable
     /// </summary>
     protected void Death()
     {
+        alreadyDead = true;
         playerLeveling.IncreaseXP();
         if (room) room.EnemyKilled();
         enemyDrop.RollEnemyDrop(this.transform);
