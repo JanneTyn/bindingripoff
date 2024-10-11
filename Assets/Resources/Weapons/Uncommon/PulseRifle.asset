@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PulseRifle
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 1
-  rarity: 0
+  rarity: 1
   fireRate: 7
   damage: 7.5
   projectileSpeed: 15
