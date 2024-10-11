@@ -63,6 +63,10 @@ public class Player : MonoBehaviour, IDamageable
         inputActions.Enable();
 
         inputActions.Gameplay.Dodge.performed += context => Dash();
+        if (ControlUpdate.instance != null)
+        {
+            ControlUpdate.instance.Rebinds();
+        }
     }
     private void OnEnable()
     {
