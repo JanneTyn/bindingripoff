@@ -274,10 +274,12 @@ public class Player : MonoBehaviour, IDamageable
     /// <returns></returns>
     private IEnumerator IFrameRoutine()
     {
-        spriteRenderer.color = new Color(1, 1, 1, 0.8f);
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        weaponRenderer.color = new Color(1, 1, 1, 0.5f);
         iFramesActive = true;
         yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
         spriteRenderer.color = new Color(1, 1, 1, 1);
+        weaponRenderer.color = new Color(1, 1, 1, 1);
         iFramesActive = false;
     }
 
