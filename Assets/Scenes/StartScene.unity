@@ -503,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 957198274}
   upgradeMenu: {fileID: 1484722470}
+  gameplayUI: {fileID: 466697855}
 --- !u!114 &357982118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +524,11 @@ MonoBehaviour:
   killCounter: {fileID: 281571456}
   bossCounter: {fileID: 527804239}
   currentWeaponPrefab: {fileID: 283828702}
+--- !u!1 &466697855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4538395448732408688, guid: e836def8140ebf44d867c97de5f76a49, type: 3}
+  m_PrefabInstance: {fileID: 2058780733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &514216956
 GameObject:
   m_ObjectHideFlags: 0

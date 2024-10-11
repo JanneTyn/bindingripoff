@@ -18,6 +18,6 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 3
   projectileLifetime: 3
-  projectilePrefab: {fileID: 568801683787549821, guid: df5ba78f2c437bd459d7b6bcf098893c, type: 3}
+  projectilePrefab: {fileID: 568801683787549821, guid: ffd71ea35d28fb242ab9579c2827cf5e, type: 3}
   sprite: {fileID: 0}
   randomSpread: 0
