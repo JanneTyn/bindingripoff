@@ -29,8 +29,6 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         GameObject.FindWithTag("Player").GetComponent<Player>().inputActions.Gameplay.Pause.performed += Pause;
-
-        Pause();
     }
 
     private void Pause(InputAction.CallbackContext context) => Pause();
