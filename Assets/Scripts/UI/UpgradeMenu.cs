@@ -457,10 +457,4 @@ public class UpgradeMenu : MonoBehaviour
         this.gameObject.SetActive(false);     
         gameplayCanvas.enabled = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 }

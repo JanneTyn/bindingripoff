@@ -169,7 +169,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (Random.Range(0, 100) < dodge) //dodge success
         {
-            StartCoroutine(DodgeWasSuccessful()); //ei toiminnassa
+            StartCoroutine(DodgeWasSuccessful());
             Debug.Log("Player dodged");
         }
         else //take dmg
@@ -191,12 +191,15 @@ public class Player : MonoBehaviour, IDamageable
     public void TakeCorruptionDamage(float damageAmount)
     {
         //Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " corruption damage");
-        currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
-        if (damageAmount * PercentageToMultiplier(armor) > 1f) { DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true, true); }
-        if (currentHealth == 0f) Death();
+        if (damageAmount * PercentageToMultiplier(armor) > 1f)
+        {
+            currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
+            DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true, true);
+            if (currentHealth == 0f) Death();
+        }
     }
 
-    IEnumerator DodgeWasSuccessful() //tää paska ei toiminu viel
+    IEnumerator DodgeWasSuccessful()
     {
         var dodgeText = Instantiate(dodgeT, this.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         float elapsedTime = 0;
@@ -274,10 +277,12 @@ public class Player : MonoBehaviour, IDamageable
     /// <returns></returns>
     private IEnumerator IFrameRoutine()
     {
-        spriteRenderer.color = new Color(1, 1, 1, 0.8f);
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        weaponRenderer.color = new Color(1, 1, 1, 0.5f);
         iFramesActive = true;
         yield return new WaitForSeconds(1f * PercentageToMultiplier(iFramesLengthIncrease));
         spriteRenderer.color = new Color(1, 1, 1, 1);
+        weaponRenderer.color = new Color(1, 1, 1, 1);
         iFramesActive = false;
     }
 
