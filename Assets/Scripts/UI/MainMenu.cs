@@ -3,32 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.InputSystem;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-
     private Resolution[] resolutions;
 
-    public InputActionAsset inputActions;
-    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
     void Start()
     {
         InitialiseResolutions();
-
-      /**  inputActions = GetComponent<PlayerInput>().actions;
-        InputAction dodgeAction = inputActions.FindAction("Gameplay/Dodge");
-        RebindKey(dodgeAction, "X");**/
+        resolutionDropdown.onValueChanged.AddListener(SetResolution); 
     }
 
     void Update()
     {
 
     }
+
     public void StartGame()
     {
         SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
     }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -67,21 +62,6 @@ public class MainMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void RebindKey(InputAction action, string newKey)
-    {
-        if (rebindingOperation != null)
-        {
-            rebindingOperation.Dispose();
-        }
-
-        rebindingOperation = action.PerformInteractiveRebinding()
-            .WithControlsExcluding("Mouse")
-            .WithBindingGroup(newKey)
-            .OnComplete(operation => {
-                rebindingOperation.Dispose();
-            })
-            .Start();
-    }
 }
 
 

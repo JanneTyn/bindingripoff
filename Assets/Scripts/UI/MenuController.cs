@@ -33,6 +33,10 @@ public class MenuController : MonoBehaviour
         Pause();
     }
 
+    private void Update()
+    {
+        if (pauseMenu.activeSelf && Time.timeScale == 1f) { pauseMenu.SetActive(false); return; }
+    }
     private void Pause(InputAction.CallbackContext context) => Pause();
     public void Pause()
     {
@@ -63,7 +67,16 @@ public class MenuController : MonoBehaviour
 
     public void ExitToMenu()
     {
+        var go = new GameObject("Tuhotaan kaikki!!! muahaha");
+        DontDestroyOnLoad(go);
+
+        foreach (var obj in go.scene.GetRootGameObjects())
+        {
+            SceneManager.MoveGameObjectToScene(obj, SceneManager.GetActiveScene());
+        }
+
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Time.timeScale = 0f;
     }
 
     public void DestroyAllObjectsByName(string name)

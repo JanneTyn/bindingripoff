@@ -732,6 +732,14 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5807734054143774688, guid: 5dff68d773df58e44b0e6864c614696b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 357982117}
+    - target: {fileID: 5807734054143774688, guid: 5dff68d773df58e44b0e6864c614696b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 6386329136149810153, guid: 5dff68d773df58e44b0e6864c614696b, type: 3}
       propertyPath: m_Name
       value: pause
