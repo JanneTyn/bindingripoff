@@ -2270,6 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixerAsset: {fileID: 24100000, guid: f5a44208be4d2b646ae73d143281f9d1, type: 2}
+  audioClipListAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

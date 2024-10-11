@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2978923046899252712}
   - component: {fileID: 4459831415197768298}
   - component: {fileID: 7495335992615019152}
-  - component: {fileID: 7447258910589132102}
+  - component: {fileID: 7447141142579014165}
   m_Layer: 9
-  m_Name: Spray Boss
+  m_Name: MinionBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -529204963, guid: 47f012e41bd5a1e4ba1148a5f4475672, type: 3}
+  m_Sprite: {fileID: -601031523, guid: ada685d9b5fde3048b8e631ae6b84b3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ Animator:
   m_GameObject: {fileID: 5089195284089284629}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b72fbe4d8db08b44e82cf58c446b4128, type: 2}
+  m_Controller: {fileID: 22100000, guid: 5951e8b1e0cf53540919c25683919b41, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -173,7 +173,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 3.5}
+    oldSize: {x: 2.5, y: 4}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8501db25dd7d18740964ef81531e2031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7447258910589132102
+--- !u!114 &7447141142579014165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,17 +203,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5089195284089284629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f76da02de148d8f4e99376630a4ceb96, type: 3}
+  m_Script: {fileID: 11500000, guid: 61aadbeb43c6b4943bb3cbb967ae4bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 4
   room: {fileID: 0}
   enemyDrop: {fileID: 0}
-  currentHealth: 0
+  currentHealth: 500
   tint: {fileID: 0}
   maxHealth: 500
   baseMaxHealth: 500
   maxHealthMultiplier: 1
   damageMultiplier: 1
-  aiTime: 2
-  weapon: {fileID: 11400000, guid: d582eed4145fb3a478ecd5f7359c0241, type: 2}
+  aiTime: 1
+  weapon: {fileID: 11400000, guid: 6db19281f1393994997bc968e334f6bc, type: 2}
+  minionPrefab: {fileID: 6461076203732867064, guid: 32da97570c2c97d4187c67e8813c6f61, type: 3}
