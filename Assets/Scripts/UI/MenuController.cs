@@ -74,7 +74,7 @@ public class MenuController : MonoBehaviour
         }
 
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
     }
 
     public void DestroyAllObjectsByName(string name)
