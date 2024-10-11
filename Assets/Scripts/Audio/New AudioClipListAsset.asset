@@ -13,3 +13,27 @@ MonoBehaviour:
   m_Name: New AudioClipListAsset
   m_EditorClassIdentifier: 
   testClip: {fileID: 0}
+  pickupItem: {fileID: 8300000, guid: c1d4e8395df6a204db3fe9d676478c96, type: 3}
+  pickupWeapon: {fileID: 8300000, guid: f28b19c95ac3a374fa6a569f51a136a9, type: 3}
+  explosion: {fileID: 8300000, guid: 92dab2af6528ddd47b688b4d68fdda49, type: 3}
+  teleport: {fileID: 8300000, guid: e76e8ed4047ed41499f0e393f808e1dc, type: 3}
+  doorOpen: {fileID: 8300000, guid: 4b36bb8185197a448bfbad7020990cb0, type: 3}
+  gameOver: {fileID: 8300000, guid: 734943c024df8714ca8c4ae662d9496a, type: 3}
+  weaponShoot: {fileID: 8300000, guid: de532d338a59c7742bf43e8b0a71ed19, type: 3}
+  weaponFlamethrowerShoot: {fileID: 8300000, guid: f1d2d4da4a99bf842a483c15e0683b98, type: 3}
+  weaponPulserifleShoot: {fileID: 8300000, guid: 5c1900497314c674d8c57eafddd274a5, type: 3}
+  weaponPulserifleBounce: {fileID: 8300000, guid: 987ded38c4b9d9f4ab06d35749cf20d8, type: 3}
+  weaponRocketShoot: {fileID: 8300000, guid: ded7c94c7c606704a83d114ce2c10937, type: 3}
+  weaponShotgunShoot: {fileID: 8300000, guid: ded7c94c7c606704a83d114ce2c10937, type: 3}
+  uiUpgrademenuOpen: {fileID: 8300000, guid: 180e13b51e446d840b483c2d004e8264, type: 3}
+  uiUpgradeChosen: {fileID: 8300000, guid: f28b19c95ac3a374fa6a569f51a136a9, type: 3}
+  uiButtonPress: {fileID: 8300000, guid: 987ded38c4b9d9f4ab06d35749cf20d8, type: 3}
+  enemyHurt: {fileID: 8300000, guid: 503a9bc06f9aa8042b8462a028c349ba, type: 3}
+  enemyDie: {fileID: 8300000, guid: 388e5ab88e5dd8541a878d247f963325, type: 3}
+  enemyShoot: {fileID: 8300000, guid: 0e6a60569461a7f4281f62d0ca33cf27, type: 3}
+  enemyBossDie: {fileID: 8300000, guid: cab19c59b931be244a82aadc2e13d169, type: 3}
+  playerHurt: {fileID: 8300000, guid: 1e5a78737b94a3a4387005df47900488, type: 3}
+  playerDash: {fileID: 8300000, guid: 05ef08f44cdfc0e48bbf79e2d0f8e410, type: 3}
+  musicTitle: {fileID: 8300000, guid: c9cb0615100d01c43b565b29899ba55d, type: 3}
+  music1: {fileID: 8300000, guid: b9391aae53ab8644fb75c0cafb76ef07, type: 3}
+  music2: {fileID: 8300000, guid: cd032239339aa3848b3305229cadf262, type: 3}
