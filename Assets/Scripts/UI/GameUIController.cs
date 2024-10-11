@@ -34,9 +34,17 @@ public class GameUIController : MonoBehaviour
         playerComponent.currentHealth = 100f;
         playerComponent.animator.SetBool("paused", false);
 
-
         CameraController.instance.currentCameraPos = new Vector3(0, -0.720000029f, -10);
-        SceneManager.LoadScene("NewLevel", LoadSceneMode.Single);
+
+        var go = new GameObject("Tuhotaan kaikki!!! muahaha");
+        DontDestroyOnLoad(go);
+
+        foreach (var obj in go.scene.GetRootGameObjects()) 
+        {
+            SceneManager.MoveGameObjectToScene(obj, SceneManager.GetActiveScene()); 
+        }
+
+        SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
 
         MenuController.instance.DestroyAllObjectsByName("BossBar(Clone)");
 
