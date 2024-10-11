@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class ControlUpdate : MonoBehaviour
 {
     public static ControlUpdate instance;
     private Player player;
+
+    private string dodgeBind;
     void Start()
     {
-        
+        ChangeBind("dodge", "<Keyboard>/x");
     }
 
     void Update()
@@ -20,19 +23,16 @@ public class ControlUpdate : MonoBehaviour
     {
         player = GameObject.Find("TestPlayer").GetComponent<Player>();
         Debug.Log(player);
-        InputAction dodgeAction = player.inputActions.FindAction("Gameplay/Dodge");
-        Debug.Log(dodgeAction);
-        if (dodgeAction == null)
+        if (player.inputActions.FindAction("Gameplay/Dodge") != null && dodgeBind != null)
         {
-            return;
+            player.inputActions.FindAction("Gameplay/Dodge").AddBinding(dodgeBind);
         }
-        player.inputActions.FindAction("Gameplay/Dodge").AddBinding("<Keyboard>/x");
-        Debug.Log(dodgeAction);
+        Debug.Log(player.inputActions.FindAction("Gameplay/Dodge"));
     }
 
-    private void ChangeBind()
+    private void ChangeBind(string action, string binding)
     {
-       
+       if (action == "dodge") { dodgeBind = binding; }
     }
 
     void Awake()

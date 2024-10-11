@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class MainMenu : MonoBehaviour
 {
+    public GameObject SoundMenu;
+    public GameObject MainMainMenu;
+
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
 
@@ -62,6 +65,11 @@ public class MainMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    public void OpenSoundMenu()
+    {
+        SoundMenu.SetActive(!SoundMenu.activeSelf);
+        MainMainMenu.SetActive(!MainMainMenu.activeSelf);
+    }
 }
 
 
