@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 1
   rarity: 2
-  fireRate: 12
+  fireRate: 18
   damage: 10
   projectileSpeed: 25
   projectileLifetime: 2

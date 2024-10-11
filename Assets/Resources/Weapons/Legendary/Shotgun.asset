@@ -15,10 +15,10 @@ MonoBehaviour:
   playerVisualWeaponType: 2
   rarity: 4
   fireRate: 3
-  damage: 35
+  damage: 60
   projectileSpeed: 10
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
   sprite: {fileID: 21300000, guid: f038a5f6dfb5ab24293bc020c93b353c, type: 3}
-  projectilesPerShot: 3
+  projectilesPerShot: 5
   projectileSpread: 30

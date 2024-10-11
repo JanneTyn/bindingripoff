@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 3
   rarity: 4
-  fireRate: 24
-  damage: 4
+  fireRate: 30
+  damage: 6
   projectileSpeed: 16
   projectileLifetime: 0.6
   projectilePrefab: {fileID: 568801683787549821, guid: 286fa8f3b85b46148934d308d1770ec0, type: 3}
