@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 2
-  rarity: 0
-  fireRate: 1.2
-  damage: 20
+  rarity: 3
+  fireRate: 2.5
+  damage: 30
   projectileSpeed: 10
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}

@@ -125,7 +125,7 @@ public class Room : MonoBehaviour
 
     public void DifficultyScaler()
     {
-        enemyModifiers = TestDifficultyScaler.instance.SetCurrentRoomDifficulty(distanceToStartRoom);
+        enemyModifiers = TestDifficultyScaler.instance.DifficultyScaler(distanceToStartRoom);
         finalEnemyCount = (int)enemyModifiers[0];
         maxHealthModifier = enemyModifiers[1];
         damageModifier = enemyModifiers[2]; //0 = count, 1 = health, 2 = dmg

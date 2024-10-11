@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Rocket Launcher
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 4
-  rarity: 0
-  fireRate: 1
-  damage: 40
-  projectileSpeed: 6
+  rarity: 4
+  fireRate: 2.5
+  damage: 70
+  projectileSpeed: 14
   projectileLifetime: 5
   projectilePrefab: {fileID: 7067141648858296619, guid: 8eb166b9c8dc3bb44b254929c4d476fe, type: 3}
   sprite: {fileID: 21300000, guid: 0f9887d567439144c88a44bf415387a1, type: 3}
-  aoeRadius: 3
+  aoeRadius: 5

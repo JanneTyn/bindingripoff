@@ -34,6 +34,7 @@ public class TestDifficultyScaler : MonoBehaviour
     [Range(1, 10)] private float enemyHealthMultiplierFinal;
     [Range(1, 10)] public float enemyDamageMultiplier;
     [Range(1, 10)] private float enemyDamageMultiplierFinal;
+    private float[] enemyModifiers = new float[3];
 
 
     private void Start()
@@ -46,6 +47,13 @@ public class TestDifficultyScaler : MonoBehaviour
         timeDifficultyMultiplier = time / timeDifficultyScaler;
 
         generalDifficultyMultiplier = 1 + timeDifficultyMultiplier + (levelDifficultyMultiplier * currentLevel);
+
+    }
+
+    public float[] DifficultyScaler(int distanceToStartRoom)
+    {
+        enemyModifiers = SetCurrentRoomDifficulty(distanceToStartRoom);
+        return enemyModifiers;
     }
 
     public float[] SetCurrentRoomDifficulty(int distanceToStartRoom)

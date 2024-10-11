@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Flamethrower
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 3
-  rarity: 0
-  fireRate: 16
-  damage: 3
-  projectileSpeed: 15
+  rarity: 3
+  fireRate: 28
+  damage: 5
+  projectileSpeed: 16
   projectileLifetime: 0.5
   projectilePrefab: {fileID: 568801683787549821, guid: 286fa8f3b85b46148934d308d1770ec0, type: 3}
   sprite: {fileID: 21300000, guid: e365519489e48b048bd32d3e1dca0810, type: 3}

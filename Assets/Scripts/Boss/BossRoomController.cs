@@ -12,12 +12,19 @@ public class BossRoomController : MonoBehaviour
 
     private bool bossAlive = true;
     private Enemy bossEntity;
+    private float[] enemyModifiers = new float[3];
 
     private void Start()
     {
+        enemyModifiers = TestDifficultyScaler.instance.DifficultyScaler(0);
+        
+
         var bosses = Resources.LoadAll("Bosses/");
         var boss = bosses[Random.Range(0, bosses.Length)];
         bossEntity = ((GameObject)Instantiate(boss)).GetComponent<Enemy>();
+        bossEntity.maxHealthMultiplier = enemyModifiers[1]; //health
+        bossEntity.damageMultiplier = enemyModifiers[2];
+
 
         var bossBarGO = Instantiate(bossBarPrefab, GameObject.Find("Canvas").transform) as GameObject;
         bossBar = bossBarGO.GetComponent<Slider>();

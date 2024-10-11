@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 0
   rarity: 3
-  fireRate: 2
-  damage: 20
-  projectileSpeed: 10
+  fireRate: 4
+  damage: 30
+  projectileSpeed: 16
   projectileLifetime: 2
   projectilePrefab: {fileID: 568801683787549821, guid: 26eb09c1aa259c144a1e82bf7d636d51, type: 3}
   sprite: {fileID: 21300000, guid: ee6e5c6b9944d5a429670f83532c532e, type: 3}
-  randomSpread: 5
+  randomSpread: 0

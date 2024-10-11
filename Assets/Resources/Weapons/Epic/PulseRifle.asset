@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PulseRifle
   m_EditorClassIdentifier: 
   playerVisualWeaponType: 1
-  rarity: 0
-  fireRate: 2
-  damage: 5
-  projectileSpeed: 13
-  projectileLifetime: 1.5
+  rarity: 3
+  fireRate: 5
+  damage: 15
+  projectileSpeed: 20
+  projectileLifetime: 4
   projectilePrefab: {fileID: 568801683787549821, guid: e4f959d8127422e46a48ab9539778f9b, type: 3}
   sprite: {fileID: 21300000, guid: c54302d8200349e49b1d81d7371b4c25, type: 3}
