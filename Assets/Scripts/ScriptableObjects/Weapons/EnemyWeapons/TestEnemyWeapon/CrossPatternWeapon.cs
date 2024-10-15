@@ -20,5 +20,7 @@ public class CrossPatternWeapon : Weapon
         projectiles[1].Initialize(Vector2.down, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
         projectiles[2].Initialize(Vector2.left, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
         projectiles[3].Initialize(Vector2.right, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.enemyShoot, origin.transform.position);
+
     }
 }

@@ -14,5 +14,7 @@ public class Flamethrower : Weapon
         var newDirection =  Quaternion.AngleAxis(randomSpread * spreadRNG, Vector3.forward) * direction; // apply some randomness to the projectile direction
 
         projectile.GetComponent<Projectile>().Initialize(newDirection, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.weaponFlamethrowerShoot, origin.transform.position);
+
     }
 }

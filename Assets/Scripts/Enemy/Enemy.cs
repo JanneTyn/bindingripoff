@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 /// <summary>
 /// Base class for all enemies
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0f, maxHealth);
         tint.FlashColor(SpriteTint.DamageRed);
         DamageDisplayText.instance.DisplayDmgText(damageAmount, transform);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.enemyHurt, transform.position);
         if (currentHealth == 0f && !alreadyDead) Death();
     }
 
@@ -48,7 +50,8 @@ public class Enemy : MonoBehaviour, IDamageable
         alreadyDead = true;
         playerLeveling.IncreaseXP();
         if (room) room.EnemyKilled();
-        enemyDrop.RollEnemyDrop(this.transform);
+        enemyDrop.RollEnemyDrop(transform);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.enemyDie, transform.position);
         Destroy(gameObject);
     }
 

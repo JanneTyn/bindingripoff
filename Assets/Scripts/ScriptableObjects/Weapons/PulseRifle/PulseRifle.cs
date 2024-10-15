@@ -10,5 +10,7 @@ public class PulseRifle : Weapon
     {
         var projectile = Instantiate(projectilePrefab, origin.transform.position + Vector3.up + (Vector3)direction * 1.2f, Quaternion.identity);
         projectile.GetComponent<BouncingProjectile>().Initialize(direction, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.weaponPulserifleShoot, origin.transform.position);
+
     }
 }

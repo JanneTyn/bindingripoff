@@ -11,5 +11,7 @@ public class RocketLauncher : Weapon
     {
         var projectile = Instantiate(projectilePrefab, origin.transform.position + Vector3.up + (Vector3)direction * 1.2f, Quaternion.identity);
         projectile.GetComponent<ExplosiveProjectile>().Initialize(direction, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin, aoeRadius);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.weaponRocketShoot, origin.transform.position);
+
     }
 }

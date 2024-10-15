@@ -17,6 +17,7 @@ public class HealthPickUp : MonoBehaviour
     {
         if (collider.transform.CompareTag("Player")) //player layer
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.pickupItem, transform.position);
             player.Heal(healAmountPercentage * healMultiplier);
             Destroy(gameObject);
         }

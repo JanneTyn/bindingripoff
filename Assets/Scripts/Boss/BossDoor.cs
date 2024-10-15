@@ -13,7 +13,9 @@ public class BossDoor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
-        
+
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.teleport, transform.position);
+
         switch (direction)
         {
             case Direction.In:

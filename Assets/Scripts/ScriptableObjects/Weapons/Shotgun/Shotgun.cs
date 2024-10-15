@@ -29,5 +29,7 @@ public class Shotgun : Weapon
             var newDirection =  Quaternion.AngleAxis((-projectileSpread + spread_angle * i) / 2, Vector3.forward) * direction;
             projectiles[i].Initialize(newDirection, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
         }
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.weaponShotgunShoot, origin.transform.position);
+
     }
 }

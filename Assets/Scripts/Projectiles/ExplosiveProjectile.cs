@@ -42,6 +42,7 @@ public class ExplosiveProjectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject, 0.2f);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.explosion, transform.position);
         CameraController.instance.StartShake(0.2f, 0.2f);
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true; //activate child AoE sprite
         transform.GetChild(0).GetComponent<Animator>().SetTrigger("Explode");

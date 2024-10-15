@@ -16,5 +16,6 @@ public class BasicWeapon : Weapon
         var newDirection =  Quaternion.AngleAxis(randomSpread * spreadRNG, Vector3.forward) * direction; // apply some randomness to the projectile direction
 
         projectile.GetComponent<Projectile>().Initialize(newDirection, projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.weaponShoot, origin.transform.position);
     }
 }

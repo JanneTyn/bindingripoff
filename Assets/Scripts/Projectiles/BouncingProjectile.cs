@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BouncingProjectile : MonoBehaviour
@@ -40,6 +41,7 @@ public class BouncingProjectile : MonoBehaviour
         if (!initialized) return;
         //velocityVector *= Vector2.Dot(velocityVector, collision.contacts[0].normal);
         velocityVector = Vector2.Reflect(velocityVector.normalized, collision.contacts[0].normal) * speed;
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.weaponPulserifleBounce, transform.position);
 
 
         if (collision.transform.root.TryGetComponent<IDamageable>(out var damageInterface))

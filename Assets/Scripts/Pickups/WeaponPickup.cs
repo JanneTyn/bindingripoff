@@ -25,6 +25,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if(collider.transform.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.pickupWeapon, transform.position);
             collider.transform.root.GetComponent<Player>().EquipWeapon(weapon, this);
             //Destroy(gameObject);
         }

@@ -20,5 +20,6 @@ public class XPatternWeapon : Weapon
         projectiles[1].Initialize(new Vector2(0.5f, -0.5f), projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
         projectiles[2].Initialize(new Vector2(-0.5f, 0.5f), projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
         projectiles[3].Initialize(new Vector2(-0.5f, -0.5f), projectileSpeed, projectileLifetime, shotByPlayer, damage * damageMultiplier, origin);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.enemyShoot, origin.transform.position);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.UI.Image;
 using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
 
 /// <summary>
@@ -149,6 +150,7 @@ public class Player : MonoBehaviour, IDamageable
         //TODO effects
         if(dodgeTimer >= baseDodgeCooldown * PercentageToMultiplier(dashCooldownDecrease) && movementDirection != Vector2.zero)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.playerDash, transform.position);
             dodgeTimer = 0f;
             StartCoroutine(DodgeRoutine());
             StartCoroutine(DodgeTrailRoutine());
@@ -182,7 +184,7 @@ public class Player : MonoBehaviour, IDamageable
             //jos ei aktivoituna, ota damagea ja aloita iframet
 
             StartCoroutine(IFrameRoutine());
-            
+            AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.playerHurt, transform.position);
             Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " damage");
             currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
             DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true);
@@ -223,7 +225,6 @@ public class Player : MonoBehaviour, IDamageable
         //TODO death screen etc.
         Debug.Log("player died");
         GameUIController.instance.deathUI.SetActive(true);
-
         Time.timeScale = 0f;
         animator.SetBool("paused", true);
     }

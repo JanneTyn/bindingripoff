@@ -160,6 +160,7 @@ public class Room : MonoBehaviour
     public void UnlockDoors()
     {
         Debug.Log("Doors unlocked");
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.doorOpen, transform.position);
 
         foreach (var door in doors)
         {

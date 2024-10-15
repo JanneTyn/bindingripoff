@@ -25,11 +25,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip audio, Vector3 position)
     {
-        var gameObject = Instantiate(new GameObject("AudioSourceObject"), position, Quaternion.identity);
+        var gameObject = new GameObject("AudioSourceObject");
+        gameObject.transform.position = position;
         var audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audio;
         audioSource.outputAudioMixerGroup = audioMixerAsset.FindMatchingGroups("Master/SFX")[0];
         audioSource.Play();
-        Destroy(audioSource, audio.length);
+        Destroy(gameObject, audio.length);
     }
 }
