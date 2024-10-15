@@ -51,6 +51,7 @@ public class SprayBoss : Enemy
                     shootTimer = 0f; // reset shot timer
 
                     weapon.Shoot(gameObject, shootDir, false);
+                    animator.SetTrigger("Attack");
                 }
 
                 if (timer <= 0)

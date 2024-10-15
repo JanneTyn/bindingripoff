@@ -45,6 +45,7 @@ public class MinionBoss : Enemy
 
                 if (timer <= 0)
                 {
+                    animator.SetTrigger("Attack");
                     var rand = Random.Range(0f, 1f);
                     if(rand > 0.5f)
                     {

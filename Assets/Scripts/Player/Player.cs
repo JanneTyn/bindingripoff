@@ -244,7 +244,6 @@ public class Player : MonoBehaviour, IDamageable
         Debug.Log("player died");
         MenuController.instance.Death();
         Time.timeScale = 0f;
-        animator.SetBool("paused", true);
     }
 
     /// <summary>

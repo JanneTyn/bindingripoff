@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public EnemyLootDrop enemyDrop;
 
     private new Rigidbody2D rigidbody;
-    private Animator animator;
+    protected Animator animator;
 
     public float currentHealth; // { get; private set; }
     [SerializeField] private SpriteTint tint;

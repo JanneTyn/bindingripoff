@@ -43,6 +43,7 @@ public class TestEnemy : Enemy
                 if (timer <= 0)
                 {
                     weapon.Shoot(gameObject, Vector2.zero, false, damageMultiplier);
+                    animator.SetTrigger("Attack");
                     enemyFSM = TestEnemyStates.MovingLeft;
                     timer = aiTime;
                 }
