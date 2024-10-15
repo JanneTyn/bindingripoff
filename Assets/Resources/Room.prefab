@@ -1944,6 +1944,7 @@ GameObject:
   - component: {fileID: 1832516607643991277}
   - component: {fileID: 6144921659492949561}
   - component: {fileID: 4930091982160494653}
+  - component: {fileID: 6568752406971460129}
   m_Layer: 7
   m_Name: WallBottomChunk
   m_TagString: Untagged
@@ -3189,10 +3190,22 @@ TilemapRenderer:
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
-  m_SortOrder: 2
+  m_SortOrder: 1
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &6568752406971460129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067539191495453523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea5bb64ae9b43e46badaab9645c0912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2611475883122684418
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,7 +3801,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.52, y: 0.72}
+  m_Offset: {x: 0.53, y: 0.72}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.49087715, y: -0.0022714266}
@@ -3893,7 +3906,7 @@ MonoBehaviour:
   finalEnemyCount: 3
   maxHealthModifier: 0
   damageModifier: 0
-  startingRoom: 0
+  startingRoom: 1
 --- !u!114 &6756402192209880373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3936,6 +3949,7 @@ GameObject:
   - component: {fileID: 1791904122784335267}
   - component: {fileID: 5447370788184300118}
   - component: {fileID: 4457661778315948672}
+  - component: {fileID: 5182990869747661361}
   m_Layer: 7
   m_Name: WallTopChunk
   m_TagString: Untagged
@@ -5021,10 +5035,22 @@ TilemapRenderer:
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
-  m_SortOrder: 2
+  m_SortOrder: 1
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &5182990869747661361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5921076867953756060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea5bb64ae9b43e46badaab9645c0912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6336059478868742913
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5219,7 @@ GameObject:
   - component: {fileID: 585647366436379681}
   - component: {fileID: 3159732175483423943}
   - component: {fileID: 4376153037160157154}
+  - component: {fileID: 5713559245804157468}
   m_Layer: 7
   m_Name: WallTopSidesChunk
   m_TagString: Untagged
@@ -5802,6 +5829,18 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &5713559245804157468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061703498556557962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea5bb64ae9b43e46badaab9645c0912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7296672802863476983
 GameObject:
   m_ObjectHideFlags: 0
@@ -13501,6 +13540,7 @@ GameObject:
   - component: {fileID: 385076740578320734}
   - component: {fileID: 6270663401091443494}
   - component: {fileID: 1553454339317292227}
+  - component: {fileID: 4734516532778220742}
   m_Layer: 7
   m_Name: 'WallBottomSidesChunk '
   m_TagString: Untagged
@@ -14070,3 +14110,15 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &4734516532778220742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903121430694552960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea5bb64ae9b43e46badaab9645c0912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

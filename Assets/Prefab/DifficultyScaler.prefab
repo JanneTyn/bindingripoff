@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3b357aafa0d40499b3746d365a8b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
   currentRoomDifficulty: 0
   generalDifficultyMultiplier: 0
-  levelDifficultyMultiplier: 2
+  levelDifficultyMultiplier: 1.5
   roomDepthDifficultyMultiplier: 0.3
   timeDifficultyScaler: 300
   enemyCountScaler: 1
