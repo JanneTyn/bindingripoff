@@ -114,6 +114,7 @@ public class UpgradeMenu : MonoBehaviour
     }
     public void OpenUpgradeMenu()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.uiUpgrademenuOpen, transform.position);
         gameplayCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         EnableUI();
         if (!objectsInitialized) InitializeObjects();      
@@ -186,6 +187,7 @@ public class UpgradeMenu : MonoBehaviour
     }
     public void UpgradeSelected(int ID)
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.uiUpgradeChosen, transform.position);
         Debug.Log("Selected " + ID);
 
         string upgradeName = upgradesList[ID];
