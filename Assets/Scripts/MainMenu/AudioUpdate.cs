@@ -33,6 +33,8 @@ public class AudioUpdate : MonoBehaviour
         masterSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         musicSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
         sfxSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+
+        GameObject.Find("sound").SetActive(false);
     }
 
     public void ValueChangeCheck()

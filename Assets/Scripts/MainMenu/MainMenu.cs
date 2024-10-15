@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject SoundMenu;
     public GameObject MainMainMenu;
+    public GameObject Controls;
 
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
@@ -70,6 +71,11 @@ public class MainMenu : MonoBehaviour
     public void OpenSoundMenu()
     {
         SoundMenu.SetActive(!SoundMenu.activeSelf);
+        MainMainMenu.SetActive(!MainMainMenu.activeSelf);
+    }
+
+    public void OpenControlsMenu()
+    {
         MainMainMenu.SetActive(!MainMainMenu.activeSelf);
     }
 
