@@ -22,12 +22,12 @@ public class ControlUpdate : MonoBehaviour
     public void Rebinds()
     {
         player = GameObject.Find("TestPlayer").GetComponent<Player>();
-        Debug.Log(player);
+        //Debug.Log(player);
         if (player.inputActions.FindAction("Gameplay/Dodge") != null && dodgeBind != null)
         {
             player.inputActions.FindAction("Gameplay/Dodge").AddBinding(dodgeBind);
         }
-        Debug.Log(player.inputActions.FindAction("Gameplay/Dodge"));
+        //Debug.Log(player.inputActions.FindAction("Gameplay/Dodge"));
     }
 
     private void ChangeBind(string action, string binding)

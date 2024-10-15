@@ -21,9 +21,13 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private AudioMixer audioMixerAsset;
+    [SerializeField] public AudioMixer audioMixerAsset;
     public AudioClipListAsset audioClipListAsset; //for retention outside prefabs
 
+    private void Update()
+    {
+        AudioUpdate.instance.UpdateAudio();
+    }
     public void PlaySFX(AudioClip audio, Vector3 position)
     {
         var obj = new GameObject("AudioSourceObject");

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+
+
 public class MainMenu : MonoBehaviour
 {
     public GameObject SoundMenu;
@@ -14,7 +16,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         InitialiseResolutions();
-        resolutionDropdown.onValueChanged.AddListener(SetResolution); 
+        resolutionDropdown.onValueChanged.AddListener(SetResolution);
     }
 
     void Update()
@@ -70,6 +72,5 @@ public class MainMenu : MonoBehaviour
         SoundMenu.SetActive(!SoundMenu.activeSelf);
         MainMainMenu.SetActive(!MainMainMenu.activeSelf);
     }
+
 }
-
-
