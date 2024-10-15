@@ -24,6 +24,10 @@ public class CorruptTimer : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneManager.activeSceneChanged += ResetCorruption;
     }
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= ResetCorruption;
+    }
 
     private void ResetCorruption(Scene arg0, Scene arg1)
     {
@@ -33,8 +37,8 @@ public class CorruptTimer : MonoBehaviour
         lerpedColor = Color.white;
         lerpedColorWalls = Color.white;
         corruptionTimeActive = 0f;
-        
 
+        StopAllCoroutines();
         if (arg1.name != "BossScene") StartCoroutine(CorruptionActivationTimer());
     }
 

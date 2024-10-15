@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -26,51 +27,35 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject upgradeMenu;
     [SerializeField] private GameObject gameplayUI;
+    public GameObject deathUI;
+    [SerializeField] private TMP_Text roomDepthText;
+    [SerializeField] private Player player;
 
     void Start()
     {
-        GameObject.FindWithTag("Player").GetComponent<Player>().inputActions.Gameplay.Pause.performed += Pause;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player.inputActions.Gameplay.Pause.performed += Pause;
     }
 
-    private void Update()
-    {
-        if (pauseMenu.activeSelf && Time.timeScale == 1f) { pauseMenu.SetActive(false); return; }
-    }
     private void Pause(InputAction.CallbackContext context) => Pause();
     public void Pause()
     {
+        if (deathUI.activeSelf) return;
+
         gameplayUI.SetActive(!gameplayUI.activeSelf);
-        pauseMenu.transform.SetAsLastSibling();
         Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
-        if(GameObject.Find("statstext") == gameObject.activeSelf)
+        if(pauseMenu.activeSelf) //paused
         {
             StatDisplay.instance.DisplayCurrentStats();
+            pauseMenu.transform.SetAsLastSibling();
+            player.inputActions.Disable();
         }
-    }
-
-    public void QuitToMenu()
-    {
-        GameObject player = GameObject.Find("TestPlayer");
-        player.transform.position = Vector3.zero;
-        player.GetComponent<Player>().currentHealth = 100f;
-
-        CameraController.instance.currentCameraPos = new Vector3(0, -0.720000029f, -10);
-
-        var go = new GameObject("Tuhotaan kaikki!!! muahaha");
-        DontDestroyOnLoad(go);
-
-        foreach (var obj in go.scene.GetRootGameObjects())
+        else //unpaused
         {
-            SceneManager.MoveGameObjectToScene(obj, SceneManager.GetActiveScene());
+            player.inputActions.Enable();
         }
-
-        SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
-
-        DestroyAllObjectsByName("BossBar(Clone)");
-
-        Time.timeScale = 1f;
     }
 
     public void ExitToMenu()
@@ -86,16 +71,30 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         Time.timeScale = 1f;
     }
-
-    public void DestroyAllObjectsByName(string name)
+    public void RestartGame()
     {
-        GameObject[] objects = FindObjectsOfType<GameObject>();
-        foreach (GameObject obj in objects)
+        var go = new GameObject("Tuhotaan kaikki!!! muahaha");
+        DontDestroyOnLoad(go);
+
+        foreach (var obj in go.scene.GetRootGameObjects())
         {
-            if (obj.name == name)
-            {
-                Destroy(obj);
-            }
+            SceneManager.MoveGameObjectToScene(obj, SceneManager.GetActiveScene());
         }
+
+        SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
+        Time.timeScale = 1f;
+    }
+
+    public void RoomDepth(int roomDepth)
+    {
+        roomDepthText.text = "Room depth: " + roomDepth;
+    }
+
+    internal void Death()
+    {
+        player.inputActions.Disable();
+        deathUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameplayUI.SetActive(false);
     }
 }

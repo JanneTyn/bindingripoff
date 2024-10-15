@@ -7,6 +7,7 @@ using static UnityEngine.UI.Image;
 using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
 using System.Transactions;
 using System.Runtime.CompilerServices;
+using UnityEngine.Android;
 
 /// <summary>
 /// Player main class
@@ -241,7 +242,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         //TODO death screen etc.
         Debug.Log("player died");
-        GameUIController.instance.deathUI.SetActive(true);
+        MenuController.instance.Death();
         Time.timeScale = 0f;
         animator.SetBool("paused", true);
     }
