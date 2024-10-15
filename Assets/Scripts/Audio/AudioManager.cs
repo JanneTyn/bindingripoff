@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioMixer audioMixerAsset;
     public AudioClipListAsset audioClipListAsset; //for retention outside prefabs
 
-    private void Update()
+    private void Start()
     {
         AudioUpdate.instance.UpdateAudio();
     }
