@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using static UnityEngine.UI.Image;
 using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
 using System.Transactions;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Player main class
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour, IDamageable
             StartCoroutine(CorruptionDamageDelay());
         }
     }
+    
 
     private void FixedUpdate()
     {
@@ -175,6 +177,7 @@ public class Player : MonoBehaviour, IDamageable
         float healAmount = maxHealth * (healAmountPercentage / 100);
         currentHealth += healAmount;
         Debug.Log("Player healed for " + healAmount);
+        UpdateVignette();
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -202,9 +205,9 @@ public class Player : MonoBehaviour, IDamageable
             currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
             DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true);
             if (currentHealth == 0f) Death();
-            vignetteEffect.intensity.value = ((maxHealth - currentHealth) / maxHealth) * 0.5f;
             tinter.FlashColor(SpriteTint.DamageRed);
             CameraController.instance.StartShake(0.2f, 0.2f);
+            UpdateVignette();
         }
     }
 
@@ -311,5 +314,9 @@ public class Player : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(1);
         TakeCorruptionDamage(maxHealth * (0.05f + (healthRegen / 100)) * CorruptTimer.corruptPercentage);
         corruptCRActive = false;
+    }
+    private void UpdateVignette()
+    {
+        vignetteEffect.intensity.value = ((maxHealth - currentHealth) / maxHealth) * 0.5f;
     }
 }
