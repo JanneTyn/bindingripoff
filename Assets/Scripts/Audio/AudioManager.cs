@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -25,12 +26,22 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip audio, Vector3 position)
     {
-        var gameObject = new GameObject("AudioSourceObject");
-        gameObject.transform.position = position;
-        var audioSource = gameObject.AddComponent<AudioSource>();
+        var obj = new GameObject("AudioSourceObject");
+        obj.transform.position = position;
+        var audioSource = obj.AddComponent<AudioSource>();
         audioSource.clip = audio;
         audioSource.outputAudioMixerGroup = audioMixerAsset.FindMatchingGroups("Master/SFX")[0];
         audioSource.Play();
-        Destroy(gameObject, audio.length);
+        Destroy(obj, audio.length);
+    }
+
+    public void PlayUISFX()
+    {
+        var obj = new GameObject("AudioSourceObject");
+        var audioSource = obj.AddComponent<AudioSource>();
+        audioSource.clip = audioClipListAsset.uiButtonPress;
+        audioSource.outputAudioMixerGroup = audioMixerAsset.FindMatchingGroups("Master/SFX")[0];
+        audioSource.Play();
+        Destroy(obj, audioClipListAsset.uiButtonPress.length);
     }
 }
