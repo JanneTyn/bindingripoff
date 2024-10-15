@@ -386,7 +386,7 @@ public class UpgradeMenu : MonoBehaviour
     public void InitializeUpgradesListText()
     {
         allUpgrades.Clear();
-        allUpgrades.Add(player.maxHealthIncrease);
+        allUpgrades.Add(100 + player.maxHealthIncrease);
         allUpgrades.Add(player.healthRegen);
         allUpgrades.Add(currenttotalHealthPickUpUpgrade);
         allUpgrades.Add(player.damageIncrease);
@@ -414,10 +414,10 @@ public class UpgradeMenu : MonoBehaviour
     {      
         for (int i = 0; i < upgradesList.Length; i++)
         {
-            if (i == 0) allStats[i].text = upgradesList[i].ToString() + " +" + allUpgrades[i].ToString();
+            if (i == 0) allStats[i].text = upgradesList[i].ToString() + " " + allUpgrades[i].ToString();
             else allStats[i].text = upgradesList[i].ToString() + " +" + allUpgrades[i].ToString() + "%";
 
-            if (allUpgrades[i] > 0)
+            if ((allUpgrades[i] > 0 && i != 0) || (i == 0 && allUpgrades[i] > 100))
             {
                 allStats[i].color = new Color(0.2f, 0.8f, 0.2f);
             }

@@ -2351,10 +2351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f114113b75f439f478247967f6b80cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeCorruptionActivates: 60
+  timeBeforeCorruptionActivates: 100
   corruptionActive: 0
   corruptionTimeActive: 0
-  corruptionTimeToReachMax: 60
+  corruptionTimeToReachMax: 100
   lerpedColor: {r: 1, g: 1, b: 1, a: 1}
   lerpedColorWalls: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1574077927
