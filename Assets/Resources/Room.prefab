@@ -3906,7 +3906,7 @@ MonoBehaviour:
   finalEnemyCount: 3
   maxHealthModifier: 0
   damageModifier: 0
-  startingRoom: 1
+  startingRoom: 0
 --- !u!114 &6756402192209880373
 MonoBehaviour:
   m_ObjectHideFlags: 0

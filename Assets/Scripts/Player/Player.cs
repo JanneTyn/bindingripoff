@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 using static UnityEngine.UI.Image;
 using TrailRenderer2D = SpriteTrailRenderer.SpriteTrailRenderer;
+using System.Transactions;
 
 /// <summary>
 /// Player main class
@@ -53,6 +56,9 @@ public class Player : MonoBehaviour, IDamageable
     private SpriteRenderer spriteRenderer;
     private GameObject dodgeT;
 
+    private Vignette vignetteEffect;
+    public VolumeProfile ppVolume;
+
     #region Input
 
     private PlayerInput playerInput; //literally only to check control scheme, refactor this
@@ -89,9 +95,16 @@ public class Player : MonoBehaviour, IDamageable
         trails = GetComponent<TrailRenderer2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dodgeT = Resources.Load("DodgeText") as GameObject;
+        ppVolume.TryGet<Vignette>(out vignetteEffect);
+
+        vignetteEffect.intensity.value = 0f;
 
         maxHealth = 100 + maxHealthIncrease;
         currentHealth = maxHealth;
+    }
+    void OnDestroy()
+    {
+        vignetteEffect.intensity.value = 0f;
     }
 
     private void Update()
@@ -182,13 +195,14 @@ public class Player : MonoBehaviour, IDamageable
         {
             //jos iframet aktivoituna, älä ota damagea -> return
             //jos ei aktivoituna, ota damagea ja aloita iframet
-
+            
             StartCoroutine(IFrameRoutine());
             AudioManager.instance.PlaySFX(AudioManager.instance.audioClipListAsset.playerHurt, transform.position);
             Debug.Log("Player took " + damageAmount * PercentageToMultiplier(armor) + " damage");
             currentHealth = Mathf.Clamp(currentHealth - damageAmount * PercentageToMultiplier(armor), 0f, maxHealth);
             DamageDisplayText.instance.DisplayDmgText(damageAmount * PercentageToMultiplier(armor), transform, true);
             if (currentHealth == 0f) Death();
+            vignetteEffect.intensity.value = ((maxHealth - currentHealth) / maxHealth) * 0.5f;
             tinter.FlashColor(SpriteTint.DamageRed);
             CameraController.instance.StartShake(0.2f, 0.2f);
         }

@@ -2351,10 +2351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f114113b75f439f478247967f6b80cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeCorruptionActivates: 120
+  timeBeforeCorruptionActivates: 60
   corruptionActive: 0
   corruptionTimeActive: 0
-  corruptionTimeToReachMax: 120
+  corruptionTimeToReachMax: 60
   lerpedColor: {r: 1, g: 1, b: 1, a: 1}
   lerpedColorWalls: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1574077927
@@ -3061,6 +3061,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 967238346573959351, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
+      propertyPath: startingRoom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5547498674522291007, guid: 140ee15aae4a5ee458fa5151e2b21cc8, type: 3}
       propertyPath: m_Name
       value: Room
@@ -3335,6 +3339,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8207955836038388867, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
+      propertyPath: ppVolume
+      value: 
+      objectReference: {fileID: 11400000, guid: ca3909180f14d3541bc60b5c7bdc3c5a, type: 2}
     - target: {fileID: 8496270085257814382, guid: 75176bb373931724d8dc657dd2a3adab, type: 3}
       propertyPath: upgradeMenu
       value: 

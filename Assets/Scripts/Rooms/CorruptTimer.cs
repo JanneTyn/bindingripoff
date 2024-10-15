@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class CorruptTimer : MonoBehaviour
@@ -14,6 +16,7 @@ public class CorruptTimer : MonoBehaviour
     public Color lerpedColor = Color.white;
     public Color lerpedColorWalls = Color.white;
     public static float corruptPercentage = 0;
+    
 
     void Start()
     {
