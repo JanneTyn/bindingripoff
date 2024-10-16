@@ -8,7 +8,7 @@ public class ShootAtPlayerEnemy : Enemy
 
     [SerializeField] private float aiTime;
     [SerializeField] private Weapon weapon;
-
+    [SerializeField] private float maxAiTimeVariance = 0.2f;
     private Vector2 movementDirection;
     private Transform player;
 
@@ -23,6 +23,7 @@ public class ShootAtPlayerEnemy : Enemy
     private void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
+        aiTime = aiTime + maxAiTimeVariance * Random.Range(-1f, 1f);
         aiTime = aiTime - (aiTime / 40 * TestDifficultyScaler.instance.currentRoomDifficulty);
         if (aiTime < 0.5f) aiTime = 0.5f;
         timer = aiTime;

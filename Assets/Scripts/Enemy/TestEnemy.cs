@@ -9,6 +9,7 @@ public class TestEnemy : Enemy
 {
     private float timer;
     [SerializeField] private float aiTime = 2f;
+    [SerializeField] private float maxAiTimeVariance = 0.2f;
     [SerializeField] private Weapon weapon;
 
     private enum TestEnemyStates
@@ -20,8 +21,10 @@ public class TestEnemy : Enemy
 
     private void Start()
     {
+        aiTime = aiTime + maxAiTimeVariance * Random.Range(-1f, 1f);
         aiTime = aiTime - (aiTime / 40 * TestDifficultyScaler.instance.currentRoomDifficulty);
         if (aiTime < 0.5f) aiTime = 0.5f;
+        
         timer = aiTime;
         base.Start();
     }
