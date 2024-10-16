@@ -40,7 +40,7 @@ public class MenuController : MonoBehaviour
     private void Pause(InputAction.CallbackContext context) => Pause();
     public void Pause()
     {
-        if (deathUI.activeSelf) return;
+        if (deathUI.activeSelf || upgradeMenu.activeSelf) return;
 
         gameplayUI.SetActive(!gameplayUI.activeSelf);
         Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
