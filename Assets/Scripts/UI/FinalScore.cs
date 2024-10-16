@@ -18,5 +18,6 @@ public class FinalScore : MonoBehaviour
         transform.Find("stat1").GetComponent<TMP_Text>().text = "Player Level: " + playerLevel;
         transform.Find("stat2").GetComponent<TMP_Text>().text = "Highest Floor Reached: " + highestFloor;
         transform.Find("stat3").GetComponent<TMP_Text>().text = "Enemies Killed: " + enemiesKilled;
+        transform.Find("stat4").GetComponent<TMP_Text>().text = "Bosses killed: " + StatDisplay.instance.bossesSlain;
     }
 }
