@@ -40,7 +40,7 @@ public class StatDisplay : MonoBehaviour
     public int enemiesKilled = 0;
     [SerializeField]private GameObject killCounter;
 
-    private int bossesSlain = 0;
+    public int bossesSlain = 0;
     [SerializeField] private GameObject bossCounter;
 
     [SerializeField]private GameObject currentWeaponPrefab;

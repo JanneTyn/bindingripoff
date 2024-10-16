@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1010cd95a5d9941a4189952be76110, type: 3}
   m_Name: New AudioClipListAsset
   m_EditorClassIdentifier: 
-  testClip: {fileID: 0}
   pickupItem: {fileID: 8300000, guid: c1d4e8395df6a204db3fe9d676478c96, type: 3}
   pickupWeapon: {fileID: 8300000, guid: f28b19c95ac3a374fa6a569f51a136a9, type: 3}
   explosion: {fileID: 8300000, guid: 92dab2af6528ddd47b688b4d68fdda49, type: 3}
@@ -20,10 +19,10 @@ MonoBehaviour:
   doorOpen: {fileID: 8300000, guid: 4b36bb8185197a448bfbad7020990cb0, type: 3}
   gameOver: {fileID: 8300000, guid: 734943c024df8714ca8c4ae662d9496a, type: 3}
   weaponShoot: {fileID: 8300000, guid: de532d338a59c7742bf43e8b0a71ed19, type: 3}
-  weaponFlamethrowerShoot: {fileID: 8300000, guid: f1d2d4da4a99bf842a483c15e0683b98, type: 3}
-  weaponPulserifleShoot: {fileID: 8300000, guid: 5c1900497314c674d8c57eafddd274a5, type: 3}
-  weaponPulserifleBounce: {fileID: 8300000, guid: 987ded38c4b9d9f4ab06d35749cf20d8, type: 3}
-  weaponRocketShoot: {fileID: 8300000, guid: ded7c94c7c606704a83d114ce2c10937, type: 3}
+  weaponFlamethrowerShoot: {fileID: 8300000, guid: 623ec615a18594c4f8518d2222202d35, type: 3}
+  weaponPulserifleShoot: {fileID: 8300000, guid: 055ffa9cff8f7b34fb619f51f864f303, type: 3}
+  weaponPulserifleBounce: {fileID: 8300000, guid: 55d70011584dc154aa991b8531e61fdd, type: 3}
+  weaponRocketShoot: {fileID: 8300000, guid: 566702c4fdbe5a541bf87e72210437f9, type: 3}
   weaponShotgunShoot: {fileID: 8300000, guid: ded7c94c7c606704a83d114ce2c10937, type: 3}
   uiUpgrademenuOpen: {fileID: 8300000, guid: 180e13b51e446d840b483c2d004e8264, type: 3}
   uiUpgradeChosen: {fileID: 8300000, guid: f28b19c95ac3a374fa6a569f51a136a9, type: 3}

@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        AudioUpdate.instance.UpdateAudio();
+        if (AudioUpdate.instance != null) { AudioUpdate.instance.UpdateAudio(); } 
     }
     public void PlaySFX(AudioClip audio, Vector3 position)
     {
