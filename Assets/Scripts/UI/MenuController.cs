@@ -94,6 +94,7 @@ public class MenuController : MonoBehaviour
     {
         player.inputActions.Disable();
         deathUI.SetActive(true);
+        transform.Find("DeathScreen/Score").GetComponent<FinalScore>().GetEndValues();
         Time.timeScale = 0f;
         gameplayUI.SetActive(false);
     }
