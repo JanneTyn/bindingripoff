@@ -52,6 +52,14 @@ public class Room : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        foreach(var r in rejectRects)
+        {
+            Gizmos.DrawWireCube(transform.position + (Vector3)generationOffset + (Vector3)r.position, r.size);
+        }
+    }
+
     /// <summary>
     /// Place random obstacle tiles from the "tiles" array onto the tilemap
     /// </summary>

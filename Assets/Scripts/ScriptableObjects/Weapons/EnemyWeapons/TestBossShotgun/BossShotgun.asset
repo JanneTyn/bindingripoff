@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15ae7d5521ea544184c3aa4f9f1e5c3, type: 3}
   m_Name: BossShotgun
   m_EditorClassIdentifier: 
+  playerVisualWeaponType: 0
   rarity: 0
   fireRate: 1
   damage: 10
@@ -19,5 +20,5 @@ MonoBehaviour:
   projectileLifetime: 3
   projectilePrefab: {fileID: 568801683787549821, guid: df5ba78f2c437bd459d7b6bcf098893c, type: 3}
   sprite: {fileID: 0}
-  projectilesPerShot: 16
+  projectilesPerShot: 15
   projectileSpread: 360

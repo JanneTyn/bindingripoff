@@ -92,6 +92,9 @@ public class MenuController : MonoBehaviour
 
     internal void Death()
     {
+        var bossBar = GameObject.Find("BossBar(Clone)");
+        if(bossBar) bossBar.SetActive(false);
+
         player.inputActions.Disable();
         deathUI.SetActive(true);
         deathUI.transform.SetAsLastSibling();

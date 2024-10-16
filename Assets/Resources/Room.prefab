@@ -3879,24 +3879,24 @@ MonoBehaviour:
   - {fileID: 4317098989518306352}
   rejectRects:
   - serializedVersion: 2
-    x: 0
-    y: 5
+    x: 1.59
+    y: 6.19
     width: 3
     height: 3
   - serializedVersion: 2
-    x: 12
+    x: 13
     y: 0
     width: 4
     height: 3
   - serializedVersion: 2
-    x: 22
-    y: 5
+    x: 24.5
+    y: 6.59
     width: 3
     height: 3
   - serializedVersion: 2
-    x: 12
-    y: 10
-    width: 3
+    x: 13
+    y: 11.52
+    width: 3.78
     height: 3
   filledPositions: []
   enemies: 3

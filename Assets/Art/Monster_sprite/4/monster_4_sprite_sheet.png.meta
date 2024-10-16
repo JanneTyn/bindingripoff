@@ -93,6 +93,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -102,10 +115,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1110
-        width: 220
+        width: 227
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +134,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_1
       rect:
         serializedVersion: 2
-        x: 220
+        x: 227
         y: 1110
-        width: 220
+        width: 213
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,10 +157,10 @@ TextureImporter:
         serializedVersion: 2
         x: 440
         y: 1110
-        width: 220
+        width: 227
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +176,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_3
       rect:
         serializedVersion: 2
-        x: 660
+        x: 667
         y: 1110
-        width: 220
+        width: 224
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +197,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_4
       rect:
         serializedVersion: 2
-        x: 880
+        x: 891
         y: 1110
-        width: 220
+        width: 209
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +223,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,7 +244,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,7 +265,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,7 +286,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +307,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,10 +325,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 370
-        width: 220
+        width: 208
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,12 +344,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_11
       rect:
         serializedVersion: 2
-        x: 220
-        y: 370
-        width: 220
+        x: 208
+        y: 371
+        width: 225
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -352,12 +365,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_12
       rect:
         serializedVersion: 2
-        x: 440
+        x: 433
         y: 370
-        width: 220
+        width: 223
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,12 +386,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_13
       rect:
         serializedVersion: 2
-        x: 660
+        x: 656
         y: 370
-        width: 220
+        width: 217
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,12 +407,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_14
       rect:
         serializedVersion: 2
-        x: 880
+        x: 873
         y: 370
-        width: 220
+        width: 227
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,7 +433,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,7 +454,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,7 +475,7 @@ TextureImporter:
         width: 220
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -480,10 +493,10 @@ TextureImporter:
         serializedVersion: 2
         x: 660
         y: 0
-        width: 220
+        width: 223
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -499,12 +512,12 @@ TextureImporter:
       name: monster_4_sprite_sheet_19
       rect:
         serializedVersion: 2
-        x: 880
+        x: 883
         y: 0
-        width: 220
+        width: 217
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
