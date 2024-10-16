@@ -44,7 +44,8 @@ public class TestDifficultyScaler : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        timeDifficultyMultiplier = time / timeDifficultyScaler;
+ 
+        if (time > 20) timeDifficultyMultiplier = time / timeDifficultyScaler;
 
         generalDifficultyMultiplier = 1 + timeDifficultyMultiplier + (levelDifficultyMultiplier * currentLevel);
 

@@ -37,7 +37,7 @@ public class StatDisplay : MonoBehaviour
     private int roomsCleared = 0;
     [SerializeField]private GameObject roomText;
 
-    private int enemiesKilled = 0;
+    public int enemiesKilled = 0;
     [SerializeField]private GameObject killCounter;
 
     private int bossesSlain = 0;
@@ -140,6 +140,7 @@ public class StatDisplay : MonoBehaviour
         {
             float value = (float)field.GetValue(player);
             if (value < 0) { value = value * -1; }
+            if (stringStatName == "Max Health") value += 100;
             textComponent.text = stringStatName + ": " + value;
         }
         else
@@ -175,7 +176,7 @@ public class StatDisplay : MonoBehaviour
     /// <param name="xpAmount"></param>
     public void UpdateXp(float currentXp, float maxXp)
     {
-        xpText.text = currentXp + " / " + maxXp;
+        xpText.text = currentXp.ToString("F0") + " / " + maxXp;
         xpSlider.value = currentXp / maxXp;
     }
 }
